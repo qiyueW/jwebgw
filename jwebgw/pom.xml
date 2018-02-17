@@ -9,7 +9,7 @@
 
     <name>jwebgw</name>
     <description>JWeb so easy!</description>
-    <url>https://github.com/qiyueW/JWeb</url>
+    <url>https://github.com/qiyueW/jwebgw</url>
    
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -34,7 +34,12 @@
             <timezone>+8</timezone>
         </developer>
     </developers>
-
+    <scm>
+        <connection>scm:git:https://github.com/qiyueW/jwebgw.git</connection>
+        <developerConnection>scm:git:https://github.com/qiyueW/jwebgw.git</developerConnection>
+        <url>https://github.com/qiyueW/jwebgw</url>
+        <tag>v${project.version}</tag>
+    </scm>
     
     <dependencies>
         <!--JWeb框架-->
@@ -43,7 +48,7 @@
             <artifactId>JWeb</artifactId>
             <version>1.0</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <!-- mysql jdbc-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>

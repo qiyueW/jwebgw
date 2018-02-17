@@ -13,11 +13,8 @@
             var path_home = "${path_home}/";
             function getTableTR(obj) {
                 var str = '<tr>'
-                        + '<td>' + obj.jingyankufl_name + '</td>'
-                        + '<td><a href="' + path_home + 'spage/jingyanku/s/view/selectOne.jw?id=' + obj.spage_jingyanku_zj + '"  data-toggle="modal" data-target="#mendianModelID">' + obj.spage_jingyanku_biaoti + '</a></td>'
-                        + '<td>' + obj.spage_jingyanku_fabushijian + '</td>'
-                        + '<td>' + obj.spage_jingyanku_zhidanren + '</td>'
-                        + '</tr>';
+                        +'<td><a href="' + path_home + 'spage/jingyanku/s/view/selectOne.jw?id=' + obj.spage_jingyanku_zj + '"  data-toggle="modal" data-target="#mendianModelID">' + obj.spage_jingyanku_biaoti + '</a></td>'
+                        +'</tr>';
                 return str;
             }
             function onButtonFromServer() {
@@ -146,7 +143,7 @@
                                 <div id="treeIDShowDIV2" style="overflow-y:scroll;">
                                     <table class="table table-fixed"  id="contentTableID">
                                         <tr>
-                                            <td style="width:130px;">归档类别</td><td>标题</td><td style="width:145px;">时间</td><td style="width:85px;">发布人</td>
+                                            <td>标题</td>
                                         </tr>
                                     </table>
                                 </div>

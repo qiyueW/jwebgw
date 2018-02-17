@@ -134,7 +134,7 @@
                     <tr>
                         <td>
                             <div style=" margin-left: 9px"><input type="checkbox" id="showTreeVastID" checked>多层展示</div>
-                            <div id="treeIDShowDIV" style="overflow-y:scroll; width:200px;">
+                            <div id="treeIDShowDIV" style="overflow-y:scroll; width:150px;">
                                 <div id="divID_Tree" class="ztree"></div>
                             </div>
                         </td>

@@ -69,7 +69,7 @@
                 <div id="treeIDShowDIV"style="overflow-y: scroll;">
                     <table class="table table-fixed">
                         <tr>
-                            <td>标题</td><td style="width:140px;">时间</td><td style="width:90px;">发布人</td>
+                            <td>标题</td><td style="width:140px;">时间</td>
                         </tr>
                         <c:forEach var="o" items="${obj}">
                             <tr>
@@ -78,9 +78,6 @@
                                 </td>
                                 <td>
                                     ${o.spage_notice_fabushijian}
-                                </td>
-                                <td>
-                                    ${o.spage_notice_zhidanren}
                                 </td>
                             </tr>
                         </c:forEach>

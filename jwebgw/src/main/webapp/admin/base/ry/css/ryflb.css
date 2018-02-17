@@ -1,0 +1,20 @@
+/* CSS Document */
+.root{
+width:210mm;
+height:297mm;
+margin:0px;
+top:0px;
+left:0px;
+font-size:14px;
+}
+.root_title{
+background-color:#0099CC;
+width:210mm;
+height:20mm;
+}
+.root_body{
+	width:210mm;
+}
+.label_18 label{
+	margin-left:18px; margin-right:18px;
+}

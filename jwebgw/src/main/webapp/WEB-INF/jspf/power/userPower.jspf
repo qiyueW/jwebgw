@@ -1,0 +1,14 @@
+<%@page import="wx.web.base.bean.RY"%>
+<%@page import="system.web.power.session.Login"%>
+<%@page import="power.JSPCheck"%>
+<%@ page pageEncoding="UTF-8" %>
+<%
+    JSPCheck pck = new JSPCheck(session);
+    if (pck.isNotLoginByUser()) {
+        response.sendRedirect(application.getAttribute("path_home").toString()+"/loginUser.jsp");
+        return;
+    }
+    RY ry = Login.getUserInfo(RY.class, session);
+    String hyy = "您好,欢迎使用JWeb框架. 致 " + ry.getRy_name()+(ry.getRy_sex().equals("男")?" 帅哥":" 美女");
+%>
+

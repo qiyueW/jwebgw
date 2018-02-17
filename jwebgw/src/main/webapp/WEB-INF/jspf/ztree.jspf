@@ -1,0 +1,9 @@
+<%@page import="java.util.Date"%>
+<%@ page pageEncoding="UTF-8" %>
+<!--还需要jq-->
+<link rel="stylesheet" href="${path_home}/lib/ztree/css/zTreeStyle/zTreeStyle.css"  type="text/css" />  
+<script src="${path_home}/lib/ztree/js/jquery.ztree.all.min.js" type="text/javascript"></script>
+<script src="${path_home}/lib/ztree/my/myztree.js" type="text/javascript"></script>
+<script src="${path_home}/lib/ztree/my/treeCombox.js" type="text/javascript"></script>
+<!--调试用。可删除-->
+<!--<script src="${path_home}/lib/json2.js"></script>-->

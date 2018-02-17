@@ -1,0 +1,58 @@
+<%@ page pageEncoding="UTF-8" %>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="//cdn.bootcss.com/zui/1.8.1/css/zui.min.css">
+<!--ZUI Javascript 依赖 jQuery--> 
+<script src="//cdn.bootcss.com/zui/1.8.1/lib/jquery/jquery.js"></script>
+<!-- ZUI 标准版压缩后的 JavaScript 文件 -->
+<script src="//cdn.bootcss.com/zui/1.8.1/js/zui.min.js"></script>
+
+<!--[if lt IE 8]>
+  <div class="alert alert-danger">您正在使用 <strong>过时的</strong> 浏览器. 是时候 <a href="http://browsehappy.com/">更换一个更好的浏览器</a> 来提升用户体验.</div>
+<![endif]-->
+<!--[if lt IE 9]>
+  <script src="${path_home}/lib/zui/lib/ieonly/html5shiv.js"></script>
+  <script src="${path_home}/lib/zui/lib/ieonly/respond.js"></script>
+  <script src="${path_home}/lib/zui/lib/ieonly/excanvas.js"></script>
+<![endif]-->
+
+<script type="text/javascript">
+
+    function dellTableTRFromIStart(tableID, i) {
+        var trcount = $("#" + tableID).find("tr").length;
+        for (; i < trcount; i++) {
+            $("table tr:eq(" + i + ")").remove();
+        }
+    }
+
+    function GJS() {
+        this.width = $(window).width();//window.document.body.clientWidth;
+        this.height = $(window).height();//window.document.body.clientHeight;
+    }
+//    GJS.prototype.JT = function (myfunction) {
+//        window.onresize = function () {
+//            this.width = window.document.body.clientWidth;
+//            this.height = window.document.body.clientHeight;
+//            if (myfunction) {
+//                myfunction()
+//            }
+//        }
+//    }
+
+    GJS.prototype.getWidthPX = function (intJQ) {
+        return null == intJQ ? this.width + "px" : (this.width - intJQ) + "px";
+    }
+    GJS.prototype.getHeightPX = function (intJQ) {
+        return null == intJQ ? this.height + "px" : (this.height - intJQ) + "px";
+    }
+    GJS.prototype.setElementHeight = function (divid, intJQ) {
+        var h = null == intJQ ? this.height + "px" : (this.height - intJQ) + "px";
+        var div = window.document.getElementById(divid);
+        div.style.height = h;
+    }
+    GJS.prototype.setElementWidthPX = function (divid, intJQ) {
+        var w = null == intJQ ? this.width + "px" : (this.width - intJQ) + "px";
+        var div = window.document.getElementById(divid);
+        div.style.width = w;
+    }
+</script>

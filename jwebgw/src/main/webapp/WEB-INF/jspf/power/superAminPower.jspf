@@ -1,0 +1,15 @@
+<%@page import="system.web.power.session.Login"%>
+<%@page import="power.bean.AdminUser"%>
+<%@page import="system.web.power.PDK"%>
+<%@page import="power.JSPCheck"%>
+<%@ page pageEncoding="UTF-8" %>
+<%
+    JSPCheck pck = new JSPCheck(session);
+    if (pck.isNotLoginBySuperAdmin()) {
+        response.sendRedirect(application.getAttribute("path_home").toString()+"/loginByAdminSuper.jsp");
+        return;
+    }
+    AdminUser ry = Login.getUserInfo(AdminUser.class, session,PDK.SESSION_SUPER_ADMIN_KEY);
+    String hyy = "您好,欢迎使用JWeb框架. 致 " + ry.getUser_name()+ " **权限越大责任越大，请谨慎操作**";
+%>
+

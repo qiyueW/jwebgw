@@ -69,7 +69,7 @@
                 <div id="treeIDShowDIV"style="overflow-y: scroll;">
                     <table class="table table-fixed">
                         <tr>
-                            <td>标题</td><td style="width:140px;">时间</td>
+                            <td>标题</td><td style="width:150px;">时间</td>
                         </tr>
                         <c:forEach var="o" items="${obj}">
                             <tr>
@@ -77,7 +77,7 @@
                                     <a href="${path_home}/spage/notice/view/selectOne.jw?id=${o.spage_notice_zj}" data-toggle="modal" data-target="#mendianModelID">${o.spage_notice_biaoti}</a>
                                 </td>
                                 <td>
-                                    ${o.spage_notice_fabushijian}
+                                    <div style="float: left;"> ${o.spage_notice_fabushijian}</div>
                                 </td>
                             </tr>
                         </c:forEach>

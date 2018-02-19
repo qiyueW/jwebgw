@@ -20,6 +20,12 @@
             var mypackage_id = "";
             var user_id2 = "";
             $(function () {
+                var zcfl = new ztree_select("${path_home}/cc/mypackage/s/selectVast.jw", {}, "showmypackageTree", "mypackage_name", "mypackage_id", 220, 390);
+                zcfl.init(function (treeId, treeNode) {
+                    zcfl.setMyValue(treeNode)
+                    zcfl.hideMenu();//$("#" +zcfl.menuContentDIV).fadeOut("fast");
+                    $.fn.zTree.getZTreeObj("divID_Tree_bean").reAsyncChildNodes(null, "refresh");
+                }, "mypackage_id", "mypackage_pid", "mypackage_name")
 //======================================================================================================                
 //检出包结构                
                 var setting0 = {
@@ -27,31 +33,42 @@
                     async: {enable: true, type: "post", url: "${path_home}/cc/mypackage/s/selectVast.jw",
                         otherParam: ["user_id", function () {
                                 return user_id2;
-                            }]},
+                            }]
+                    },
                     data: {
                         simpleData: {enable: true, idKey: "mypackage_id", pIdKey: "mypackage_pid", rootPId: "0"},
                         key: {name: "mypackage_name"}
                     },
                     callback: {
-//                        onClick: function (event, id, treeNode) {//点击部门时，重新加载管理员树。参数为
-//                            bm_id = ztree_getNodeSonValue(treeNode, "bm_id"); //动态上传参数
-//                            $.fn.zTree.getZTreeObj("divID_Tree_bean").reAsyncChildNodes(null, "refresh");
-//                        },
+                        onClick: function (event, id, treeNode) {//点击部门时，重新加载管理员树。参数为
+                            mypackage_id = treeNode.mypackage_id; //动态上传参数
+                            $.fn.zTree.getZTreeObj("divID_Tree_bean").reAsyncChildNodes(null, "refresh");
+                        },
                         onAsyncSuccess: function () {
                             $.fn.zTree.getZTreeObj("divID_Tree_BM").expandAll(true);
                         }
                     }
                 };
                 $.fn.zTree.init($("#divID_Tree_BM"), setting0);
-//======================================================================================================                
+//======================================================================================================  
+
 //======================================================================================================
 //检出bean
+                function ajaxDataFilter(treeId, parentNode, responseData) {
+                    if (responseData) {
+                        for (var i = 0; i < responseData.length; i++) {
+                            responseData[i].mybean_mc = responseData[i].mybean_bz ? responseData[i].mybean_mc + "(" + responseData[i].mybean_bz + ")" : responseData[i].mybean_mc;
+                        }
+                    }
+                    return responseData;
+                }
                 var setting2 = {
                     treeId: "mybean_zj", check: {enable: true},
                     async: {enable: true, type: "post", url: "${path_home}/cc/mybean/s/selectAllByJson.jw",
                         otherParam: ["mypackage_id", function () {
-                                return mypackage_id
-                            }]
+                                return $("#mypackage_id").val();//mypackage_id
+                            }],
+                        dataFilter: ajaxDataFilter
                     },
                     data: {
                         simpleData: {enable: true, idKey: "mybean_zj", rootPId: "0"},
@@ -87,20 +104,22 @@
         <div style=" min-width: 800px">
             <table class="powertable">
                 <tr style="background-color: #00b7ee">
-                    <th style=" width: 250px;">项目包路径</th>
+                    <th style=" width: 250px;">bean</th>
                     <th style=" width: 250px;">bean</th>
                     <th style=" width: 300px;">bean相关</th>
                     <!--<th>管理操作</th>-->
                 </tr>
                 <tr style=" height:500px">
                     <td>
-                        <div id="divID_Tree_BM"  class="ztree powertablediv">---</div>
+                        <div id="showmypackageTree"  style=" position: relative;z-index:1000"></div>
+                        <!--<div id="divID_Tree_BM"  class="ztree powertablediv">---</div>-->
+                        <div id="divID_Tree_bean" class="ztree powertablediv">bean</div>
                     </td>
                     <td style=" background-color:#d4f1ff">
-                         <div id="divID_Tree_bean" class="ztree powertablediv">bean</div>
+                        
                     </td>
                     <td style=" background-color:#d4f1ff">
-                       
+
                     </td>
                 </tr>
             </table>

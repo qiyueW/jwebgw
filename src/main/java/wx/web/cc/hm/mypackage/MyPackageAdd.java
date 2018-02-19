@@ -1,4 +1,4 @@
-package wx.web.cc.hm;
+package wx.web.cc.hm.mypackage;
 
 import system.base.annotation.H;
 import system.base.annotation.M;
@@ -18,13 +18,13 @@ public class MyPackageAdd {
     }
 
     @M("/add")
-    @Validate(wx.web.cc.hm.validate.MyPackageValidate.class)
+    @Validate(wx.web.cc.hm.mypackage.validate.MyPackageValidate.class)
     public void add() {
         MyPackage obj = jw.getObject(MyPackage.class);
         if (null == obj.getMypackage_pid() || obj.getMypackage_pid().isEmpty()) {
             obj.setMypackage_pid("0");
         }
         DBO.out_add_1_0_f1(jw, DBO.service.A.addOne(obj));
-        wx.web.cc.hm.cache.MyPackageCache.CACHE.reset();
+        wx.web.cc.hm.mypackage.cache.MyPackageCache.CACHE.reset();
     }
 }

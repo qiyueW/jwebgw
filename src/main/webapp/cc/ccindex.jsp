@@ -140,35 +140,35 @@
         <div style=" min-width: 800px">
             <table class="powertable">
                 <tr style="background-color: #00b7ee">
-                    <th style=" width: 250px;">管理员</th>
-                    <th style=" width: 300px;">拥有的权限</th>
-                    <th style=" width: 250px;">管理涉及到的部门</th>
-                    <th>管理操作</th>
+                    <th style=" width: 250px;">项目包路径</th>
+                    <th style=" width: 250px;">bean</th>
+                    <th style=" width: 300px;">bean相关</th>
+                    <!--<th>管理操作</th>-->
                 </tr>
                 <tr style=" height:500px">
                     <td>
-                        <div id="divID_Tree_Admin" class="ztree powertablediv">管理员</div>
+                       <div id="divID_Tree_BM"  class="ztree powertablediv">---</div>
                     </td>
                     <td style=" background-color:#d4f1ff">
                         <div id="divID_Power" class="ztree powertablediv">权限</div>
                     </td>
                     <td style=" background-color:#d4f1ff">
-                        <div id="divID_Tree_BM"  class="ztree powertablediv">---</div>
+                       <div id="divID_Tree_Admin" class="ztree powertablediv">管理员</div>
                     </td>
-                    <td>
+<!--                    <td>
                         <div class="tableDivH">
                             <div style="margin:10px;">
                                 <div style="font-size:13px; color: red;">
                                     <a href="javascript:void(0)" onclick="toSetPower();"><div style="color: red;">设置权限</div></a>
                                 </div>
                             </div>
-<!--                            <div style="margin:10px;">
+                            <div style="margin:10px;">
                                 <div style="font-size:12px">
                                     <a href="javascript:void(0)" onclick="loadNotBMAdmin();">加载<br/>全局管理员</a>
                                 </div>
-                            </div>-->
+                            </div>
                         </div>
-                    </td>
+                    </td>-->
                 </tr>
             </table>
         </div>

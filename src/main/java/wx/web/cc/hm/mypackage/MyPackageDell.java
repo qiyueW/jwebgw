@@ -1,4 +1,4 @@
-package wx.web.cc.hm;
+package wx.web.cc.hm.mypackage;
 
 import configuration.KeyModel.ReturnKey;
 import system.base.annotation.H;
@@ -26,6 +26,6 @@ public class MyPackageDell {
         );
         jw.printOne(i == -1? ReturnKey.DELL_UNIQUE.statusCode
                 : (i > 0 ? ReturnKey.DELL_SUCESS.statusCode : ReturnKey.DELL_ERROR.statusCode));
-        wx.web.cc.hm.cache.MyPackageCache.CACHE.reset();
+        wx.web.cc.hm.mypackage.cache.MyPackageCache.CACHE.reset();
     }
 }

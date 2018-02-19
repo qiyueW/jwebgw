@@ -1,4 +1,4 @@
-package wx.web.cc.hm;
+package wx.web.cc.hm.mypackage;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class MyPackageUpdate {
 	}
 
 	@M("/update")
-	@Validate(wx.web.cc.hm.validate.MyPackageValidate.class)
+	@Validate(wx.web.cc.hm.mypackage.validate.MyPackageValidate.class)
 	public void update() {
 		MyPackage obj = jw.getObject(MyPackage.class);
 		if (null == obj.getMypackage_id() || obj.getMypackage_id().length() != 24)
@@ -44,7 +44,7 @@ public class MyPackageUpdate {
 			return;
 		}
 		DBO.out_update_1_0_f1(jw, DBO.service.U.update_all(obj));
-        wx.web.cc.hm.cache.MyPackageCache.CACHE.reset();
+        wx.web.cc.hm.mypackage.cache.MyPackageCache.CACHE.reset();
 	}
 
 	@M("/update/select")

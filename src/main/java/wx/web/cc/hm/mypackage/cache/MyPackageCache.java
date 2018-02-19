@@ -1,4 +1,4 @@
-package wx.web.cc.hm.cache;
+package wx.web.cc.hm.mypackage.cache;
 
 import java.util.List;
 import wx.web.cc.bean.MyPackage;

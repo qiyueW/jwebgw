@@ -1,4 +1,4 @@
-package wx.web.cc.hm.validate;
+package wx.web.cc.hm.mypackage.validate;
 
 import java.util.Map;
 import system.web.JWeb;

@@ -42,9 +42,14 @@ ztree_select.prototype.init = function (f_check, idName, pidName, name, initName
     this.idName = idName;
     this.pidName = pidName;
     this.name = name;
-
+    var as;
+    if(this.param=={}){
+        as={enable: true, type: "post", url: this.url}
+    }else{
+        as={enable: true, type: "post", url: this.url,otherParam:this.param}
+    }
     this.ztreesetting = {
-        async: {enable: true, type: "post", url: this.url},
+        async: as,//{enable: true, type: "post", url: this.url,otherParam:param},
 //        radio: {enable: true},
         view: {dblClickExpand: false},
         data: {simpleData: {enable: true, idKey: idName, pIdKey: pidName, rootPId: "0"}, key: {name: name}},

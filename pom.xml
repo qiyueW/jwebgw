@@ -60,11 +60,11 @@
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
         </dependency>
-        <dependency>
+<!--        <dependency>
             <groupId>wx.web</groupId>
             <artifactId>JWC</artifactId>
             <version>1.0</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
@@ -121,15 +121,37 @@
                 <version>8.1.16.v20140903</version>
                 <configuration>
                     <scanIntervalSeconds>10</scanIntervalSeconds>
-<!--                    <webApp>
+                    <stopKey>foo</stopKey>
+                    <stopPort>9999</stopPort>
+                    <!--                    <webApp>
                         <contextPath>/jwebgw</contextPath>
                     </webApp>-->
-<!--                    <connectors>
+                    <!--                    <connectors>
                         <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
                             <port>8080</port>
                         </connector>
                     </connectors>-->
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>start-jetty</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <scanIntervalSeconds>0</scanIntervalSeconds>
+                            <daemon>true</daemon>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>stop-jetty</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>stop</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

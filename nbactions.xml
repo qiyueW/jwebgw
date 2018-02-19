@@ -7,4 +7,13 @@
                 <goal>jetty:run</goal>
             </goals>
         </action>
+        <action>
+            <actionName>CUSTOM-mvn clean compile</actionName>
+            <displayName>mvn clean compile</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>compile</goal>
+                
+            </goals>
+        </action>
     </actions>

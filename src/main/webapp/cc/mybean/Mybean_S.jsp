@@ -1,16 +1,3 @@
- <!--%@include file="/WEB-INF/jspf/power/userPower.jspf"%-->
-<!--%    if (!pck.checkUser("J32_1")) {
-        return;
-    }
-    boolean update, dell;
-    update = pck.checkUser("J32_2");
-    dell = pck.checkUser("J32_3");
-    String showPower = pck.getStrTool()
-            .put(update, "{text: '修改', click: update}")
-            .put(true, "{line: true}")
-            .put(dell, "{text: '删除', click: dell}")
-            .getString();
-%-->
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!--后台UI组件Start-->
 <%@include file="/WEB-INF/jspf/admin-ui.jspf"%>

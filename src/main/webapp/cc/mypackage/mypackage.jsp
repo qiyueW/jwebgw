@@ -42,7 +42,7 @@
                     }
                      , url: '${path_home}/cc/mypackage/s/selectVast/GRID.jw'
                 });
-                $("#toptoolbar").ligerToolBar({items: [<%=showPower%>]});
+                $("#toptoolbar").ligerToolBar({items: [{text: '修改', click: update},{text: '删除', click: dell}]});
             });
 //-------------------------------增删改操作-----------------------------------------------
             function update() {

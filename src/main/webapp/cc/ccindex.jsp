@@ -35,7 +35,7 @@
                     callback: {
 //                        onClick: function (event, id, treeNode) {//点击部门时，重新加载管理员树。参数为
 //                            bm_id = ztree_getNodeSonValue(treeNode, "bm_id"); //动态上传参数
-//                            $.fn.zTree.getZTreeObj("divID_Tree_Admin").reAsyncChildNodes(null, "refresh");
+//                            $.fn.zTree.getZTreeObj("divID_Tree_bean").reAsyncChildNodes(null, "refresh");
 //                        },
                         onAsyncSuccess: function () {
                             $.fn.zTree.getZTreeObj("divID_Tree_BM").expandAll(true);
@@ -44,83 +44,30 @@
                 };
                 $.fn.zTree.init($("#divID_Tree_BM"), setting0);
 //======================================================================================================                
-//检出权限树                
-                var setting = {
-                    treeId: "power_id", check: {enable: true},
-                    async: {enable: true, type: "post", url: "${path_home}/sys/superadmin/manager/p/showMenu.jw"},
-                    data: {
-                        simpleData: {enable: true, idKey: "power_id", pIdKey: "power_pid", name: "power_name", rootPId: "0"},
-                        key: {name: "power_name"}
-                    }
-                };
-                $.fn.zTree.init($("#divID_Power"), setting);
 //======================================================================================================
-//检出管理员 
+//检出bean
                 var setting2 = {
-                    treeId: "user_id", check: {enable: true},
-                    async: {enable: true, type: "post", url: "${path_home}/sys/power/adminuser/s/v/showMenu.jw",
+                    treeId: "mybean_zj", check: {enable: true},
+                    async: {enable: true, type: "post", url: "${path_home}/cc/mybean/s/selectAllByJson.jw",
                         otherParam: ["mypackage_id", function () {
                                 return mypackage_id
-                            }],
-                        dataFilter: ajaxDataFilter
+                            }]
                     },
                     data: {
-                        simpleData: {enable: true, idKey: "user_id", rootPId: "0"},
-                        key: {name: "user_name"}
+                        simpleData: {enable: true, idKey: "mybean_zj", rootPId: "0"},
+                        key: {name: "mybean_mc"}
                     },
                     callback: {
                         onClick: function (event, id, treeNode) {
-                            user_id2 = treeNode.user_id; //动态上传参数
-                            $.fn.zTree.getZTreeObj("divID_Tree_BM").reAsyncChildNodes(null, "refresh");//刷新管理员涉及的管理部门
-                            //点击管理员时，取消权限树所有原有选择。
-                            var treeObj = $.fn.zTree.getZTreeObj("divID_Power");
-                            treeObj.checkAllNodes(false);
-                            treeObj.expandAll(false);
-                            //重装上权限
-                            if (null != treeNode.user_id && treeNode.user_id.length > 0) {
-                                $.post("${path_home}/sys/power/adminuser/s/selectOneUserPower.jw?t=<%=new Date()%>", {user_id: treeNode.user_id}, function (d) {
-                                                            var mynode;
-                                                            for (var i = 0; i < d.length; i++) {
-                                                                mynode = treeObj.getNodeByParam("power_id", d[i].power_id, null); //通过id列，检出节点
-                                                                if (null != mynode) {//节点不为空，把节点设置为勾选状态
-                                                                    treeObj.checkNode(mynode, true, false);
-                                                                }
-                                                            }
-                                                            ztree_expandNotChoonse("divID_Power")
-                                                        }, "json");
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        function ajaxDataFilter(treeId, parentNode, responseData) {
-                                            if (responseData) {
-                                                for (var i = 0; i < responseData.length; i++) {
-                                                    if (responseData[i].mypackage_id.length > 30) {
-                                                        responseData[i].user_name = "[多部门]" + ":" + responseData[i].user_name;
-                                                    } else {
-                                                        responseData[i].user_name = (!responseData[i].bm_name || responseData[i].bm_name.length == 0 ? "[管全局]" : responseData[i].bm_name) + ":" + responseData[i].user_name;
-                                                    }
-                                                }
-                                            }
-                                            return responseData;
-                                        }
-                                        $.fn.zTree.init($("#divID_Tree_Admin"), setting2);
-                                    });
+                        }
+                    }
+                }
+                $.fn.zTree.init($("#divID_Tree_bean"), setting2);
+            });
 //                                    function loadNotBMAdmin() {
 //                                        mypackage_id = "no";
-//                                        $.fn.zTree.getZTreeObj("divID_Tree_Admin").reAsyncChildNodes(null, "refresh");
+//                                        $.fn.zTree.getZTreeObj("divID_Tree_bean").reAsyncChildNodes(null, "refresh");
 //                                    }
-                                    function toSetPower() {
-                                        var userID = ztree_getNodesValues("divID_Tree_Admin", "user_id", 1);
-                                        var pp = ztree_getNodesValues("divID_Power", "power_id", 1);
-                                        if (userID == "") {
-                                            aalert('请选择将要附值的权限', '操作失误');
-//                    alert("请选择将要附值的权限")
-                                            return;
-                                        }
-                                        ccomfire("${path_home}/sys/power/adminuser/setpower/update/power.jw"
-                                                , {user_id: userID, power_id: pp}, '请再次确认重新设置权限操作');
-                                    }
         </script>
         <style>
             .powertable{
@@ -147,28 +94,14 @@
                 </tr>
                 <tr style=" height:500px">
                     <td>
-                       <div id="divID_Tree_BM"  class="ztree powertablediv">---</div>
+                        <div id="divID_Tree_BM"  class="ztree powertablediv">---</div>
                     </td>
                     <td style=" background-color:#d4f1ff">
-                        <div id="divID_Power" class="ztree powertablediv">权限</div>
+                         <div id="divID_Tree_bean" class="ztree powertablediv">bean</div>
                     </td>
                     <td style=" background-color:#d4f1ff">
-                       <div id="divID_Tree_Admin" class="ztree powertablediv">管理员</div>
+                       
                     </td>
-<!--                    <td>
-                        <div class="tableDivH">
-                            <div style="margin:10px;">
-                                <div style="font-size:13px; color: red;">
-                                    <a href="javascript:void(0)" onclick="toSetPower();"><div style="color: red;">设置权限</div></a>
-                                </div>
-                            </div>
-                            <div style="margin:10px;">
-                                <div style="font-size:12px">
-                                    <a href="javascript:void(0)" onclick="loadNotBMAdmin();">加载<br/>全局管理员</a>
-                                </div>
-                            </div>
-                        </div>
-                    </td>-->
                 </tr>
             </table>
         </div>

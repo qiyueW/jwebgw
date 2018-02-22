@@ -7,6 +7,7 @@ import java.util.List;
 //import plugins.ligerui.vo.LigerUIPage;
 import configuration.DBO;
 import plugins.easyui.EasyuiService;
+import plugins.easyui.vo.EasyuiPage;
 import system.base.annotation.H;
 import system.base.annotation.M;
 import system.web.JWeb;
@@ -29,7 +30,10 @@ public class MybeanFieldSelect {
         if (null == mybean_zj || mybean_zj.isEmpty()) {
             jw.printOne("[]");return;
         }
-        List<Mybeanfield> list=DBO.service.S.selectByCondition(Mybeanfield.class, "WHERE mybean_zj='" + mybean_zj + "'");
-        jw.printOne(EasyuiService.formatGrid(jw.request, list,list.size()));
+        String where= "WHERE mybean_zj='" + mybean_zj + "'";
+        EasyuiPage page = EasyuiService.getPage(jw);
+        
+        List<Mybeanfield> list=DBO.service.S.selectVastByCondition(Mybeanfield.class,page.page,page.rows,where);
+        jw.printOne(EasyuiService.formatGrid(list,DBO.service.S.selectCountByCondition(Mybeanfield.class, where)));
     }
 }

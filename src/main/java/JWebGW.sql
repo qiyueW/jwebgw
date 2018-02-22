@@ -147,3 +147,32 @@ CREATE TABLE IF NOT EXISTS `Spage_notice` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 INSERT INTO `Spage_notice` (`spage_notice_zj`, `spage_notice_biaoti`, `spage_notice_neirong`, `spage_notice_fabushijian`, `spage_notice_zhidanren`, `spage_notice_zhidanren_zj`, `spage_notice_zhidanshijian`) VALUES
 	('201802171414023480000004', 'JWeb框架发布啦', '发布时间不填，默认使用当前的时间。<img src="http://img.baidu.com/hi/jx2/j_0002.gif"/><p></p>', '2018-02-17 14:14:02', '汪春滋', '201711281619003970000001', '2018-02-17 14:14:02');
+
+	CREATE TABLE `Mybeanfield` (
+	`mybeanfield_zj` CHAR(24) NOT NULL,
+	`mybean_zj` CHAR(24) NOT NULL,
+	`mybean_mc` VARCHAR(50) NOT NULL,
+	`mybeanfield_bz` VARCHAR(50) NULL DEFAULT NULL,
+	`mybeanfield_dateformat` VARCHAR(50) NULL DEFAULT NULL,
+	`c_zyy` VARCHAR(50) NOT NULL,
+	`c_lx` VARCHAR(50) NOT NULL,
+	`c_mc` VARCHAR(50) NOT NULL,
+	`c_bz` VARCHAR(50) NOT NULL,
+	`c_setmethod` VARCHAR(50) NOT NULL,
+	`c_getmethod` VARCHAR(50) NOT NULL,
+	`t_mc` VARCHAR(50) NOT NULL,
+	`t_lx` VARCHAR(50) NOT NULL,
+	`t_sy` VARCHAR(50) NULL DEFAULT NULL,
+	`t_yxkong` VARCHAR(50) NOT NULL,
+	`t_cd` VARCHAR(50) NULL DEFAULT NULL,
+	`t_bz` VARCHAR(50) NULL DEFAULT NULL,
+	`v_zzbds` VARCHAR(200) NULL DEFAULT NULL,
+	`v_cuowuxx` VARCHAR(50) NULL DEFAULT NULL,
+	`v_bxjiancha` VARCHAR(50) NULL DEFAULT NULL,
+	`h_lx` VARCHAR(50) NOT NULL,
+	`h_jb` VARCHAR(50) NULL DEFAULT NULL,
+	`e_mc` VARCHAR(50) NULL DEFAULT NULL,
+	PRIMARY KEY (`mybeanfield_zj`)
+)
+ENGINE=InnoDB
+;

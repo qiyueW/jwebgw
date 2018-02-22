@@ -1,0 +1,56 @@
+<%@ page pageEncoding="UTF-8" %>
+
+
+<link rel="stylesheet" href="${path_home}/lib/zui/css/zui.min.css" type="text/css" />
+<link rel="stylesheet" href="${path_home}/lib/zui/lib/datagrid/zui.datagrid.min.css"  type="text/css" />
+
+<script src="${path_home}/lib/zui/lib/datagrid/zui.datagrid.min.js"></script>
+<script src="${path_home}/lib/zui/js/zui.min.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+
+    function dellTableTRFromIStart(tableID, i) {
+        var trcount = $("#" + tableID).find("tr").length;
+        for (; i < trcount; i++) {
+            $("table tr:eq(" + i + ")").remove();
+        }
+    }
+
+    function GJS() {
+        this.width = $(window).width();//window.document.body.clientWidth;
+        this.height = $(window).height();//window.document.body.clientHeight;
+    }
+//    GJS.prototype.JT = function (myfunction) {
+//        window.onresize = function () {
+//            this.width = window.document.body.clientWidth;
+//            this.height = window.document.body.clientHeight;
+//            if (myfunction) {
+//                myfunction()
+//            }
+//        }
+//    }
+
+    GJS.prototype.getWidthPX = function (intJQ) {
+        return null == intJQ ? this.width + "px" : (this.width - intJQ) + "px";
+    }
+    GJS.prototype.getHeightPX = function (intJQ) {
+        return null == intJQ ? this.height + "px" : (this.height - intJQ) + "px";
+    }
+    GJS.prototype.setElementHeight = function (divid, intJQ) {
+        var h = null == intJQ ? this.height + "px" : (this.height - intJQ) + "px";
+        var div = window.document.getElementById(divid);
+        div.style.height = h;
+    }
+    GJS.prototype.setElementWidthPX = function (divid, intJQ) {
+        var w = null == intJQ ? this.width + "px" : (this.width - intJQ) + "px";
+        var div = window.document.getElementById(divid);
+        div.style.width = w;
+    }
+    
+    function toFormatZT(str){
+    	return str
+    	.replace(/\''/g," &#39;")
+    	.replace(/\""/g,"&#34;")
+    }
+</script>

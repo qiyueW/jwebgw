@@ -1,4 +1,12 @@
+<%@page import="plugins.CheckMPC"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    if(CheckMPC.isMobileDevice(request)||CheckMPC.isWeChat(request)||CheckMPC.isIOSDevice(request)){
+         String home=application.getAttribute("path_home").toString();
+         request.getRequestDispatcher(home+"/viwe/ryzhuce2.jsp").forward(request,response);
+         return;
+    }
+%>
 <!--后台UI组件Start-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">

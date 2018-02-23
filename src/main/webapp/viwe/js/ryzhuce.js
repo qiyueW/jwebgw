@@ -7,13 +7,13 @@ function postData() {
         if (result.statusCode == 99) {
             var msg = '';
             for (var i in result.msg) {
-                msg = msg + result.msg[i] + '\n';
+                msg = msg +'<div>'+ result.msg[i] + '</div>';
             }
-            $.ligerDialog.warn(msg);
+           aalert(msg);
         } else if (result.statusCode == 0 || result.statusCode == -1) {
-            $.ligerDialog.warn(result.msg);
+            aalert(result.msg);
         } else if (result.statusCode == 1) {
-            $.ligerDialog.success(result.msg);
+            aalert(result.msg);
         }
 //	setTimeout(function() {
 ////	$btn.button('reset');

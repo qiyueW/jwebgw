@@ -99,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `RY` (
 
 INSERT INTO `RY` (`ry_id`, `bm_id`, `bm_name`, `gw_id`, `gw_name`, `ry_cdate`, `ry_style`, `ry_sort`, `ry_name`, `ry_sex`, `ry_email`, `ry_phone`, `ry_info`, `ry_account`, `ry_password`) VALUES
 ('201711281619003970000001', '201708161039129690000004', '总经办', '', 'ERP工程师', '2017-03-20 00:00:00', 1, 3, '汪春滋', '男', 'wangchunzi@rarone.cc', '8893、17097600192', '22', 'wangchunzi', '123');
-JWebGWJWebGW
+
 CREATE TABLE IF NOT EXISTS `JingyanKuFL` (
   `jingyankufl_id` char(24) NOT NULL,
   `jingyankufl_pid` char(24) NOT NULL,

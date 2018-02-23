@@ -17,7 +17,7 @@
         <script src="${path_home}/lib/ligerUI/js/ligerui.all.js" type="text/javascript"></script> 
         <script src="${path_home}/lib/ligerUI/myligerui.js" type="text/javascript"></script> 
         <%@include file="/WEB-INF/jspf/zui.jspf"%>
-
+      <%@include file="/WEB-INF/jspf/artDialog.jspf"%>
         <!--后台UI组件End-->
         <style type="text/css">
             .title2{

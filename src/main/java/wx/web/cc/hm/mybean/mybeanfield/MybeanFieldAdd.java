@@ -31,7 +31,22 @@ public class MybeanFieldAdd {
                 : (i == 0 ? DBO.getJSONModel("0", "添加失败，未知原因。请通知管理员调试系统") : DBO.getJSONModel("1", "添加成功。")));
     }
 
-    @M("u/update")
+    @M("/d/dell")
+    public void dellVast() {
+        String ids = jw.getString("ids");
+        if(null==ids||ids.length()<24)return;
+        String id = "";
+        for (String str : ids.split(",")) {
+            id = id + ",'" + str + "'";
+        }
+        id= "WHERE mybeanfield_zj in(" + id.substring(1) + ") ";
+        int i=DBO.service.D.deleteVastByCondition_CheckToDeny(wx.web.cc.bean.Mybeanfield.class,id,null);
+        if(i==-1)jw.printOne(DBO.getJSONModel("-1","无法执行删除。已经被使用"));
+		jw.printOne(i==0?DBO.getJSONModel("0","删除失败，请通知管理员检查网络或数据库。或稍后再试。")
+				:DBO.getJSONModel("1","删除成功"));
+    }
+    
+    @M("/u/update")
     @Validate(wx.web.cc.hm.mybean.validate.MybeanValidate.class)
     public void update() {
         Mybeanfield obj = jw.getObject(Mybeanfield.class);
@@ -41,7 +56,7 @@ public class MybeanFieldAdd {
         DBO.out_update_1_0_f1(jw, DBO.service.U.update_all(obj));
     }
 
-    @M("u/update/select")
+    @M("/u/update/select")
     public void updateSelect_UseFilter_CheckUpdateSelect() {
         // 表示用户修改前的查询id,查询此id的最新值，返回给用户修改
         String selectUpdateID = jw.getString(KeyModel.ParamKey.UPDATE_SELECT_PARAM_NAME.KEY);

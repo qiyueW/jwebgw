@@ -12,46 +12,50 @@
 <title></title>
 
 </head>
-<body><script src="${path_home}/lib/jquery/jquery-1.11.1.js" type="text/javascript"></script>
-<%@include file="/WEB-INF/jspf/zuiLocal.jspf"%>
-<script type="text/javascript" src="${path_home}/cc/mybeanfield/js/Mybeanfield_A.js"></script>
-<%@include file="/WEB-INF/jspf/artDialog.jspf"%>
-<%@include file="/WEB-INF/jspf/ztree.jspf"%>
+<body>
+	<script src="${path_home}/lib/jquery/jquery-1.11.1.js"
+		type="text/javascript"></script>
+	<%@include file="/WEB-INF/jspf/zuiLocal.jspf"%>
+	<script type="text/javascript"
+		src="${path_home}/cc/mybeanfield/js/Mybeanfield_A.js"></script>
+	<%@include file="/WEB-INF/jspf/artDialog.jspf"%>
+	<%@include file="/WEB-INF/jspf/ztree.jspf"%>
 
-<script type="text/javascript">
-	var path_home = "${path_home}/";
-	$(function() {
-		iniMybeanEventA();
-		var beanfl;
-		var zcfl = new ztree_select(
-				"${path_home}/cc/mypackage/s/selectVast.jw", {},
-				"showmypackageTree", "mypackage_name", "mypackage_id", 220, 390);
-		zcfl.init(function(treeId, treeNode) {
-			zcfl.setMyValue(treeNode)
-			zcfl.hideMenu();//$("#" +zcfl.menuContentDIV).fadeOut("fast");
-			$.fn.zTree.getZTreeObj(beanfl.treeID).reAsyncChildNodes(null,
-					"refresh");
-		}, "mypackage_id", "mypackage_pid", "mypackage_name")
+	<script type="text/javascript">
+		var path_home = "${path_home}/";
+		$(function() {
+			iniMybeanEventA();
 
-		beanfl = new ztree_select(
-				"${path_home}/cc/mybean/s/selectAllByJson.jw", {
-					mypackage_id : function() {
-						return $("#mypackage_id").val();//mypackage_id
-					}
-				}, "showmybeanTree", "mybean_mc", "mybean_zj", 220, 390);
-		beanfl.init(function(treeId, treeNode) {
-			beanfl.setMyValue(treeNode)
-			beanfl.hideMenu();//$("#" +zcfl.menuContentDIV).fadeOut("fast");
-		}, "mybean_zj", "", "mybean_mc")
+			$("input").addClass("input-sm")
+			
+			$('#mybean_mc').val('${obj.mybean_mc}')
+			$('#mybeanfield_bz').val('${obj.mybeanfield_bz}')
+			$('#mybeanfield_dateformat').val('${obj.mybeanfield_dateformat}')
 
-		$("input").addClass("input-sm")
-		$("#" + beanfl.treeID).on('click', function() {
-			iniEmpty();
-		})
-	});
-	//              class=""
-</script>
-<style>
+			$('#c_zyy').val('${obj.c_zyy}')
+			$('#c_lx').val('${obj.c_lx}')
+			$('#c_mc').val('${obj.c_mc}')
+			$('#c_bz').val('${obj.c_bz}')
+
+			$('#t_lx').val('${obj.t_lx}')
+			$('#t_sy').val('${obj.t_sy}')
+			$('#t_yxkong').val('${obj.t_yxkong}')
+			$('#t_cd').val('${obj.t_cd}')
+			$('#t_bz').val('${obj.t_bz}')
+
+			$('#v_zzbds').val('${obj.v_zzbds}')
+			$('#v_cuowuxx').val('${obj.v_cuowuxx}')
+			$('#v_bxjiancha').val('${obj.v_bxjiancha}')
+
+			$('#h_lx').val('${obj.h_lx}')
+			$('#h_jb').val('${obj.h_jb}')
+
+			$('#e_mc').val('${obj.e_mc}')
+
+		});
+		//              class=""
+	</script>
+	<style>
 table select {
 	min-width: 90px;
 }
@@ -71,38 +75,7 @@ table select {
 	<div id="root" class="container">
 		<table class="table" id="table1">
 			<tr>
-				<td style="width: 80px;">包</td>
-				<td>
-					<div id="showmypackageTree"
-						style="position: relative; z-index: 1000"></div>
-				</td>
-			</tr>
-			<tr>
-				<td>bean</td>
-				<td>
-					<div id="showmybeanTree" style="position: relative; z-index: 888"></div>
-				</td>
-			</tr>
-			<tr>
-				<td>预设方案</td>
-				<td><select id="y_fanan" onchange="selectY_fanan()">
-						<option value="">无</option>
-						<option value="id">主键</option>
-						<option value="text">文本</option>
-						<option value="bigtext">文章类</option>
-						<option value="int">数字-正数</option>
-						<option value="double">数字-浮点</option>
-						<option value="date">日期</option>
-						<option value="datetime">日期时间</option>
-						<option value="zhidan">制单时间</option>
-						<option value="shenpi">审批时间</option>
-						<option value="filepath">上传类-路径-单</option>
-						<option value="filepaths">上传类-路径-集合</option>
-						<option value="style">单据状态0或1或其他</option>
-				</select></td>
-			</tr>
-			<tr>
-				<td>备注</td>
+				<td  style="width: 80px;">备注</td>
 				<td><input type="text" name="mybeanfield_bz"
 					id="mybeanfield_bz" /></td>
 			</tr>
@@ -242,20 +215,12 @@ table select {
 					<td style="width: 80px;">e展示名</td>
 					<td><input type="text" name="e_mc" id="e_mc" /></td>
 				</tr>
-				<!-- <tr>
-                        <td style="width:80px;">h下载</td><td>
-                            <select id="e_xz">
-                                <option value="s">是</option>
-                                <option value="f">否</option>
-                            </select>
-                        </td>
-                    </tr> -->
 			</table>
 		</div>
 	</div>
 	<button type="submit" id="myMybeanButton" data-loading-text="执行中"
-                                            class="btn btn-primary" >添加</button>
-                                
+		class="btn btn-primary">添加</button>
+
 	<!--root div end-->
 </body>
 </html>

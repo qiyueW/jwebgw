@@ -19,6 +19,7 @@ import wx.web.base.hm.bm.vo.BMExcelDow;
 @system.web.power.ann.ZDY(zdy = power.hm.zdy.SQ_UA.class, value = "J51_1")
 public class BMSelect {
 
+    @GG
     @M("/selectVast")
     public static void select(JWeb jw) {
 //             System.out.println("-------------------------1");
@@ -31,32 +32,29 @@ public class BMSelect {
         jw.printOne(BCM.RY_CACHE.getCacheData(BMCache.class).getLigeruiJSON());
     }
 
-   
-
-     @M("/office/exceldow")/// /base/bm/office/exceldow
+    @M("/office/exceldow")/// /base/bm/office/exceldow
     public static void exceldow(JWeb jw) {
         try {
             HSSFWorkbook workbook = new HSSFWorkbook();
             HSSFSheet sheet = workbook.createSheet("部门信息");
             BMExcelDow vo = new BMExcelDow(sheet);
             vo.setTitle();
-            List<BM> list =DBO.service.S.select(BM.class);
+            List<BM> list = DBO.service.S.select(BM.class);
             if (null != list) {
                 for (BM obj : list) {
-                    vo.setRowValue(list,obj);
+                    vo.setRowValue(list, obj);
                 }
             }
             jw.response.setHeader("Content-Disposition", "attachment; filename="
                     + java.net.URLEncoder.encode("部门下载.xls", "UTF-8")
-//                    +StringTool.downloadFileName_zhcnCode(jw.request,"部门下载.xls")
+            //                    +StringTool.downloadFileName_zhcnCode(jw.request,"部门下载.xls")
             );
             workbook.write(jw.response.getOutputStream());
         } catch (IOException e) {
             System.out.println("已运行 xlCreate() : " + e);
         }
     }
-    
-    
+
     private static void fiandBMSon(final List<BM> rs, List<BM> listBM, BM father) {
         List<BM> son = fiandAllSon(rs, listBM, father);
         if (son.isEmpty()) {

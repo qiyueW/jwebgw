@@ -30,16 +30,13 @@
             <!--<div class="navbar-collapse">-->
             <ul  class="nav nav-tabs" >
                 <li>
-                    <a href="${path_home}/index.jsp">首页</a>
+                    <a href="${path_home}/spage/index/s/selectOne.jw">首页</a>
                 </li>
                 <li>
-                    <a href="${path_home}/spage/notice/view/selectVast.jw">公告通知</a>
+                    <a href="${path_home}/spage/notice/view/selectVast.jw">发布与公告</a>
                 </li>
                 <li>
                     <a href="${path_home}/viwe/jingyanku.jsp">经验库</a>
-                </li>
-                <li>
-                    <a href="${path_home}/viwe/mendian.jsp">自助门店</a>
                 </li>
                 <li class="dropdown pull-right">
                     <a href="#" data-toggle="dropdown">人员通道<strong class="caret"></strong></a>
@@ -52,10 +49,6 @@
                             <a href="${path_home}/loginUser.jsp">用户登陆</a>
                         </li>
                         <li class="divider"></li>
-                        <li>
-                            <a href="${path_home}/loginUser_PD.jsp">盘点通道</a>
-                            <a href="${path_home}/clientdown.jsp">盘点客户端下载</a>
-                        </li>
                     </ul>
                 </li>
             </ul>

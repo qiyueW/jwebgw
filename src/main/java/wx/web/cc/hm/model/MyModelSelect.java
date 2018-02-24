@@ -28,18 +28,23 @@ public class MyModelSelect {
             jw.printOne("[]");
             return;
         }
-        jw.printOne(JCJSON.toSimpleJSON(DBO.service.S.selectOneByID(MyModel.class,mymodel_zj)));
+        jw.printOne(JCJSON.toSimpleJSON(DBO.service.S.selectOneByID(MyModel.class, mymodel_zj)));
     }
-    
-    @M("/selectAllByTree")
-    public static void selectJSONByTree(JWeb jw) {
-        String mybean_zj = jw.getString("mybean_zj");
-        if (null == mybean_zj || mybean_zj.isEmpty()) {
-            jw.printOne("[]");
-            return;
-        }
-        jw.printOne(JCJSON.toSimpleJSON(DBO.service.S.selectByCondition(MyModel.class, "WHERE mybean_zj='" + mybean_zj + "'")) );
-    }
+
+//    @M("/selectAllByTree")
+//    public static void selectJSONByTree(JWeb jw) {
+//        String mybean_zj = jw.getString("mybean_zj");
+//        if (null == mybean_zj || mybean_zj.isEmpty()) {
+//            jw.printOne("[]");
+//            return;
+//        }
+//        List<MyModel> list = DBO.service.S.selectByCondition(MyModel.class, "WHERE mybean_zj='" + mybean_zj + "'");
+//        for (MyModel obj : list) {
+//            obj.setMymodel_nr("");
+//        }
+//        //代码生成器不考虑性能。
+//        jw.printOne(JCJSON.toSimpleJSON(list));
+//    }
 
     @M("/selectAllByJson")
     public static void selectJSON(JWeb jw) {
@@ -52,6 +57,9 @@ public class MyModelSelect {
         EasyuiPage page = EasyuiService.getPage(jw);
 
         List<MyModel> list = DBO.service.S.selectVastByCondition(MyModel.class, page.page, page.rows, where);
+        for (MyModel obj : list) {
+            obj.setMymodel_nr("");
+        }
         jw.printOne(EasyuiService.formatGrid(list, DBO.service.S.selectCountByCondition(MyModel.class, where)));
     }
 

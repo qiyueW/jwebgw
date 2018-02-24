@@ -46,7 +46,7 @@
                 }, "mybean_zj", "", "mybean_mc")
 
                 $("#" + beanfl.treeID).on('click', function () {
-                    $("#showModelText").html("");
+                    $("#mymodel_nr").html("");
                 })
             });
 
@@ -58,14 +58,14 @@
                     return;
                 }
                 if (userchoose == "") {
-                    $("#showModelText").html("");
+                    $("#mymodel_nr").html("");
                     return;
                 }
                 $.post("${path_home}/cc/mybean/modal/s/base/selectVast.jw", {
                     mybean_zj: $("#mybean_zj").val(),
                     "sort": userchoose
                 }, function (data) {
-                    $("#showModelText").html(data);
+                    $("#mymodel_nr").html(data);
                 }, "text")
             }
         </script>

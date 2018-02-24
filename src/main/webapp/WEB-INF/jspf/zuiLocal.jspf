@@ -48,10 +48,5 @@
         div.style.width = w;
     }
     
-    function toFormatZT(str){
-    	return str
-    	.replace(/\'/g," &#39;")
-    	.replace(/\"/g,"&#34;")
-        .replace(/\\/g,"&#92;");
-    }
+
 </script>

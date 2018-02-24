@@ -9,11 +9,35 @@ import wx.web.cc.bean.Mybeanfield;
  */
 public class MybeanService {
 
-    public static String toBeanData(List<Mybeanfield> list) {
+    
+    public static String toJSGet(List<Mybeanfield> list,String ClassName){
+        String model=
+"    function get"+ClassName+"FormData() {\n" +
+"        var data = {};\n" ;
+        for(Mybeanfield bf:list){
+            model=model+"        data."+bf.getC_mc()+" = $('#"+bf.getC_mc()+"').val()\n";
+        }
+        model=model+"        return data;\n    }";
+        return model;
+    }
+     public static String toJSSet(List<Mybeanfield> list,String ClassName){
+        String model=
+"    function set"+ClassName+"FormData() {\n";
+        for(Mybeanfield bf:list){
+            model=model+"        $('#"+bf.getC_mc()+"').val('')\n";
+        }
+        model=model+"    }";
+        return model;
+    }
+    public static String toBeanData(List<Mybeanfield> list,String ClassName) {
         StringBuilder sb = new StringBuilder();
         StringBuilder me = new StringBuilder();
         for (Mybeanfield bf : list) {
-            sb.append(bf.getC_zyy()).append(" ").append(bf.getC_lx()).append(" ").append(bf.getC_mc()).append(";\n");
+            
+            sb
+                    .append(bf.getT_sy().equals("zj")?"@system.base.annotation.ID\n":"")
+                    .append(bf.getC_lx().equalsIgnoreCase("Date")?"@system.base.annotation.Time(\""+bf.getMybeanfield_dateformat()+"\")\n":"")
+                    .append(bf.getC_zyy()).append(" ").append(bf.getC_lx()).append(" ").append(bf.getC_mc()).append(";//").append(bf.getC_bz()).append("\n");
 
             me.append(getInfo("取得 " + bf.getC_bz(), bf.getC_lx()))
                     .append("\npublic ").append(bf.getC_lx()).append(" ").append(bf.getC_getmethod()).append("(){\n")
@@ -25,7 +49,7 @@ public class MybeanService {
                     .append("}\n");
         }
         sb.append(me);
-        return sb.toString();
+        return "public class "+ClassName+" {\n"+ sb.toString()+"\n}";
     }
     
 //    CREATE TABLE IF NOT EXISTS `User` (
@@ -55,18 +79,20 @@ public class MybeanService {
     	switch(bf.getT_lx()) {
 	    	case "VARCHAR":
 	    	case "CHAR":
-	    		sb.append("\n,`"+bf.getT_mc()+"` ").append(bf.getT_lx()).append("(").append(bf.getT_cd()).append(")")
-	    		.append(bf.getT_yxkong().equalsIgnoreCase("s")?" DEFAULT NULL":" NOT NULL");
+	    		sb.append("\n,`").append(bf.getT_mc()).append("` ").append(bf.getT_lx()).append("(").append(bf.getT_cd()).append(")")
+	    		.append(bf.getT_yxkong().equalsIgnoreCase("s")?" DEFAULT NULL":" NOT NULL")
+                                .append("/*").append(bf.getT_bz()).append("*/");
 	    		break;
 			default:{
-	    		sb.append("\n,`"+bf.getT_mc()+"` ").append(bf.getT_lx()).append("    ")
-	    		.append(bf.getT_yxkong().equalsIgnoreCase("s")?" DEFAULT NULL":" NOT NULL");
+	    		sb.append("\n,`").append(bf.getT_mc()).append("` ").append(bf.getT_lx()).append("    ")
+	    		.append(bf.getT_yxkong().equalsIgnoreCase("s")?" DEFAULT NULL":" NOT NULL")
+                                .append("/*").append(bf.getT_bz()).append("*/");
 			}
     	}
     	switch(bf.getT_sy()) {
-    	case "s":index .append("\n,KEY        `"+bf.getT_mc()+"` (`"+bf.getT_mc()+"`)");break;
-    	case "wy":index.append("\n,UNIQUE KEY `"+bf.getT_mc()+"` (`"+bf.getT_mc()+"`)");break;
-    	case "zj":index.append("\n,PRIMARY KEY (`"+bf.getT_mc()+"`)");break;
+    	case "s":index.append("\n,KEY        `").append(bf.getT_mc()).append("` (`").append(bf.getT_mc()) .append("`)");break;
+    	case "wy":index.append("\n,UNIQUE KEY `").append(bf.getT_mc()).append("` (`").append(bf.getT_mc()).append("`)");break;
+    	case "zj":index.append("\n,PRIMARY KEY (`").append(bf.getT_mc()).append("`)");break;
     	}
     }
     

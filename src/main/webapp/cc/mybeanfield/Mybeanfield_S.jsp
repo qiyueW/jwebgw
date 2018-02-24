@@ -10,7 +10,7 @@
         <%@include file="/WEB-INF/jspf/easyuiLocal.jspf"%>
         <%@include file="/WEB-INF/jspf/artDialog.jspf"%>
         <%@include file="/WEB-INF/jspf/ztree.jspf"%>
-
+<%@include file="/WEB-INF/jspf/GG.jspf"%>
         <script type="text/javascript">
             $(function () {
 //                var gjs = new GJS();
@@ -121,9 +121,9 @@
             <div id="divID_Tree_bean" class="ztree">bean</div>
         </div>
         <div data-options="region:'center'"  class="easyui-tabs" id='centerMain'>
-            <div title="添加bean">
+<!--            <div title="添加bean">
                 <iframe width="100%" height="100%" src="${path_home}/cc/mybean/Mybean_S.jsp"></iframe>
-            </div>
+            </div>-->
             <div title="添加bean的属性">
                 <iframe width="100%" height="100%" src="${path_home}/cc/mybeanfield/Mybeanfield_A.jsp"></iframe>
             </div>

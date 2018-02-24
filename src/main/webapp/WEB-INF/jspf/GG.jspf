@@ -1,0 +1,45 @@
+<%@ page pageEncoding="UTF-8" %>
+
+<script type="text/javascript">
+     var path_home = "${path_home}/";
+    function toFormatZT(str) {
+        return str ? str.replace(/\'/g, "&#39;").replace(/\"/g, "&#34;").replace(/\\/g, "&#92;") : "";
+    }
+    /**
+     * 
+     * @param {String} btID
+     * @param {String} text
+     * @param {int} int1_0
+     * @returns {void}
+     */
+    function btfunctionStyel(btID, text, int1_0) {
+        var bt = document.getElementById(btID);
+        bt.value = text;
+        bt.disabled = int1_0 == 0 ? true : false;
+    }
+
+    function mypost(url, data, btid, func) {
+        var btname=document.getElementById(btid).value;
+        btfunctionStyel(btid, "执行中", 0)
+        $.post(path_home+url, data, function (result) {
+            if(func){
+                func(result);
+                return;
+            }
+            if (result.statusCode == 99) {
+                var msg = '';
+                for (var i in result.msg) {
+                    msg = msg + '<div>' + result.msg[i] + '</div>';
+                }
+                aalert(msg);
+            } else if (result.statusCode == 0 || result.statusCode == 1
+                    || result.statusCode == -1) {
+                aalert(result.msg);
+            }
+            setTimeout(function () {
+                btfunctionStyel(btid,btname, 1);
+            }, 1000);
+            
+        }, 'json');
+    }
+</script>

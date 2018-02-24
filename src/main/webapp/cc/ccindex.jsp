@@ -100,29 +100,32 @@
         </style>
     </head>
     <body>  
-
-        <div style=" min-width: 800px">
-            <table class="powertable">
-                <tr style="background-color: #00b7ee">
-                    <th style=" width: 250px;">bean</th>
-                    <th style=" width: 250px;">bean</th>
-                    <th style=" width: 300px;">bean相关</th>
-                    <!--<th>管理操作</th>-->
-                </tr>
-                <tr style=" height:500px">
-                    <td>
-                        <div id="showmypackageTree"  style=" position: relative;z-index:1000"></div>
-                        <!--<div id="divID_Tree_BM"  class="ztree powertablediv">---</div>-->
-                        <div id="divID_Tree_bean" class="ztree powertablediv">bean</div>
-                    </td>
-                    <td style=" background-color:#d4f1ff">
-                        
-                    </td>
-                    <td style=" background-color:#d4f1ff">
-
-                    </td>
-                </tr>
-            </table>
-        </div>
+        <table style="text-align: center; align-content: center;">
+            <tr>
+                <td style="width: 200px;">目录总表</td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="${path_home}/cc/mypackage/mypackage_A.jsp" target="_brank">包添加</a>
+                    <a href="${path_home}/cc/mypackage/mypackage.jsp" target="_brank">包维护</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="${path_home}/cc/mybean/Mybean_A.jsp" target="_brank">bean添加</a>
+                    <a href="${path_home}/cc/mybean/Mybean_S.jsp" target="_brank">bean维护</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="${path_home}/cc/mybeanfield/Mybeanfield_S.jsp" target="_brank">bean属性管理</a>
+                </td>
+            </tr>
+              <tr>
+                <td>
+                    <a href="${path_home}/cc/mymodel/myModel.jsp" target="_brank">模型管理</a>
+                </td>
+            </tr>
+        </table>
     </body>
 </html>

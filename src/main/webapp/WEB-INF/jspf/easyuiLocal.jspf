@@ -19,16 +19,6 @@
         this.width = $(window).width();//window.document.body.clientWidth;
         this.height = $(window).height();//window.document.body.clientHeight;
     }
-//    GJS.prototype.JT = function (myfunction) {
-//        window.onresize = function () {
-//            this.width = window.document.body.clientWidth;
-//            this.height = window.document.body.clientHeight;
-//            if (myfunction) {
-//                myfunction()
-//            }
-//        }
-//    }
-
     GJS.prototype.getWidthPX = function (intJQ) {
         return null == intJQ ? this.width + "px" : (this.width - intJQ) + "px";
     }
@@ -44,11 +34,5 @@
         var w = null == intJQ ? this.width + "px" : (this.width - intJQ) + "px";
         var div = window.document.getElementById(divid);
         div.style.width =w;
-    }
-    
-    function toFormatZT(str){
-    	return str
-    	.replace(/\''/g," &#39;")
-    	.replace(/\""/g,"&#34;")
     }
 </script>

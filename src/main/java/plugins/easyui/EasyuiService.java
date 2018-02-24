@@ -14,9 +14,14 @@ import system.web.JWeb;
  */
 final public class EasyuiService {
 
+    private static final String EMPTYDATA = "{\"total\": \"0\",\"rows\":[]}";
+
     final public static String formatGrid(List<?> rsList, int count) {
-        String fm = "{\"total\": \"" + count + "\",\"rows\":" + JCJSON.toSimpleJSON(rsList) + "}";
-        return fm;
+        return rsList.isEmpty() ? EMPTYDATA : "{\"total\": \"" + count + "\",\"rows\":" + JCJSON.toSimpleJSON(rsList) + "}";
+    }
+
+    final public static String formatGrid(List<?> rsList) {
+        return rsList.isEmpty() ? EMPTYDATA : "{\"total\": \"" + rsList.size() + "\",\"rows\":" + JCJSON.toSimpleJSON(rsList) + "}";
     }
 
     /**
@@ -26,6 +31,6 @@ final public class EasyuiService {
      * @return EasyuiPage
      */
     final public static EasyuiPage getPage(JWeb jw) {
-        return new EasyuiPage(jw.getInt("page",1), jw.getInt("rows", 10));
+        return new EasyuiPage(jw.getInt("page", 1), jw.getInt("rows", 10));
     }
 }

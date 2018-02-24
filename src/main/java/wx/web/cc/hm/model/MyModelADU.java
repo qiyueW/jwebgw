@@ -5,6 +5,7 @@ import configuration.KeyModel;
 import system.base.annotation.H;
 import system.base.annotation.M;
 import system.web.JWeb;
+import wx.web.cc.bean.MyModel;
 import wx.web.cc.bean.Mybeanfield;
 
 @H("cc/mymodel")
@@ -46,8 +47,8 @@ public class MyModelADU {
     
     @M("/u/update")
     public void update() {
-        Mybeanfield obj = jw.getObject(Mybeanfield.class);
-        if (null == obj.getMybeanfield_zj()|| obj.getMybeanfield_zj().length() != 24) {
+        MyModel obj = jw.getObject(MyModel.class);
+        if (null == obj.getMymodel_zj()|| obj.getMymodel_zj().length() != 24) {
             return;
         }
         DBO.out_update_1_0_f1(jw, DBO.service.U.updateSome_reject(obj,"mybean_zj,mybean_mc"));
@@ -58,11 +59,11 @@ public class MyModelADU {
         // 表示用户修改前的查询id,查询此id的最新值，返回给用户修改
         String selectUpdateID = jw.getString(KeyModel.ParamKey.UPDATE_SELECT_PARAM_NAME.KEY);
 
-        Mybeanfield obj = DBO.service.S.selectOneByID(Mybeanfield.class, selectUpdateID);
-        if (null == obj.getMybean_zj()) {
+        MyModel obj = DBO.service.S.selectOneByID(MyModel.class, selectUpdateID);
+        if (null == obj.getMymodel_zj()) {
             return;
         }
         jw.request.setAttribute("obj", obj);
-        jw.forward("/cc/mybeanfield/Mybeanfield_U.jsp");
+        jw.forward("/cc/mymodel/myModel_U.jsp");
     }
 }

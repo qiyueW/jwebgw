@@ -43,13 +43,13 @@ ztree_select.prototype.init = function (f_check, idName, pidName, name, initName
     this.pidName = pidName;
     this.name = name;
     var as;
-    if(this.param=={}){
-        as={enable: true, type: "post", url: this.url}
-    }else{
-        as={enable: true, type: "post", url: this.url,otherParam:this.param}
+    if (this.param == {}) {
+        as = {enable: true, type: "post", url: this.url}
+    } else {
+        as = {enable: true, type: "post", url: this.url, otherParam: this.param}
     }
     this.ztreesetting = {
-        async: as,//{enable: true, type: "post", url: this.url,otherParam:param},
+        async: as, //{enable: true, type: "post", url: this.url,otherParam:param},
 //        radio: {enable: true},
         view: {dblClickExpand: false},
         data: {simpleData: {enable: true, idKey: idName, pIdKey: pidName, rootPId: "0"}, key: {name: name}},
@@ -283,6 +283,17 @@ function ztree_showMyMenu(menuContentDIV, showNameID) {
     }
 }
 
-
-
-        
+function ztree_Menue(divID, id, pid, name, url, otherParam, clickfunction) {
+    //检出bean模型
+    var setting2 = {
+        treeId: id,
+        check: { enable: true },
+        async: { enable: true, type: "post", url: url, otherParam: otherParam },
+        data: {
+            simpleData: { enable: true, idKey: id, pIdKey: pid,  rootPId: "0" },
+            key: {name: name}
+        },
+        callback: { onClick: clickfunction  }
+    }
+    $.fn.zTree.init($("#" + divID), setting2);
+}

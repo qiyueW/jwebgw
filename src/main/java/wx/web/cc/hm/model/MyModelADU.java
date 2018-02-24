@@ -1,4 +1,4 @@
-package wx.web.cc.hm.mybean.mybeanfield;
+package wx.web.cc.hm.model;
 
 import configuration.DBO;
 import configuration.KeyModel;
@@ -7,22 +7,21 @@ import system.base.annotation.M;
 import system.web.JWeb;
 import wx.web.cc.bean.Mybeanfield;
 
-@H("cc/mybean/field")
-public class MybeanFieldAdd {
+@H("cc/mymodel")
+public class MyModelADU {
 
     JWeb jw;
 
-    public MybeanFieldAdd(JWeb jw) {
+    public MyModelADU(JWeb jw) {
         this.jw = jw;
     }
 
-    @M("/a/add")
+    @M("/a/add")//cc/mymodel/a/add.jw
     public void add() {
-        wx.web.cc.bean.Mybeanfield obj = jw.getObject(wx.web.cc.bean.Mybeanfield.class);
-        System.out.println(obj.getV_zzbds());
-        if (DBO.service.ADUS.executeQueryCount("SELECT COUNT(*) FROM Mybeanfield WHERE mybean_zj='" + obj.getMybean_zj()
-                + "' AND c_mc='" + obj.getC_mc() + "'") > 0) {
-            jw.printOne(DBO.getJSONModel("0", "同个bean，不能同时存在相关的字段"));
+        wx.web.cc.bean.MyModel obj = jw.getObject(wx.web.cc.bean.MyModel.class);
+        if (DBO.service.ADUS.executeQueryCount("SELECT COUNT(*) FROM MyModel WHERE mybean_zj='" + obj.getMybean_zj()
+                + "' AND mymodel_mc='" + obj.getMymodel_mc() + "'") > 0) {
+            jw.printOne(DBO.getJSONModel("0", "同个bean，不能同时存在相同的模型"));
             return;
         }
         int i = DBO.service.A.addOne(obj);

@@ -17,7 +17,7 @@
 		type="text/javascript"></script>
 	<%@include file="/WEB-INF/jspf/zuiLocal.jspf"%>
 	<script type="text/javascript"
-		src="${path_home}/cc/mybeanfield/js/Mybeanfield_A.js"></script>
+		src="${path_home}/cc/mybeanfield/js/Mybeanfield_U.js"></script>
 	<%@include file="/WEB-INF/jspf/artDialog.jspf"%>
 	<%@include file="/WEB-INF/jspf/ztree.jspf"%>
 
@@ -28,6 +28,7 @@
 
 			$("input").addClass("input-sm")
 			
+                        $('#mybeanfield_zj').val('${obj.mybeanfield_zj}')
 			$('#mybean_mc').val('${obj.mybean_mc}')
 			$('#mybeanfield_bz').val('${obj.mybeanfield_bz}')
 			$('#mybeanfield_dateformat').val('${obj.mybeanfield_dateformat}')
@@ -73,6 +74,7 @@ table select {
 }
 </style>
 	<div id="root" class="container">
+            <input type="hidden" id="mybeanfield_zj"/>
 		<table class="table" id="table1">
 			<tr>
 				<td  style="width: 80px;">备注</td>

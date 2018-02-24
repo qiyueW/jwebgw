@@ -174,5 +174,14 @@ INSERT INTO `Spage_notice` (`spage_notice_zj`, `spage_notice_biaoti`, `spage_not
 	`e_mc` VARCHAR(50) NULL DEFAULT NULL,
 	PRIMARY KEY (`mybeanfield_zj`)
 )
-ENGINE=InnoDB
-;
+ENGINE=InnoDB;
+
+CREATE TABLE `MyModel` (
+	`mymodel_zj` CHAR(24) NOT NULL,
+	`mybean_zj` CHAR(24) NOT NULL,
+	`mybean_mc` VARCHAR(50) NOT NULL,
+	`mymodel_mc` VARCHAR(500) NULL DEFAULT NULL,
+	`mymodel_nr` TEXT NULL DEFAULT NULL,
+	PRIMARY KEY (`mymodel_zj`)
+)
+ENGINE=InnoDB;

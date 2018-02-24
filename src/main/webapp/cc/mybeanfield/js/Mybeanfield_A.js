@@ -61,7 +61,6 @@ function iniMybeanEventA() {
 	}
 }
 function selectY_fanan() {
-	console.log($("#y_fanan").val());
 	var userchoose = $("#y_fanan").val();
 	var qj = $("#mybean_mc").val();
 	if (qj == "") {

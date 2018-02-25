@@ -81,10 +81,6 @@
                 }
                 $.fn.zTree.init($("#divID_Tree_bean"), setting2);
             });
-//                                    function loadNotBMAdmin() {
-//                                        mypackage_id = "no";
-//                                        $.fn.zTree.getZTreeObj("divID_Tree_bean").reAsyncChildNodes(null, "refresh");
-//                                    }
         </script>
         <style>
             .powertable{

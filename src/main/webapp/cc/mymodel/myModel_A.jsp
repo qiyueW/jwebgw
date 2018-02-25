@@ -41,10 +41,25 @@
                     beanfl.setMyValue(treeNode)
                     beanfl.hideMenu();
                 }, "mybean_zj", "", "mybean_mc")
-
                 $("#" + beanfl.treeID).on('click', function () {
                     $("#mymodel_nr").html("");
                 })
+
+                var cmodalfl = new ztree_select(
+                        "${path_home}/cc/cmodal/s/selectAllByJson2.jw", null, "showCModelTree", "cmodel_mc", "cmodel_zj", 220, 390);
+                cmodalfl.init(function (treeId, treeNode) {
+                    cmodalfl.setMyValue(treeNode);
+                    cmodalfl.hideMenu();
+                    $.post('${path_home}/cc/cmodal/s/selectOne3.jw', {
+                        cmodel_zj: treeNode.cmodel_zj
+                        ,mybean_zj:$("#mybean_zj").val()
+                    }, function (data) {
+                        $("#mymodel_mc").val(treeNode.cmodel_mc);
+                        $("#mymodel_nr").html(data);
+                        console.log(data)
+                    }, "text");
+                }, "cmodel_zj", "", "cmodel_mc")
+
             });
 
             function selectM_Sort() {
@@ -54,7 +69,7 @@
                     aalert("请先确认bean！");
                     return;
                 }
-                
+
                 if (userchoose == "") {
                     $("#mymodel_nr").html("");
                     $("#mymodel_mc").val("");
@@ -93,7 +108,9 @@
                         <option value="sql">sql</option>
                         <option value="jsgetset">jsgetset</option>
 
-                    </select></td>
+                    </select>
+                    <div id="showCModelTree"></div>
+                </td>
             </tr>
             <tr>
                 <td>模板名</td>

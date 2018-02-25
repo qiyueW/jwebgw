@@ -25,12 +25,26 @@ public class MyModelSelect {
     public static void selectOne(JWeb jw) {
         String mymodel_zj = jw.getString("mymodel_zj");
         if (null == mymodel_zj || mymodel_zj.isEmpty()) {
-            jw.printOne("[]");
+            jw.printOne("{}");
             return;
         }
-        jw.printOne(JCJSON.toSimpleJSON(DBO.service.S.selectOneByID(MyModel.class, mymodel_zj)));
+        MyModel obj = DBO.service.S.selectOneByID(MyModel.class, mymodel_zj);
+        System.out.println(obj.getMymodel_nr());
+        obj.setMymodel_nr(obj.getMymodel_nr().replace("'", "&#39;").replace("\r", "&#39;n"));
+        jw.printOne(JCJSON.toSimpleJSON(obj));
     }
 
+    @M("/selectOne2")
+    public static void selectOne2(JWeb jw) {
+        String mymodel_zj = jw.getString("mymodel_zj");
+        if (null == mymodel_zj || mymodel_zj.isEmpty()) {
+            jw.printOne("{}");
+            return;
+        }
+        MyModel obj = DBO.service.S.selectOneByID(MyModel.class, mymodel_zj);
+        obj.setMymodel_nr(obj.getMymodel_nr().replace("'", "&#39;").replace("\r", "&#39;n"));
+        jw.printOne(obj.getMymodel_nr());
+    }
 //    @M("/selectAllByTree")
 //    public static void selectJSONByTree(JWeb jw) {
 //        String mybean_zj = jw.getString("mybean_zj");

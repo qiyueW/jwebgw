@@ -6,7 +6,6 @@ import system.base.annotation.H;
 import system.base.annotation.M;
 import system.web.JWeb;
 import wx.web.cc.bean.MyModel;
-import wx.web.cc.bean.Mybeanfield;
 
 @H("cc/mymodel")
 public class MyModelADU {

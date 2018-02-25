@@ -13,7 +13,6 @@
         <script src="${path_home}/lib/jquery/jquery-1.11.1.js"
         type="text/javascript"></script>
         <%@include file="/WEB-INF/jspf/GG.jspf"%>
-        <script type="text/javascript"
         <%@include file="/WEB-INF/jspf/artDialog.jspf"%>
 
         <script type="text/javascript">

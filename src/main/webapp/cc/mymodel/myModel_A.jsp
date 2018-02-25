@@ -10,11 +10,9 @@
 <html>
     <head>
         <title></title>
-        <script src="${path_home}/lib/jquery/jquery-1.11.1.js"
-        type="text/javascript"></script>
+        <script src="${path_home}/lib/jquery/jquery-1.11.1.js" type="text/javascript"></script>
         <%@include file="/WEB-INF/jspf/GG.jspf"%>
-        <script type="text/javascript"
-        src="${path_home}/cc/mymodel/js/myModel_A.js"></script>
+        <script type="text/javascript" src="${path_home}/cc/mymodel/js/myModel_A.js"></script>
         <%@include file="/WEB-INF/jspf/artDialog.jspf"%>
         <%@include file="/WEB-INF/jspf/ztree.jspf"%>
 
@@ -56,10 +54,13 @@
                     aalert("请先确认bean！");
                     return;
                 }
+                
                 if (userchoose == "") {
                     $("#mymodel_nr").html("");
+                    $("#mymodel_mc").val("");
                     return;
                 }
+                $("#mymodel_mc").val(userchoose);
                 $.post("${path_home}/cc/mybean/modal/s/base/selectVast.jw", {
                     mybean_zj: $("#mybean_zj").val(),
                     "sort": userchoose

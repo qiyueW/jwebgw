@@ -106,6 +106,11 @@
             </tr>
             <tr>
                 <td>
+                    <a href="${path_home}/cc/cmodel/cModel.jsp" target="_brank">通用模板维护</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <a href="${path_home}/cc/mypackage/mypackage_A.jsp" target="_brank">包添加</a>
                     <a href="${path_home}/cc/mypackage/mypackage.jsp" target="_brank">包维护</a>
                 </td>
@@ -121,7 +126,7 @@
                     <a href="${path_home}/cc/mybeanfield/Mybeanfield_S.jsp" target="_brank">bean属性管理</a>
                 </td>
             </tr>
-              <tr>
+            <tr>
                 <td>
                     <a href="${path_home}/cc/mymodel/myModel.jsp" target="_brank">模型管理</a>
                 </td>

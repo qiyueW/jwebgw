@@ -122,7 +122,7 @@
                     </div>
                 </div>
                 <div>
-                    <textarea style="width:700px;height:97%" id="showMymodel_nrTEXT">aaaaaaaaaaaaaaaaa</textarea>
+                    <textarea style="width:700px;height:97%" id="showMymodel_nrTEXT"></textarea>
                 </div>
             </div>
         </div>

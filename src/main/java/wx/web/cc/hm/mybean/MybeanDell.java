@@ -4,6 +4,8 @@ import system.web.JWeb;
 import system.base.annotation.H;
 import system.base.annotation.M;
 import configuration.DBO;
+import wx.web.cc.bean.MyModel;
+import wx.web.cc.bean.Mybeanfield;
 
 
 @H("cc/mybean/d")
@@ -23,7 +25,7 @@ public class MybeanDell {
             id = id + ",'" + str + "'";
         }
         id= "WHERE mybean_zj in(" + id.substring(1) + ") ";
-        int i=DBO.service.D.deleteVastByCondition_CheckToDeny(wx.web.cc.bean.Mybean.class,id,null);
+        int i=DBO.service.D.deleteVastByCondition_CheckToDeny(wx.web.cc.bean.Mybean.class,id,null,MyModel.class,Mybeanfield.class);
         wx.web.cc.hm.mybean.cache.MybeanCache.CACHE.resetNow();
         if(i==-1)jw.printOne(DBO.getJSONModel("-1","无法执行删除。已经被使用"));
 		jw.printOne(i==0?DBO.getJSONModel("0","删除失败，请通知管理员检查网络或数据库。或稍后再试。")

@@ -185,3 +185,13 @@ CREATE TABLE `MyModel` (
 	PRIMARY KEY (`mymodel_zj`)
 )
 ENGINE=InnoDB;
+
+
+CREATE TABLE IF NOT EXISTS `CModel`(
+`cmodel_zj` CHAR(24) NOT NULL/*主键*/
+,`cmodel_mc` VARCHAR(50) DEFAULT NULL/*模型名*/
+,`cmodel_nr` TEXT     DEFAULT NULL/*模型内容*/
+
+,PRIMARY KEY (`cmodel_zj`)
+,UNIQUE KEY `cmodel_mc` (`cmodel_mc`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

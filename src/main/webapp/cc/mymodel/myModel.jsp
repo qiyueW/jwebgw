@@ -89,9 +89,9 @@
                                     if (r) {
                                         var ids = "";
                                         for (var i = 0; i < rows.length; i++) {
-                                            ids = ids + "," + rows[i]['mybeanfield_zj']
+                                            ids = ids + "," + rows[i]['mymodel_zj']
                                         }
-                                        if (easyuipost('${path_home}/cc/mybean/field/d/dell.jw', {ids: ids.substring(1)})) {
+                                        if (easyuipost('${path_home}/cc/mymodel/d/dell.jw', {ids: ids.substring(1)})) {
                                             $('#dg').datagrid('reload');
                                         }
                                     }

@@ -88,7 +88,7 @@
                 </select>
             </div>
         </div>
-        <div data-options="region:'center'"  class="easyui-tabs" id='centerMain'>
+        <div data-options="region:'center'"  class="easyui-tabs" id='centerMain' ss>
             <div title="添加通用模板">
                 <iframe width="100%" height="100%" src="${path_home}/cc/cmodel/cModel_A.jsp"></iframe>
             </div>

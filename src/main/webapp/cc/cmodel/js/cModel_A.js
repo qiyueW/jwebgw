@@ -4,7 +4,9 @@
 function postCModelFormData(btid) {
     var data = {};
     data.cmodel_zj = $('#cmodel_zj').val()
-    data.cmodel_mc = toFormatZT($('#cmodel_mc').val())
-    data.cmodel_nr = toFormatZT($('#cmodel_nr').val())
+    data.cmodel_mc = $('#cmodel_mc').val()
+    data.cmodel_nr = $('#cmodel_nr').val()
+//    data.cmodel_mc = toFormatZT($('#cmodel_mc').val())
+//    data.cmodel_nr = toFormatZT($('#cmodel_nr').val())
     mypost('cc/cmodel/a/add.jw', data, btid);
 }

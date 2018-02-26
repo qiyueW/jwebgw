@@ -20,6 +20,7 @@ public class CModelADU {
     @M("/a/add")//cc/mymodel/a/add.jw
     public void add() {
         wx.web.cc.bean.CModel obj = jw.getObject(wx.web.cc.bean.CModel.class);
+        obj.setCmodel_nr(obj.getCmodel_nr().replace("'", "&#39;"));
         int i = DBO.service.A.addOne(obj,"cmodel_mc");
         jw.printOne(i == -1 ? DBO.getJSONModel("-1", "添加出错，请检查字段是否唯一，或通知管理检测数据库是否断开")
                 : (i == 0 ? DBO.getJSONModel("0", "添加失败，未知原因。请通知管理员调试系统") : DBO.getJSONModel("1", "添加成功。")));

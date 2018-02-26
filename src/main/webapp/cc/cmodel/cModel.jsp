@@ -94,7 +94,7 @@
             </div>
             <div title="模板展示区" selected>
                 <div>
-                    <textarea style="width:700px;height:97%" id="showMymodel_nrTEXT"></textarea>
+                    <textarea style="width:700px;height:97%" id="showMymodel_nrTEXT" readonly="readonly"></textarea>
                 </div>
             </div>
         </div>

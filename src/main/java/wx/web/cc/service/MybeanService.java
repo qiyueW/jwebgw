@@ -82,7 +82,7 @@ public class MybeanService {
         context.put("fields",fields);
         context.put("bean",bean);
         StringWriter writer = new StringWriter();
-        ve.evaluate(context, writer, "", modelData.replace("&#39;", "'")); // 关键方法
+        ve.evaluate(context, writer, "", modelData.replace("&#39;", "'").replace("&#34;", "\"")); // 关键方法
         return writer.toString();
     }
 

@@ -1,0 +1,35 @@
+CREATE TABLE IF NOT EXISTS `${bean.mybean_mc}`(
+#set($ttype='')
+#set($tisnull='')
+#set($count=1)
+#foreach($field in ${fields})
+    #if(${field.t_lx}=='VARCHAR'||${field.t_lx}=='CHAR')
+        #set($ttype="${field.t_lx}(${field.t_cd})")
+    #else
+        #set($ttype="${field.t_lx}")
+    #end
+    #if(${field.t_yxkong}=='s')
+        #set(${tisnull}=' DEFAULT NULL')
+    #else
+        #set(${tisnull}=' NOT NULL')
+    #end
+    #if($count==1)
+     #set($count=2)
+    `${field.t_mc}` $ttype $tisnull  /*${field.t_bz}*/
+    #else
+    ,`${field.t_mc}` $ttype $tisnull /*${field.t_bz}*/
+    #end
+#end
+
+#foreach($field in ${fields})
+    #if(${field.t_sy}=='s')
+    ,KEY `${field.t_mc}` (`${field.t_mc}`)
+    #end
+    #if(${field.t_sy}=='wy')
+    ,UNIQUE KEY `${field.t_mc}` (`${field.t_mc}`)
+    #end
+    #if(${field.t_sy}=='zj')
+    ,PRIMARY KEY `${field.t_mc}`
+    #end
+#end
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

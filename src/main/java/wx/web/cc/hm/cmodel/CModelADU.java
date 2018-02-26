@@ -47,7 +47,7 @@ public class CModelADU {
         if (null == obj.getCmodel_zj()|| obj.getCmodel_zj().length() != 24) {
             return;
         }
-        DBO.out_update_1_0_f1(jw, DBO.service.U.updateSome_reject(obj,"cmodel_mc"));
+        DBO.out_update_1_0_f1(jw, DBO.service.U.update_all(obj));
     }
 
     @M("/u/update/select")

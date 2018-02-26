@@ -19,22 +19,6 @@ public class CModelValidate extends ValidateModel {
                 .put("cmodel_nr", "[\\w\\W]+", "模型内容不能为空", true);
     }
 
-    /**
-     * 校验失败
-     *
-     * @param jw
-     * @param vr
-     */
-    @Override
-    public void error(JWeb jw, ValidateResultModel vr) {
-        if (returnJSON) {
-            jw.printOne(vr.getMsgByJson());
-            return;
-        }
-        jw.request.setAttribute(msg_key, vr.getMsgByMap());
-        jw.forward(url);
-    }
-
     @Override
     public ValidateResultModel recheck(JWeb jw, Map<String, ValidateFieldModel> map, ValidateResultModel vr) {
         return vr;

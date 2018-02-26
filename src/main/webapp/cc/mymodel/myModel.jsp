@@ -109,7 +109,6 @@
                                 $('#centerMain').tabs('add', {
                                     title: title
                                     , content: '<iframe width="100%" height="100%" src="${path_home}/cc/mymodel/u/update/select.jw?selectUpdateID=' + mymodel_zj + '"></iframe>'
-                                            //                                ,href: '${path_home}/cc/mybean/field/u/update/select.jw?selectUpdateID=' + mybeanfield_zj
                                     , closable: true
                                 });
                             }
@@ -122,7 +121,7 @@
                     </div>
                 </div>
                 <div>
-                    <textarea style="width:700px;height:97%" id="showMymodel_nrTEXT"></textarea>
+                    <textarea style="width:700px;height:97%" id="showMymodel_nrTEXT" readonly="readonly"></textarea>
                 </div>
             </div>
         </div>

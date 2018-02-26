@@ -6,7 +6,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>bean字段管理</title>
         <%@include file="/WEB-INF/jspf/easyuiLocal.jspf"%>
         <%@include file="/WEB-INF/jspf/artDialog.jspf"%>
         <%@include file="/WEB-INF/jspf/ztree.jspf"%>
@@ -121,9 +121,6 @@
             <div id="divID_Tree_bean" class="ztree">bean</div>
         </div>
         <div data-options="region:'center'"  class="easyui-tabs" id='centerMain'>
-<!--            <div title="添加bean">
-                <iframe width="100%" height="100%" src="${path_home}/cc/mybean/Mybean_S.jsp"></iframe>
-            </div>-->
             <div title="添加bean的属性">
                 <iframe width="100%" height="100%" src="${path_home}/cc/mybeanfield/Mybeanfield_A.jsp"></iframe>
             </div>
@@ -139,24 +136,24 @@
                         <tr>
                             <th data-options="field:'mybeanfield_zj'">ID</th>
                             <th data-options="field:'ck',checkbox:true"></th>
-                            <th data-options="field:'c_zyy',width:60">c作用域</th>
-                            <th data-options="field:'c_lx',width:50">c类型</th>
-                            <th data-options="field:'c_mc',width:120">c属性名</th>
-                            <th data-options="field:'c_bz',width:80">c备注</th>
+                            <th data-options="field:'c_zyy',width:60"><div>c作用域</div>c_zyy</th>
+                            <th data-options="field:'c_lx',width:50"><div>c类型</div>c_lx</th>
+                            <th data-options="field:'c_mc',width:120"><div>c属性名</div>c_mc</th>
+                            <th data-options="field:'c_bz',width:80"><div>c备注</div>c_bz</th>
 
-                            <th data-options="field:'t_lx',width:40">t类型</th>
-                            <th data-options="field:'t_sy',width:50">t索引</th>
-                            <th data-options="field:'t_yxkong',width:40">是否为空</th>
-                            <th data-options="field:'t_cd',width:80">t长度</th>
-                            <th data-options="field:'t_bz',width:40">t备注</th>
+                            <th data-options="field:'t_lx',width:40"><div>t类型</div>t_lx</th>
+                            <th data-options="field:'t_sy',width:50"><div>t索引</div>t_sy</th>
+                            <th data-options="field:'t_yxkong',width:40"><div>是否为空</div>t_yxkong</th>
+                            <th data-options="field:'t_cd',width:80"><div>t长度</div>t_cd</th>
+                            <th data-options="field:'t_bz',width:40"><div>t备注</div>t_bz</th>
 
-                            <th data-options="field:'v_zzbds',width:250">v正则表达式</th>
-                            <th data-options="field:'v_cuowuxx',width:220">v错误信息</th>
-                            <th data-options="field:'v_bxjiancha',width:40">v必须检查</th>
+                            <th data-options="field:'v_zzbds',width:250"><div>v正则表达式</div>v_zzbds</th>
+                            <th data-options="field:'v_cuowuxx',width:220"><div>v错误信息</div>v_cuowuxx</th>
+                            <th data-options="field:'v_bxjiancha',width:40"><div>v必须检查</div>v_bxjiancha</th>
 
-                            <th data-options="field:'h_lx',width:70">h类型</th>
-                            <th data-options="field:'h_jb',width:40">h脚本校验</th>
-                            <th data-options="field:'e_mc',width:80">e展示名</th>
+                            <th data-options="field:'h_lx',width:70"><div>h类型</div>h_lx</th>
+                            <th data-options="field:'h_jb',width:40"><div>h脚本校验</div>h_jb</th>
+                            <th data-options="field:'e_mc',width:80"><div>e展示名</div>e_mc</th>
                         </tr>
                     </thead>
                 </table>

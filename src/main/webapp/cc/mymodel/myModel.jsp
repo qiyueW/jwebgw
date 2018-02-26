@@ -34,20 +34,16 @@
                         }
                 )
                 $('#dg').datagrid('hideColumn', 'mymodel_zj');
-                
             });
         </script>
     </head>
     <body class="easyui-layout">
         <div data-options="region:'west',split:true,title:'bean'" style="width:250px;padding:10px;">
-            <div id="showmypackageTree" style="position: relative; z-index: 1000"></div> <!--<div id="divID_Tree_BM"  class="ztree powertablediv">---</div>-->
+            <div id="showmypackageTree" style="position: relative; z-index: 1000"></div>
             <div id="showmybeanTree" style="position: relative; z-index: 888"></div>
             <div id="divID_Tree_bean" class="ztree">bean</div>
         </div>
         <div data-options="region:'center'"  class="easyui-tabs" id='centerMain'>
-            <div title="添加beanModel">
-                <iframe width="100%" height="100%" src="${path_home}/cc/mymodel/myModel_A.jsp"></iframe>
-            </div>
             <div title="bean模型" selected>
                 <div style="width:320px;height: 97%; float: left">
                     <table id="dg" class="easyui-datagrid"
@@ -97,23 +93,26 @@
                                     }
                                 });
                             }
+                            function openAdd(){
+                                addPanel('添加通用模型','${path_home}/cc/mymodel/myModel_A.jsp');
+                            }
                             function update() {
                                 var row = $('#dg').datagrid('getSelected');
                                 if (!row) {
                                     $.messager.alert('Info', '请选择行');
                                     return;
                                 }
-                                addPanel('修改' + row.mymodel_mc + '模型(' + row.mybean_mc + ')', row.mymodel_zj);
+                                addPanel('修改' + row.mymodel_mc + '模型(' + row.mybean_mc + ')','${path_home}/cc/mymodel/u/update/select.jw?selectUpdateID=' + row.mymodel_zj);
                             }
-                            function addPanel(title, mymodel_zj) {
+                            function addPanel(title, url) {
                                 $('#centerMain').tabs('add', {
                                     title: title
-                                    , content: '<iframe width="100%" height="100%" src="${path_home}/cc/mymodel/u/update/select.jw?selectUpdateID=' + mymodel_zj + '"></iframe>'
+                                    , content: '<iframe width="100%" height="100%" src='+url+'></iframe>'
                                     , closable: true
                                 });
                             }
                         </script>
-                        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加</a>
+                        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="openAdd();">添加</a>
                         <select onchange="$('#dg').datagrid({singleSelect: (this.value == 0)})">
                             <option value="0">单行选择</option>
                             <option value="1">多行选择</option>

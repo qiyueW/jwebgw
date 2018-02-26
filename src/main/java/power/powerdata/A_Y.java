@@ -41,12 +41,11 @@ public class A_Y implements IPowerData {
                         .setHMNode("Y101_8", "Y101_8_1", "查询")
                         .setHMNode("Y101_8", "Y101_8_2", "修改")
                         .setHMNode("Y101_8", "Y101_8_3", "删除")
-                    .setHMAndViewNode("Y101", "Y101_9", "bean模板添加", "cc/cmodel/cModel_A.jsp", true)
-                    .setViewNode("Y101", "Y101_10", "bean模板维护", "cc/cmodel/cModel.jsp", true)
+                    .setHMAndViewNode("Y101", "Y101_9", "bean模板添加", "cc/mymodel/myModel_A.jsp", true)
+                    .setViewNode("Y101", "Y101_10", "bean模板维护", "cc/mymodel/myModel.jsp", true)
                         .setHMNode("Y101_10", "Y101_10_1", "查询")
                         .setHMNode("Y101_10", "Y101_10_2", "修改")
                         .setHMNode("Y101_10", "Y101_10_3", "删除")                   
-                
                 
                   .setEmptyNode("0", "Y100", "展示区管理", false)
                     .setHMAndViewNode("Y100", "Y100_4", "首页发布", "spage/index/au/select.jw", true)

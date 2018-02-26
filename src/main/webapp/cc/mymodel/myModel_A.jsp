@@ -62,27 +62,27 @@
 
             });
 
-            function selectM_Sort() {
-                var userchoose = $("#m_fanan").val();
-                var qj = $("#mybean_mc").val();
-                if (qj == "") {
-                    aalert("请先确认bean！");
-                    return;
-                }
-
-                if (userchoose == "") {
-                    $("#mymodel_nr").html("");
-                    $("#mymodel_mc").val("");
-                    return;
-                }
-                $("#mymodel_mc").val(userchoose);
-                $.post("${path_home}/cc/mybean/modal/s/base/selectVast.jw", {
-                    mybean_zj: $("#mybean_zj").val(),
-                    "sort": userchoose
-                }, function (data) {
-                    $("#mymodel_nr").html(data);
-                }, "text")
-            }
+//            function selectM_Sort() {
+//                var userchoose = $("#m_fanan").val();
+//                var qj = $("#mybean_mc").val();
+//                if (qj == "") {
+//                    aalert("请先确认bean！");
+//                    return;
+//                }
+//
+//                if (userchoose == "") {
+//                    $("#mymodel_nr").html("");
+//                    $("#mymodel_mc").val("");
+//                    return;
+//                }
+//                $("#mymodel_mc").val(userchoose);
+//                $.post("${path_home}/cc/mybean/modal/s/base/selectVast.jw", {
+//                    mybean_zj: $("#mybean_zj").val(),
+//                    "sort": userchoose
+//                }, function (data) {
+//                    $("#mymodel_nr").html(data);
+//                }, "text")
+//            }
         </script>
     </head>
     <body>
@@ -101,14 +101,15 @@
                 </td>
             </tr>
             <tr>
-                <td>常用模型</td>
-                <td><select id="m_fanan" onchange="selectM_Sort()">
+                <td>公共模型</td>
+                <td>
+<!--                    <select id="m_fanan" onchange="selectM_Sort()">
                         <option value="">无</option>
                         <option value="bean">bean</option>
                         <option value="sql">sql</option>
                         <option value="jsgetset">jsgetset</option>
 
-                    </select>
+                    </select>-->
                     <div id="showCModelTree"></div>
                 </td>
             </tr>

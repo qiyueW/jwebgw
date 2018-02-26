@@ -15,7 +15,7 @@
             $(function () {
                 var mypackage = new ztree_select(
                         "${path_home}/cc/mypackage/s/selectVast.jw", {},
-                        "showmypackageTree", "mypackage_name", "mypackage_id", 220, 390);
+                        "showmypackageTree", "mypackage_name", "mypackage_id", 190, 390);
                 mypackage.init(function (treeId, treeNode) {
                     mypackage.setMyValue(treeNode)
                     mypackage.hideMenu();
@@ -38,16 +38,16 @@
         </script>
     </head>
     <body class="easyui-layout">
-        <div data-options="region:'west',split:true,title:'bean'" style="width:250px;padding:10px;">
+        <div data-options="region:'west',split:true,title:'bean'" style="width:200px;padding:1px;">
             <div id="showmypackageTree" style="position: relative; z-index: 1000"></div>
             <div id="showmybeanTree" style="position: relative; z-index: 888"></div>
             <div id="divID_Tree_bean" class="ztree">bean</div>
         </div>
         <div data-options="region:'center'"  class="easyui-tabs" id='centerMain'>
             <div title="bean模型" selected>
-                <div style="width:320px;height: 97%; float: left">
+                <div style="width:300px;height: 97%; float: left">
                     <table id="dg" class="easyui-datagrid"
-                           style="width:300px;height:100%"
+                           style="width:290px;height:100%"
                            data-options="rownumbers:true,singleSelect:true,url:'${path_home}/cc/mybean/modal/s/selectAllByJson.jw'
                            ,method:'post'
                            ,queryParams: {mybean_zj:''}
@@ -112,7 +112,7 @@
                                 });
                             }
                         </script>
-                        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="openAdd();">添加</a>
+                        <!--<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="openAdd();">添加</a>-->
                         <select onchange="$('#dg').datagrid({singleSelect: (this.value == 0)})">
                             <option value="0">单行选择</option>
                             <option value="1">多行选择</option>
@@ -120,7 +120,7 @@
                     </div>
                 </div>
                 <div>
-                    <textarea style="width:700px;height:97%" id="showMymodel_nrTEXT" readonly="readonly"></textarea>
+                    <textarea style="width:400px;height:97%" id="showMymodel_nrTEXT" readonly="readonly"></textarea>
                 </div>
             </div>
         </div>

@@ -1,0 +1,14 @@
+    function get${bean.mybean_mc}FormData() {
+        var data = {};
+
+#foreach($field in $fields)
+        data.${field.c_mc}= $('#${field.c_mc}').val()
+#end
+        return data;
+    }
+
+    function setCModelFormData() {
+#foreach($field in $fields)
+        $('#${field.c_mc}').val('')
+#end
+    }

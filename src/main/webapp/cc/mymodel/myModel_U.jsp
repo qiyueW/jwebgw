@@ -35,7 +35,7 @@
             <tr>
                 <td>模板内容</td>
                 <td><textarea id="mymodel_nr"
-                              style="width: 800px; height: 500px;">${obj.mymodel_nr}</textarea></td>
+                              style="width: 500px; height:400px;">${obj.mymodel_nr}</textarea></td>
             </tr>
             <tr>
                 <td colspan="2">

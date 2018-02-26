@@ -1,0 +1,50 @@
+import java.util.Map;
+import system.web.validate.model.ValidateResultModel;
+import system.web.validate.model.ValidateFieldModel;
+import system.web.JWeb;
+import system.web.validate.model.ValidateModel;
+
+public class ${bean.mybean_mc}Validate extends ValidateModel {
+
+    public ${bean.mybean_mc}Validate() {
+        super(JSON_MODEL);
+    }
+
+    @Override
+    public void iniValidate() {
+        super
+#foreach($field in $fields)
+ #if($field.v_bxjiancha!='w')
+#set($bxjiancha=false)
+   #if($field.v_bxjiancha=='s')
+     #set($bxjiancha=true)
+   #end
+                .put("$field.c_mc",$field.v_zzbds, $field.v_cuowuxx, $bxjiancha)//$field.c_bz
+ #end
+#end
+;
+    }
+
+    /**
+     * 校验失败
+     *
+     * @param jw
+     * @param vr
+     */
+    @Override
+    public void error(JWeb jw, ValidateResultModel vr) {
+        if (returnJSON) {
+            jw.printOne(vr.getMsgByJson());
+            return;
+        }
+        jw.request.setAttribute(msg_key, vr.getMsgByMap());
+        jw.forward(url);
+    }
+
+    @Override
+    public ValidateResultModel recheck(JWeb jw, Map<String, ValidateFieldModel> map, ValidateResultModel vr) {
+        return vr;
+    }
+
+}
+

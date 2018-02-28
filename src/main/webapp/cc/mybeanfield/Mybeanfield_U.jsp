@@ -221,7 +221,7 @@ table select {
 		</div>
 	</div>
 	<button type="submit" id="myMybeanButton" data-loading-text="执行中"
-		class="btn btn-primary">添加</button>
+		class="btn btn-primary">修改</button>
 
 	<!--root div end-->
 </body>

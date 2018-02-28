@@ -16,11 +16,11 @@
             $(function () {
                 GRID = $('#divID_GRID').ligerGrid({
                     columns: [
-                         {display: '排序', name: 'mybean_px', width:50, align: 'center'}
-//                        ,{display: '代号', name: 'mybean_dm', width: 160, align: 'center'}
-                        , {display: '名称', name: 'mybean_mc', width: 260, align: 'center'}
-                        , {display: '备注', name: 'mybean_bz', width: 260, align: 'center'}
-//                        , {display: '主键', name: 'mybean_zj', hide: true}
+                         {display: '排序 mybean_px', name: 'mybean_px', width:150, align: 'center'}
+     /*                    ,{display: 'mypackage_id', name: 'mypackage_id', width: 160, align: 'center'} */
+                        , {display: '名称 mybean_mc', name: 'mybean_mc', width: 200, align: 'center'}
+                        , {display: '备注 mybean_bz', name: 'mybean_bz', width: 180, align: 'center'}
+                        , {display: '主键 mybean_zj', name: 'mybean_zj',width: 180, align: 'center'}
                     ]
                     , usePager: false
                     , url: path_home + 'cc/mybean/s/selectVast.jw'

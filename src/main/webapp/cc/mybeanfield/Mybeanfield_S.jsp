@@ -139,6 +139,9 @@
                             <th data-options="field:'c_zyy',width:60"><div>c作用域</div>c_zyy</th>
                             <th data-options="field:'c_lx',width:50"><div>c类型</div>c_lx</th>
                             <th data-options="field:'c_mc',width:120"><div>c属性名</div>c_mc</th>
+                            <th data-options="field:'c_setmethod',width:120"><div>c属性的set方法</div>c_setmethod</th>
+                            <th data-options="field:'c_getmethod',width:120"><div>c属性的get方法</div>c_getmethod</th>
+                            
                             <th data-options="field:'c_bz',width:80"><div>c备注</div>c_bz</th>
 
                             <th data-options="field:'t_lx',width:40"><div>t类型</div>t_lx</th>
@@ -154,6 +157,8 @@
                             <th data-options="field:'h_lx',width:70"><div>h类型</div>h_lx</th>
                             <th data-options="field:'h_jb',width:40"><div>h脚本校验</div>h_jb</th>
                             <th data-options="field:'e_mc',width:80"><div>e展示名</div>e_mc</th>
+                            
+                            <th data-options="field:'mybeanfield_dateformat',width:80"><div>Date格式</div>mybeanfield_dateformat</th>
                         </tr>
                     </thead>
                 </table>

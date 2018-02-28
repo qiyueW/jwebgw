@@ -99,7 +99,7 @@ function selectY_fanan() {
 	case "int": {
 		setHead("", "");
 		setC("private", "Integer", qj, "");
-		setT("TEXT", "f", "s", "", "")// 类型 索引 是否为空 长度 t备注
+		setT("INT", "f", "s", "", "")// 类型 索引 是否为空 长度 t备注
 		setV('"-?[0-9]+"', '":请输入正数"', 's')
 		setH('number', 's');
 		break;

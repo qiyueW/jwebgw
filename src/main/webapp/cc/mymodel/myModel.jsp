@@ -133,7 +133,7 @@
                     </div>
                 </div>
                 <div>
-                    <textarea style="width:600px;height:97%;overflow:scroll" id="showMymodel_nrTEXT" readonly="readonly"></textarea>
+                    <textarea style="width:400px;height:97%;overflow:scroll" id="showMymodel_nrTEXT" readonly="readonly"></textarea>
                 </div>
             </div>
         </div>

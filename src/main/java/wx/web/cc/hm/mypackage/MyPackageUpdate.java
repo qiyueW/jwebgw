@@ -14,8 +14,7 @@ import configuration.DBO;
 import wx.web.cc.bean.MyPackage;
 
 @H("cc/mypackage/u")
-//@system.web.power.ann.ZDY(zdy = power.hm.zdy.SQ_UA.class, value = "J61_2")
-//@system.web.power.ann.SQ("J61_2")
+@system.web.power.ann.SQ("Y101_4_2")
 public class MyPackageUpdate {
 
 	JWeb jw;

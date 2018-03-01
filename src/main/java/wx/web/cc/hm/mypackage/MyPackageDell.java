@@ -9,7 +9,7 @@ import wx.web.cc.bean.MyPackage;
 
 @H("cc/mypackage/d")
 //@system.web.power.ann.ZDY(zdy = power.hm.zdy.SQ_UA.class, value = "J61_3")
-//@system.web.power.ann.SQ("J61_3")
+@system.web.power.ann.SQ("Y101_4_3")
 public class MyPackageDell {
 
     JWeb jw;

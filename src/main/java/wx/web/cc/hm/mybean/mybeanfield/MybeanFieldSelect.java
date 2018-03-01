@@ -11,8 +11,10 @@ import plugins.easyui.vo.EasyuiPage;
 import system.base.annotation.H;
 import system.base.annotation.M;
 import system.web.JWeb;
+import system.web.power.ann.SQ;
 import wx.web.cc.bean.Mybeanfield;
 
+@SQ("Y101_8_1")
 @H("cc/mybean/field/s")
 public class MybeanFieldSelect {
 
@@ -28,12 +30,13 @@ public class MybeanFieldSelect {
     public static void selectJSONByCache(JWeb jw) {
         String mybean_zj = jw.getString("mybean_zj");
         if (null == mybean_zj || mybean_zj.isEmpty()) {
-            jw.printOne("[]");return;
+            jw.printOne("[]");
+            return;
         }
-        String where= "WHERE mybean_zj='" + mybean_zj + "'";
+        String where = "WHERE mybean_zj='" + mybean_zj + "'";
         EasyuiPage page = EasyuiService.getPage(jw);
-        
-        List<Mybeanfield> list=DBO.service.S.selectVastByCondition(Mybeanfield.class,page.page,page.rows,where);
-        jw.printOne(EasyuiService.formatGrid(list,DBO.service.S.selectCountByCondition(Mybeanfield.class, where)));
+
+        List<Mybeanfield> list = DBO.service.S.selectVastByCondition(Mybeanfield.class, page.page, page.rows, where);
+        jw.printOne(EasyuiService.formatGrid(list, DBO.service.S.selectCountByCondition(Mybeanfield.class, where)));
     }
 }

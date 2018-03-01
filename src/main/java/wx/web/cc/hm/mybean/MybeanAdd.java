@@ -5,7 +5,8 @@ import system.web.JWeb;
 import system.base.annotation.H;
 import system.base.annotation.M;
 import configuration.DBO;
-
+import system.web.power.ann.SQ;
+@SQ("Y101_5")
 @H("cc/mybean/a")
 public class MybeanAdd {
 

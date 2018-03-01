@@ -8,11 +8,12 @@ import system.web.JWeb;
 import system.base.annotation.H;
 import system.base.annotation.M;
 import system.base.beanjson.JCJSON;
+import system.web.power.ann.SQ;
 import wx.web.cc.bean.CModel;
 import wx.web.cc.bean.Mybean;
 import wx.web.cc.bean.Mybeanfield;
 import wx.web.cc.service.MybeanService;
-
+@SQ("Y101_2_1")
 @H("cc/cmodal/s")
 public class CModelSelect {
 

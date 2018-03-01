@@ -6,10 +6,11 @@ import system.base.annotation.H;
 import system.base.annotation.M;
 import system.base.annotation.Validate;
 import configuration.DBO;
+import system.web.power.ann.SQ;
 import wx.web.cc.bean.Mybean;
 
 @H("cc/mybean/u")
-//@system.web.filter.annotation.JWFilter(过滤是否有权限的类)
+@SQ("Y101_6_2")
 public class MybeanUpdate {
 
     JWeb jw;

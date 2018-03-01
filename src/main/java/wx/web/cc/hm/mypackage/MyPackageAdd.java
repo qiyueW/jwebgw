@@ -7,7 +7,7 @@ import system.web.JWeb;
 import configuration.DBO;
 import wx.web.cc.bean.MyPackage;
 
-//@system.web.power.ann.SQ("J61")
+@system.web.power.ann.SQ("Y101_3")
 @H("cc/mypackage/a")
 public class MyPackageAdd {
 

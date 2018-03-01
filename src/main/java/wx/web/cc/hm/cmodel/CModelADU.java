@@ -6,6 +6,7 @@ import system.base.annotation.H;
 import system.base.annotation.M;
 import system.base.annotation.Validate;
 import system.web.JWeb;
+import system.web.power.ann.SQ;
 import wx.web.cc.bean.CModel;
 
 @H("cc/cmodel")
@@ -16,6 +17,7 @@ public class CModelADU {
     public CModelADU(JWeb jw) {
         this.jw = jw;
     }
+    @SQ("Y101_1")
     @Validate(wx.web.cc.hm._validate.CModelValidate.class)
     @M("/a/add")//cc/mymodel/a/add.jw
     public void add() {
@@ -25,7 +27,7 @@ public class CModelADU {
         jw.printOne(i == -1 ? DBO.getJSONModel("-1", "添加出错，请检查字段是否唯一，或通知管理检测数据库是否断开")
                 : (i == 0 ? DBO.getJSONModel("0", "添加失败，未知原因。请通知管理员调试系统") : DBO.getJSONModel("1", "添加成功。")));
     }
-
+    @SQ("Y101_2_3")
     @M("/d/dell")
     public void dellVast() {
         String ids = jw.getString("ids");
@@ -40,7 +42,7 @@ public class CModelADU {
 		jw.printOne(i==0?DBO.getJSONModel("0","删除失败，请通知管理员检查网络或数据库。或稍后再试。")
 				:DBO.getJSONModel("1","删除成功"));
     }
-    
+    @SQ("Y101_2_2")    
     @M("/u/update")
     public void update() {
         CModel obj = jw.getObject(CModel.class);
@@ -49,7 +51,7 @@ public class CModelADU {
         }
         DBO.out_update_1_0_f1(jw, DBO.service.U.update_all(obj));
     }
-
+    @SQ("Y101_2_2")
     @M("/u/update/select")
     public void updateSelect_UseFilter_CheckUpdateSelect() {
         // 表示用户修改前的查询id,查询此id的最新值，返回给用户修改

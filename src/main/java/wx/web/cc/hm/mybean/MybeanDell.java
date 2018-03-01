@@ -4,10 +4,11 @@ import system.web.JWeb;
 import system.base.annotation.H;
 import system.base.annotation.M;
 import configuration.DBO;
+import system.web.power.ann.SQ;
 import wx.web.cc.bean.MyModel;
 import wx.web.cc.bean.Mybeanfield;
 
-
+@SQ("Y101_6_3")
 @H("cc/mybean/d")
 public class MybeanDell {
 

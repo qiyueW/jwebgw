@@ -4,15 +4,17 @@ package wx.web.cc.hm.mybean;
 //import plugins.ligerui.LigeruiService;
 //import plugins.ligerui.vo.LigerUIPage;
 import configuration.DBO;
-import system.web.JWeb;
 import system.base.annotation.H;
+import system.web.JWeb;
 import system.base.annotation.M;
 import system.base.beanjson.JCJSON;
+import system.web.power.ann.SQ;
 import wx.web.cc.bean.Mybean;
 //import static configuration.DBO.service;
 //import wx.web.cc.bean.Mybean;
 
 @H("cc/mybean/s")
+@SQ("Y101_6_1")
 public class MybeanSelect {
 
     @M("/selectVast")

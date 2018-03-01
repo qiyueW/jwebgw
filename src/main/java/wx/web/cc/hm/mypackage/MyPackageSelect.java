@@ -8,8 +8,7 @@ import system.web.JWeb;
 import wx.web.cc.hm.mypackage.cache.MyPackageCache;
 
 @H("cc/mypackage/s")
-//@system.web.power.ann.ZDY(zdy = power.hm.zdy.SQ_UA.class, value = "J61_1")
-//@system.web.power.ann.SQ("J61_1")
+@system.web.power.ann.SQ("Y101_4_1")
 public class MyPackageSelect {
 
     @M("/selectVast")

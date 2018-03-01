@@ -1,8 +1,8 @@
-<!--%@include file="/WEB-INF/jspf/power/userPower.jspf"%-->
+<%@include file="/WEB-INF/jspf/power/userPower.jspf"%>
 <%
-//    if (!pck.checkUser("J31")) {
-//        return;
-//    }
+    if (!pck.checkUser("Y101_5")) {
+        return;
+    }
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!--后台UI组件Start-->

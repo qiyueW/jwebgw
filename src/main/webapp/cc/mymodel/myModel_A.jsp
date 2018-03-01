@@ -1,15 +1,15 @@
-<!--%@include file="/WEB-INF/jspf/power/userPower.jspf"%-->
+<%@include file="/WEB-INF/jspf/power/userPower.jspf"%>
 <%
-    //    if (!pck.checkUser("J31")) {
-    //        return;
-    //    }
+        if (!pck.checkUser("Y101_9")) {
+            return;
+        }
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!--后台UI组件Start-->
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
+        <title>bean模板添加</title>
         <script src="${path_home}/lib/jquery/jquery-1.11.1.js" type="text/javascript"></script>
         <%@include file="/WEB-INF/jspf/GG.jspf"%>
         <script type="text/javascript" src="${path_home}/cc/mymodel/js/myModel_A.js"></script>

@@ -1,12 +1,24 @@
+<%@include file="/WEB-INF/jspf/power/adminUserPower.jspf"%>
+<%    if (!pck.checkUserORAdmin("Y101_10_1")) {
+        return;
+    }
+    boolean update, dell;
+    update = pck.checkUserORAdmin("Y101_10_2");
+    dell = pck.checkUserORAdmin("Y101_10_3");
+    String showPower = pck.getStrTool()
+            .put(update, "<a href='javascript:void(0)' class='easyui-linkbutton' iconCls='icon-edit' plain='true' onclick='update()'>修改</a>")
+            .put(dell,   "<a href='javascript:void(0)' class='easyui-linkbutton' iconCls='icon-remove' plain='true' onclick='dellBeanField()'>删除</a>")
+            .getString();
+%>
+
 <%@page import="java.util.Date"%>
-<%--<%@include file="/WEB-INF/jspf/power/superAminPower.jspf"%>--%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <base href="${path_home}/">
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>bean模板维护</title>
         <%@include file="/WEB-INF/jspf/easyuiLocal.jspf"%>
         <%@include file="/WEB-INF/jspf/artDialog.jspf"%>
         <%@include file="/WEB-INF/jspf/ztree.jspf"%>
@@ -66,8 +78,9 @@
                         </thead>
                     </table>
                     <div id="tb" style="padding:2px 5px;">
-                        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="dellBeanField()">删除</a>
-                        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="update()">修改</a>
+<!--                        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="dellBeanField()">删除</a>
+                        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="update()">修改</a>-->
+                        <%=showPower%>
                         <script>
                             function onclickModel(rowIndex,rowData){
                                 $("#showMymodel_nrTEXT").html('');

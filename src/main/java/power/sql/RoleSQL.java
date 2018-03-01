@@ -6,7 +6,7 @@ package power.sql;
  */
 public class RoleSQL {
 
-    public static final String TABLE = "role";
+    public static final String TABLE = "Role";
 
     final public static String getUpdatePowerSQL(final String power_id, final String role_id) {
         return " UPDATE `" + TABLE + "`"

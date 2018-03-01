@@ -6,7 +6,7 @@ package power.sql;
  */
 public class UserSQL {
 
-    public static final String TABLE = "user";
+    public static final String TABLE = "User";
 
     /**
      * 给用户添加角色权限

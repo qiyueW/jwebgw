@@ -1,16 +1,16 @@
-<%--<%@include file="/WEB-INF/jspf/power/adminUserPower.jspf"%>
-<%    if (!pck.checkUserORAdmin("J61_1")) {
+<%@include file="/WEB-INF/jspf/power/adminUserPower.jspf"%>
+<%    if (!pck.checkUserORAdmin("Y101_4_1")) {
         return;
     }
     boolean update, dell;
-    update = pck.checkUserORAdmin("J61_2");
-    dell = pck.checkUserORAdmin("J61_3");
+    update = pck.checkUserORAdmin("Y101_4_2");
+    dell = pck.checkUserORAdmin("Y101_4_3");
     String showPower = pck.getStrTool()
             .put(update, "{text: '修改', click: update}")
             .put(true, "{line: true}")
             .put(dell, "{text: '删除', click: dell}")
             .getString();
-%>--%>
+%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!--后台UI组件Start-->
@@ -42,7 +42,7 @@
                     }
                      , url: '${path_home}/cc/mypackage/s/selectVast/GRID.jw'
                 });
-                $("#toptoolbar").ligerToolBar({items: [{text: '修改', click: update},{text: '删除', click: dell}]});
+                $("#toptoolbar").ligerToolBar({items: [<%=showPower%>]});
             });
 //-------------------------------增删改操作-----------------------------------------------
             function update() {

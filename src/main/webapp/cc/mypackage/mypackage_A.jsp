@@ -1,8 +1,8 @@
-<%--<%@include file="/WEB-INF/jspf/power/adminUserPower.jspf"%>
-<%    if (!pck.checkUserORAdmin("J61")) {
+<%@include file="/WEB-INF/jspf/power/adminUserPower.jspf"%>
+<%    if (!pck.checkUserORAdmin("Y101_3")) {
         return;
     }
-%>--%>
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!--后台UI组件Start-->
 <%@include file="/WEB-INF/jspf/admin-ui.jspf"%>

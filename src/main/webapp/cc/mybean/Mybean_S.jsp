@@ -40,9 +40,7 @@
                     , width: '800'
                     , height: '95%'
                 });
-                $("#toptoolbar").ligerToolBar({items: [
-                       <%=showPower%>
-                    ]});
+                $("#toptoolbar").ligerToolBar({items: [<%=showPower%>]});
             });
             function update() {
                 var row = GRID.getSelectedRow();

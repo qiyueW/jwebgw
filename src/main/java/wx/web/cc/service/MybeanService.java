@@ -83,7 +83,7 @@ public class MybeanService {
         context.put("bean",bean);
         StringWriter writer = new StringWriter();
         ve.evaluate(context, writer, "", modelData.replace("&#39;", "'").replace("&#34;", "\"")); // 关键方法
-        return writer.toString();
+        return writer.toString().replace("#$#", "$");
     }
 
 //================ tool 集合    

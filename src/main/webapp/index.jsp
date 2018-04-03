@@ -8,6 +8,21 @@
         <meta name=renderer content=webkit>
         <%@include file="/WEB-INF/jspf/zuiAndJQ.jspf"%>
         <title>您好</title>
+         <script type="text/javascript">
+            $(function () {
+                $('.flexslider').flexslider();
+//.flexslider({
+//                    animation: "slide",
+//                    direction: "horizontal",
+//                    easing: "swing",
+//                    slideshowSpeed: "4000",
+//                    directionNav: true,
+//                    prevText: " ",
+//                    nextText: " ",
+//                    pauseOnAction: !1
+//                });
+            })
+        </script>
     </head>
     <body style="background-color: #FFFFF4">
         <!--background-color: #FFFFF4-->

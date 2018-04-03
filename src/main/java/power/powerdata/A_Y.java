@@ -48,9 +48,8 @@ public class A_Y implements IPowerData {
                         .setHMNode("Y101_10", "Y101_10_3", "删除")                   
                 
                   .setEmptyNode("0", "Y100", "展示区管理", false)
-                    .setHMAndViewNode("Y100", "Y100_4", "首页发布", "spage/index/au/select.jw", true)
-                        .setHMNode("Y100_4", "Y100_4_1", "查询")
-                        .setHMNode("Y100_4", "Y100_4_2", "修改")
+                    .setHMAndViewNode("Y100", "Y100_6", "首页发布", "spage/index/au/select.jw", true)
+                        .setHMNode("Y100_6", "Y100_6_2", "维护")
                 
                     .setHMAndViewNode("Y100", "Y100_0", "发布公告通知", "spage/notice/notice_A.jsp", true)
                     .setViewNode("Y100", "Y100_1", "公告通知维护", "spage/notice/notice_S.jsp", true)

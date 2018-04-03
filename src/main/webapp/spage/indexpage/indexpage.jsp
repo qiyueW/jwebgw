@@ -25,7 +25,9 @@
         <script type="text/javascript">
             var GUE;
             $(function () {
-                GUE = UE.getEditor('spage_indexpage_neirong');
+                GUE = UE.getEditor('spage_indexpage_neirong', {
+                    allowDivTransToP: false
+                });
                 iniEvent();
             });
         </script>

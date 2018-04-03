@@ -1,8 +1,7 @@
 <%@include file="/WEB-INF/jspf/power/userPower.jspf"%>
-<%
-        if (!pck.checkUser("Y101_7")) {
-            return;
-        }
+<%    if (!pck.checkUser("Y101_7")) {
+        return;
+    }
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!--后台UI组件Start-->
@@ -22,6 +21,8 @@
             var path_home = "${path_home}/";
             $(function () {
                 iniMybeanEventA();
+                var wh = new GJS();
+                wh.setElementHeight("root", 40)
                 var beanfl;
                 var zcfl = new ztree_select(
                         "${path_home}/cc/mypackage/s/selectVast.jw", {},
@@ -52,10 +53,31 @@
             //              class=""
         </script>
         <style>
-            table select {
-                min-width: 90px;
+            /*            table select {
+                            min-width: 90px;
+                        }*/
+            select{
+                border: 0;  
+                display: block;  
+                position: relative;  
+                min-height: 1.146667rem;  
+                line-height: 1.146667rem;  
+                white-space: nowrap;  
+                width: 100%;
+                height: 28px;
+                overflow: hidden;  
+                padding-right: .6rem;  
+                background-color: #eee;  
+                background: transparent;  
+                appearance:none;  
+                -moz-appearance:none; /* Firefox */  
+                -webkit-appearance:none; /* Safari 和 Chrome */ 
+                text-align: center;
             }
-
+            table input{
+                border:0; 
+                height: 28px;
+            }
             .show2 {
                 color: #00f
             }
@@ -70,7 +92,7 @@
         </style>
     </head>
     <body>
-        <div id="root" class="container">
+        <div id="root" class="container" style=" overflow-y:scroll;">
             <table class="table" id="table1">
                 <tr>
                     <td style="width: 80px;">包</td>
@@ -118,97 +140,137 @@
                 </tr>
             </table>
             <div class="show2">
-                <div class="showtitle">JAVA类</div>
-                <table class="table" id="table2">
-                    <tr>
-                        <td style="width: 80px;">c作用域</td>
-                        <td><select id="c_zyy">
-                                <option value="private">private</option>
-                                <option value="public">public</option>
-                                <option value="protected">protected</option>
-                            </select></td>
+                <table cellspacing="0" cellpadding="0" border="1">
+                    <col width="72" />
+                    <col width="107" />
+                    <col width="124" />
+                    <col width="139" />
+                    <col width="200" />
+                    <tr height="34">
+                        <td rowspan="2" height="68" width="72"><div align="center">JAVA类</div></td>
+                        <td width="107" height="23"><div align="center">c作用域</div></td>
+                        <td width="124"><div align="center">c类型</div></td>
+                        <td width="139"><div align="center">c属性名</div></td>
+                        <td width="200"><div align="center">c备注</div></td>
                     </tr>
-                    <tr>
-                        <td>c类型</td>
-                        <td><select id="c_lx">
-                                <option value="String">String</option>
-                                <option value="Integer">Integer</option>
-                                <option value="Date">Date</option>
-                                <option value="Double">Double</option>
-                            </select></td>
-                    </tr>
-                    <tr>
-                        <td>c属性名</td>
-                        <td><input type="text" name="c_mc" id="c_mc" /></td>
-                    </tr>
-                    <tr>
-                        <td>c备注</td>
-                        <td><input type="text" name="c_bz" id="c_bz" /></td>
+                    <tr height="34">
+                        <td height="34"><div align="center">
+                                <select id="c_zyy">
+                                    <option value="private">private</option>
+                                    <option value="public">public</option>
+                                    <option value="protected">protected</option>
+                                </select>
+                            </div></td>
+                        <td><div align="center">
+                                <select id="c_lx">
+                                    <option value="String">String</option>
+                                    <option value="Integer">Integer</option>
+                                    <option value="Date">Date</option>
+                                    <option value="Double">Double</option>
+                                </select>
+                            </div></td>
+                        <td><div align="center">
+                                <input type="text" name="c_mc" id="c_mc" />
+                            </div></td>
+                        <td><div align="center">
+                                <input type="text" name="c_bz" id="c_bz" style="width:200px"/>
+                            </div></td>
                     </tr>
                 </table>
             </div>
+            <hr/>
             <div class="show3">
-                <div class="showtitle">数据库表</div>
-                <table class="table" id="table3">
-                    <tr>
-                        <td style="width: 80px;">t类型</td>
-                        <td><select id="t_lx">
-                                <option value="VARCHAR">VARCHAR</option>
-                                <option value="CHAR">CHAR</option>
-                                <option value="TEXT">TEXT</option>
-                                <option value="DATE">DATE</option>
-                                <option value="DATETIME">DATETIME</option>
-                                <option value="INT">INT</option>
-                                <option value="DOUBLE">DOUBLE</option>
-                            </select></td>
+                <table cellspacing="0" cellpadding="0" border="1">
+                    <col width="72" />
+                    <col width="107" />
+                    <col width="124" />
+                    <col width="50" />
+                    <col width="90" />
+                    <col width="200" />
+                    <tr height="34">
+                        <td rowspan="2" height="68" width="72"><div align="center">数据表</div></td>
+                        <td width="107" height="23"><div align="center">t类型</div></td>
+                        <td width="124"><div align="center">t索引</div></td>
+                        <td width="50"><div align="center">t允许空</div></td>
+                        <td width="90"><div align="center">t长度</div></td>
+                        <td width="200"><div align="center">t备注</div></td>
                     </tr>
-                    <tr>
-                        <td style="width: 80px;">t索引</td>
-                        <td><select id="t_sy">
-                                <option value="f">否</option>
-                                <option value="s">是</option>
-                                <option value="wy">唯一</option>
-                                <option value="zj">主键</option>
-                                <!--<option value="wj">外键</option>-->
-                            </select></td>
-                    </tr>
-                    <tr>
-                        <td style="width: 80px;">t允许空</td>
-                        <td><select id="t_yxkong">
-                                <option value="s">是</option>
-                                <option value="f">否</option>
-                            </select></td>
-                    </tr>
-                    <tr>
-                        <td>t长度</td>
-                        <td><input type="number" name="t_cd" id="t_cd" /></td>
-                    </tr>
-                    <tr>
-                        <td>t备注</td>
-                        <td><input type="text" name="t_bz" id="t_bz" /></td>
+                    <tr height="34">
+                        <td height="34"><div align="center">
+                                <select id="t_lx">
+                                    <option value="VARCHAR">VARCHAR</option>
+                                    <option value="CHAR">CHAR</option>
+                                    <option value="TEXT">TEXT</option>
+                                    <option value="DATE">DATE</option>
+                                    <option value="DATETIME">DATETIME</option>
+                                    <option value="INT">INT</option>
+                                    <option value="DOUBLE">DOUBLE</option>
+                                </select>
+                            </div></td>
+                        <td><div align="center">
+                                <select id="t_sy">
+                                    <option value="f">否</option>
+                                    <option value="s">是</option>
+                                    <option value="wy">唯一</option>
+                                    <option value="zj">主键</option>
+                                    <!--<option value="wj">外键</option>-->
+                                </select>
+                            </div></td>
+                        <td  style="width:49px"><div align="center">
+                                <select id="t_yxkong" style="width:35px">
+                                    <option value="s">是</option>
+                                    <option value="f">否</option>
+                                </select>
+                            </div></td>
+                        <td><div align="center">
+                                <input type="number" name="t_cd" id="t_cd"  style="width:90px"/>
+                            </div></td>
+                        <td><div align="center">
+                                <input type="text" name="t_bz" id="t_bz"  style="width:200px"/>
+                            </div></td>
                     </tr>
                 </table>
             </div>
+            <hr/>
             <div class="show2">
-                <div class="showtitle">后台检验</div>
-                <table class="table" id="table4">
-                    <tr>
-                        <td style="width: 80px;">v正则规则</td>
-                        <td><input type="text" name="v_zzbds" id="v_zzbds" /></td>
+
+                <table cellspacing="0" cellpadding="0" border="1">
+                    <tr height="34">
+                        <td rowspan="2" height="68" width="72"><div align="center"><div>后台</div>检验</div></td>
+                        <td width="107"><div align="center">v必须检查</div></td>
+                        <td width="300" height="23"><div align="center">v正则规则</div></td>
+                        <td width="300"><div align="center">v错误信息</div></td>
                     </tr>
-                    <tr>
-                        <td style="width: 80px;">v错误信息</td>
-                        <td><input type="text" name="v_cuowuxx" id="v_cuowuxx" /></td>
-                    </tr>
-                    <tr>
-                        <td style="width: 80px;">v必须检查</td>
-                        <td><select id="v_bxjiancha">
-                                <option value="s">是</option>
-                                <option value="f">否</option>
-                                <option value="w">不存在检查</option>
-                            </select></td>
+                    <tr height="34">
+                        <td height="34"><div align="center">
+                                <select id="v_bxjiancha">
+                                    <option value="s">是</option>
+                                    <option value="f">否</option>
+                                    <option value="w">不存在检查</option>
+                                </select>
+                            </div></td>
+                        <td><div align="center"><input type="text" name="v_zzbds" id="v_zzbds" style=" width: 299px;"/></div></td>
+                        <td><div align="center"><input type="text" name="v_cuowuxx" id="v_cuowuxx"  style=" width: 299px;"/></div></td>
                     </tr>
                 </table>
+
+                <!--                
+                                
+                                <div class="showtitle">后台检验</div>
+                                <table class="table" id="table4">
+                                    <tr>
+                                        <td style="width: 80px;">v正则规则</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 80px;">v错误信息</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 80px;">v必须检查</td>
+                                        <td></td>
+                                    </tr>
+                                </table>-->
             </div>
 
             <div class="show3">
@@ -255,9 +317,10 @@
                 </table>
             </div>
         </div>
-        <button type="submit" id="myMybeanButton" data-loading-text="执行中"
-                class="btn btn-primary" >添加</button>
-
+        <div style=" text-align:center">
+            <button type="submit" id="myMybeanButton" data-loading-text="执行中"
+                    class="btn btn-primary" >添加</button>
+        </div>
         <!--root div end-->
     </body>
 </html>

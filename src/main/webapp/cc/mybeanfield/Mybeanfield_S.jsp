@@ -125,7 +125,6 @@
             });
         </script>
     </head>
-    <body>
     <body class="easyui-layout">
         <div data-options="region:'west',split:true,title:'bean'" style="width:250px;padding:10px;">
             <div id="showmypackageTree" style="position: relative; z-index: 1000"></div> <!--<div id="divID_Tree_BM"  class="ztree powertablediv">---</div>-->

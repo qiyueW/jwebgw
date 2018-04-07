@@ -1,0 +1,65 @@
+{
+    "mybean_mc": ""
+    ,
+    "mybean_bz": ""
+    ,
+    "package_bean": ""
+    ,
+    "package_soo": ""
+    ,
+    "name_soo": ""
+    ,
+    "package_service": ""
+    ,
+    "name_service": ""
+    ,
+    "package_hm": ""
+    ,
+    "name_hmA": ""
+    ,
+    "name_hmD": ""
+    ,
+    "name_hmU": ""
+    ,
+    "name_hmS": ""
+    ,
+    "package_validate": ""
+    ,
+    "name_validate": ""
+    ,
+    "package_cache": ""
+    ,
+    "name_cache": ""
+    ,
+    "package_vo": ""
+    ,
+    "name_vo": ""
+    ,
+    "vpackage_admin": ""
+    ,
+    "vname_adminA": ""
+    ,
+    "vname_adminD": ""
+    ,
+    "vname_adminS": ""
+    ,
+    "vname_adminU": ""
+    ,
+    "vpackage_admin_js": ""
+    ,
+    "vname_admin_js": ""
+    ,
+    "vpackage_admin_css": ""
+    ,
+    "vname_admin_css": ""
+    ,
+    "power_code": ""
+    ,
+    "power_codeA": "<?p>A"
+    ,
+    "power_codeD": "<?p>D"
+    ,
+    "power_codeS": "<?p>S"
+    ,
+    "power_codeU": "<?p>U"
+}

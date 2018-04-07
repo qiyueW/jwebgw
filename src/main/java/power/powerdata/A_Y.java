@@ -19,6 +19,17 @@ public class A_Y implements IPowerData {
     public void doPowerData(PD pdt) {
         pdt
                 .setEmptyNode("0", "Y101", "代码生成器", true)
+//                    
+                    .setEmptyNode("Y101", "Y101_12", "引擎数据映射表", false)
+                        .setHMAndViewNode("Y101_12", "Y101_12_1", "bean映射","cc/ccmap/Map_Mybean.jsp", true)
+                        
+                
+                    .setHMAndViewNode("Y101", "Y101_11A", "通用模板分类添加","cc/cmodel/cmodelfl/cmodelfl_A.jsp", true)
+                    .setViewNode("Y101", "Y101_11_0", "通用模板分类中心", "cc/cmodel/cmodelfl/cmodelfl.jsp", true)
+                            .setHMNode("Y101_11_0", "Y101_11S", "查询")
+                            .setHMNode("Y101_11_0", "Y101_11U", "修改")
+                            .setHMNode("Y101_11_0", "Y101_11D", "删除")
+                
                     .setHMAndViewNode("Y101", "Y101_1", "通用模板添加", "cc/cmodel/cModel_A.jsp", true)
                     .setViewNode("Y101", "Y101_2", "通用模板维护", "cc/cmodel/cModel.jsp", true)
                         .setHMNode("Y101_2", "Y101_2_1", "查询")

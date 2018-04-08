@@ -17,11 +17,11 @@ final public class EasyuiService {
     private static final String EMPTYDATA = "{\"total\": \"0\",\"rows\":[]}";
 
     final public static String formatGrid(List<?> rsList, int count) {
-        return rsList.isEmpty() ? EMPTYDATA : "{\"total\": \"" + count + "\",\"rows\":" + JCJSON.toSimpleJSON(rsList) + "}";
+        return null==rsList||rsList.isEmpty() ? EMPTYDATA : "{\"total\": \"" + count + "\",\"rows\":" + JCJSON.toSimpleJSON(rsList) + "}";
     }
 
     final public static String formatGrid(List<?> rsList) {
-        return rsList.isEmpty() ? EMPTYDATA : "{\"total\": \"" + rsList.size() + "\",\"rows\":" + JCJSON.toSimpleJSON(rsList) + "}";
+        return null==rsList||rsList.isEmpty() ? EMPTYDATA : "{\"total\": \"" + rsList.size() + "\",\"rows\":" + JCJSON.toSimpleJSON(rsList) + "}";
     }
 
     /**

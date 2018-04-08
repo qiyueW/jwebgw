@@ -7,7 +7,7 @@
     dell = pck.checkUserORAdmin("Y101_2_3");
     String showPower = pck.getStrTool()
             .put(update, "<a href='javascript:void(0)' class='easyui-linkbutton' iconCls='icon-edit' plain='true' onclick='update()'>修改</a>")
-            .put(dell,   "<a href='javascript:void(0)' class='easyui-linkbutton' iconCls='icon-remove' plain='true' onclick='dellBeanField()'>删除</a>")
+            .put(dell, "<a href='javascript:void(0)' class='easyui-linkbutton' iconCls='icon-remove' plain='true' onclick='dellBeanField()'>删除</a>")
             .getString();
 %>
 
@@ -25,6 +25,16 @@
         <%@include file="/WEB-INF/jspf/GG.jspf"%>
         <script type="text/javascript">
             $(function () {
+                var zcfl = new ztree_select(
+                        "${path_home}/cc/cmodel/cmodelfl/s/selectVast.jw", {},
+                        "showmycmodelflTree", "cmodelfl_name", "cmodelfl_id", 320, 390);
+                zcfl.init(function (treeId, treeNode) {
+                    zcfl.setMyValue(treeNode)
+                    zcfl.hideMenu();
+                    var queryParams = $('#dg').datagrid('options').queryParams;
+                    queryParams.flzj = treeNode.cmodelfl_id;
+                    $('#dg').datagrid('reload');
+                }, "cmodelfl_id", "cmodelfl_pid", "cmodelfl_name")
                 $('#dg').datagrid('hideColumn', 'cmodel_zj');
             });
             function onclickModel(rowIndex, rowData) {
@@ -70,12 +80,13 @@
         </script>
     </head>
     <body class="easyui-layout">
-        <div data-options="region:'west',split:true,title:'bean'" style="width:330px;padding:10px;">
+        <div data-options="region:'west',split:true,title:'bean'" style="width:355px;padding:10px;">
+            <div id="showmycmodelflTree" style="position: relative; z-index: 1000"></div>
             <table id="dg" class="easyui-datagrid"
-                   style="width:300px;height:100%"
+                   style="width:320px;height:95%"
                    data-options="rownumbers:true,singleSelect:true,url:'${path_home}/cc/cmodal/s/selectAllByJson.jw'
                    ,method:'post'
-                   ,queryParams: {cbean_zj:''}
+                   ,queryParams: {flzj:''}
                    ,autoRowHeight:false
                    ,pagination:true
                    ,pageSize:50
@@ -92,8 +103,8 @@
             </table>
             <div id="tb" style="padding:2px 5px;">
                 <%=showPower%>
-<!--                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="dellBeanField()">删除</a>
-                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="update()">修改</a>-->
+                <!--                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="dellBeanField()">删除</a>
+                                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="update()">修改</a>-->
                 <select onchange="$('#dg').datagrid({singleSelect: (this.value == 0)})">
                     <option value="0">单行选择</option>
                     <option value="1">多行选择</option>
@@ -101,9 +112,9 @@
             </div>
         </div>
         <div data-options="region:'center'"  class="easyui-tabs" id='centerMain'>
-<!--            <div title="添加通用模板">
-                <iframe width="100%" height="100%" src="${path_home}/cc/cmodel/cModel_A.jsp"></iframe>
-            </div>-->
+            <!--            <div title="添加通用模板">
+                            <iframe width="100%" height="100%" src="${path_home}/cc/cmodel/cModel_A.jsp"></iframe>
+                        </div>-->
             <div title="模板展示区" selected>
                 <div>
                     <textarea style="width:700px;height:97%" id="showMymodel_nrTEXT" readonly="readonly"></textarea>

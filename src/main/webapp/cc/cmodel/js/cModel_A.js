@@ -3,10 +3,10 @@
 ////绑定FORM提交事件
 function postCModelFormData(btid) {
     var data = {};
-    data.cmodel_zj = $('#cmodel_zj').val()
-    data.cmodel_mc = $('#cmodel_mc').val()
-    data.cmodel_nr = $('#cmodel_nr').val()
-//    data.cmodel_mc = toFormatZT($('#cmodel_mc').val())
-//    data.cmodel_nr = toFormatZT($('#cmodel_nr').val())
+    data.cmodel_zj = $('#cmodel_zj').val()//主键
+    data.cmodel_mc = $('#cmodel_mc').val()//模型名
+    data.cmodel_nr = $('#cmodel_nr').val()//模型内容
+    data.cmodelfl_id = $('#cmodelfl_id').val()//外键分类
+    data.cmodelfl_name = $('#cmodelfl_name').val()//分类名
     mypost('cc/cmodel/a/add.jw', data, btid);
 }

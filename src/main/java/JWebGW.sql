@@ -176,22 +176,23 @@ INSERT INTO `Spage_notice` (`spage_notice_zj`, `spage_notice_biaoti`, `spage_not
 )
 ENGINE=InnoDB;
 
-CREATE TABLE `MyModel` (
-	`mymodel_zj` CHAR(24) NOT NULL,
-	`mybean_zj` CHAR(24) NOT NULL,
-	`mybean_mc` VARCHAR(50) NOT NULL,
-	`mymodel_mc` VARCHAR(500) NULL DEFAULT NULL,
-	`mymodel_nr` TEXT NULL DEFAULT NULL,
-	PRIMARY KEY (`mymodel_zj`)
-)
-ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS `CModel`(
+    `cmodel_zj` CHAR(24)  NOT NULL  /*主键*/
+    ,`cmodel_mc` VARCHAR(50)  NOT NULL /*模型名*/
+    ,`cmodel_nr` TEXT  NOT NULL /*模型内容*/
+    ,`cmodelfl_id` CHAR(24)  NOT NULL /*外键分类*/
+    ,`cmodelfl_name` VARCHAR(50)  NOT NULL /*分类名*/
 
+    ,PRIMARY KEY (`cmodel_zj`)
+    ,KEY `cmodelfl_id` (`cmodelfl_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `CModel`(
 `cmodel_zj` CHAR(24) NOT NULL/*主键*/
 ,`cmodel_mc` VARCHAR(50) DEFAULT NULL/*模型名*/
 ,`cmodel_nr` TEXT     DEFAULT NULL/*模型内容*/
-
+,`cmodelfl_id` char(24) NOT NULL
+,`cmodelfl_name` char(50) NOT NULL
 ,PRIMARY KEY (`cmodel_zj`)
 ,UNIQUE KEY `cmodel_mc` (`cmodel_mc`)
 ) ENGINE=InnoDB ;

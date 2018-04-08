@@ -15,6 +15,7 @@ public class CModelValidate extends ValidateModel {
     @Override
     public void iniValidate() {
         super.put("cmodel_zj", "[0-9]{24}", "主键", false)
+                .put("cmodelfl_id", "[0-9]{24}", "归类异常，请重新选择分类", true)
                 .put("cmodel_mc", "[\\w\\W]{1,50}", "模型名不正常", true)
                 .put("cmodel_nr", "[\\w\\W]+", "模型内容不能为空", true);
     }

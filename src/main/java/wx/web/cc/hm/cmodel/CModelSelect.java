@@ -64,8 +64,16 @@ public class CModelSelect {
     @M("/selectAllByJson")
     public static void selectJSON(JWeb jw) {
 
+        String fl=jw.getString("flzj");
+        if(null==fl||fl.length()<23){
+            jw.printOne(EasyuiService.formatGrid(null));
+            return;
+        }
         EasyuiPage page = EasyuiService.getPage(jw);
-        List<CModel> list = DBO.service.S.selectVast(CModel.class, page.page, page.rows);
+        
+        
+        
+        List<CModel> list = DBO.service.S.selectVastByCondition(CModel.class, page.page, page.rows,"WHERE cmodelfl_id IN('"+fl+"')");
         for (CModel obj : list) {
             obj.setCmodel_nr("");
         }

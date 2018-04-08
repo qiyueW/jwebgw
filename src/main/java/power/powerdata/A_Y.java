@@ -22,6 +22,7 @@ public class A_Y implements IPowerData {
 //                    
                     .setEmptyNode("Y101", "Y101_12", "引擎数据映射表", false)
                         .setHMAndViewNode("Y101_12", "Y101_12_1", "bean映射","cc/ccmap/Map_Mybean.jsp", true)
+                        .setHMAndViewNode("Y101_12", "Y101_12_2", "bean属性映射","cc/ccmap/Map_Mybeanfield.jsp", true)
                         
                 
                     .setHMAndViewNode("Y101", "Y101_11A", "通用模板分类添加","cc/cmodel/cmodelfl/cmodelfl_A.jsp", true)

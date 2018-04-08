@@ -4,7 +4,8 @@
 <html>
     <head>
         <title>MyBean明细</title>
-        <script src="${path_home}/lib/jquery/jquery-1.11.1.js" type="text/javascript"></script>  
+        <script src="${path_home}/lib/jquery/jquery-1.11.1.js" type="text/javascript"></script>
+        <%@include file="/WEB-INF/jspf/zuiLocal.jspf"%>
         <%@include file="/WEB-INF/jspf/GG.jspf"%>
         <%@include file="/WEB-INF/jspf/artDialog.jspf"%>
         <%@include file="/WEB-INF/jspf/ztree.jspf"%>

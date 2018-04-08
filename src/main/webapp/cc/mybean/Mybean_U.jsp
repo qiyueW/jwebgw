@@ -37,11 +37,11 @@
         <input type="hidden" name="mybean_zj" id="mybean_zj" value="${obj.mybean_zj}"  />
         <table border="1" cellpadding="0" cellspacing="0">
             <tr height="35">
-                <td rowspan="2" height="70" width="72"  bgcolor="#9999FF"><div align="center">bean相关</div></td>
-                <td height="26" colspan="2" bgcolor="#9999FF"><div align="center">bean包|类名</div></td>
-                <td width="72" bgcolor="#9999FF"><div align="center">排序</div></td>
-                <td width="100" bgcolor="#9999FF"><div align="center">备注</div></td>
-                <td width="377" bgcolor="#9999FF"><div align="center">分类归属</div></td>
+                <td rowspan="2" height="70" width="72"  bgcolor="#ddddf7"><div align="center">bean相关</div></td>
+                <td height="26" colspan="2" bgcolor="#ddddf7"><div align="center">bean包|类名</div></td>
+                <td width="72" bgcolor="#ddddf7"><div align="center">排序</div></td>
+                <td width="100" bgcolor="#ddddf7"><div align="center">备注</div></td>
+                <td width="377" bgcolor="#ddddf7"><div align="center">分类归属</div></td>
             </tr>
             <tr height="35">
                 <td width="200"><input type="text" name="package_bean" id="package_bean" value="${obj.package_bean}" style=" width:198px" /></td>
@@ -54,10 +54,10 @@
 
         <table border="1" cellpadding="0" cellspacing="0">
             <tr height="35">
-                <td rowspan="2" height="70" width="72"  bgcolor="#9999FF"><div align="center">s包|类</div></td>
-                <td height="26" colspan="2" bgcolor="#9999FF"><div align="center">soo/dao包|类名</div></td>
-                <td height="26" colspan="2" bgcolor="#9999FF"><div align="center">service包|类名</div></td>
-                <td height="26" colspan="5" bgcolor="#9999FF"><div align="center">hm包|增 类名|删 类名|查 类名|改 类名</div></td>
+                <td rowspan="2" height="70" width="72"  bgcolor="#ddddf7"><div align="center">s包|类</div></td>
+                <td height="26" colspan="2" bgcolor="#ddddf7"><div align="center">soo/dao包|类名</div></td>
+                <td height="26" colspan="2" bgcolor="#ddddf7"><div align="center">service包|类名</div></td>
+                <td height="26" colspan="5" bgcolor="#ddddf7"><div align="center">hm包|增 类名|删 类名|查 类名|改 类名</div></td>
             </tr>
             <tr height="35">
                 <td width="200"><input type="text" name="package_soo" id="package_soo" value="${obj.package_soo}" style=" width:198px" /></td>
@@ -75,10 +75,10 @@
 
         <table border="1" cellpadding="0" cellspacing="0">
             <tr height="35">
-                <td rowspan="2" height="70" width="72"  bgcolor="#9999FF"><div align="center">s2包|类</div></td>
-                <td height="26" colspan="2" bgcolor="#9999FF"><div align="center">validate包|类名</div></td>
-                <td height="26" colspan="2" bgcolor="#9999FF"><div align="center">cache包|类名</div></td>
-                <td height="26" colspan="2" bgcolor="#9999FF"><div align="center">vo包|类名</div></td>
+                <td rowspan="2" height="70" width="72"  bgcolor="#ddddf7"><div align="center">s2包|类</div></td>
+                <td height="26" colspan="2" bgcolor="#ddddf7"><div align="center">validate包|类名</div></td>
+                <td height="26" colspan="2" bgcolor="#ddddf7"><div align="center">cache包|类名</div></td>
+                <td height="26" colspan="2" bgcolor="#ddddf7"><div align="center">vo包|类名</div></td>
             </tr>
             <tr height="35">
                 <td width="200"><input type="text" name="package_validate" id="package_validate" value="${obj.package_validate}" style=" width:198px" /></td>
@@ -94,10 +94,10 @@
 
         <table border="1" cellpadding="0" cellspacing="0">
             <tr height="35">
-                <td rowspan="2" height="70" width="72"  bgcolor="#9999FF"><div align="center">v包|类</div></td>
-                <td height="26" colspan="2" bgcolor="#9999FF"><div align="center">js包|类名</div></td>
-                <td height="26" colspan="2" bgcolor="#9999FF"><div align="center">css包|类名</div></td>
-                <td height="26" colspan="5" bgcolor="#9999FF"><div align="center">jsp/html包|增 名|删 名|查 名|改 名</div></td>
+                <td rowspan="2" height="70" width="72"  bgcolor="#ddddf7"><div align="center">v包|类</div></td>
+                <td height="26" colspan="2" bgcolor="#ddddf7"><div align="center">js包|类名</div></td>
+                <td height="26" colspan="2" bgcolor="#ddddf7"><div align="center">css包|类名</div></td>
+                <td height="26" colspan="5" bgcolor="#ddddf7"><div align="center">jsp/html包|增 名|删 名|查 名|改 名</div></td>
             </tr>
             <tr height="35">
                 <td width="200"><input type="text" name="vpackage_admin_js" id="vpackage_admin_js" value="${obj.vpackage_admin_js}" style=" width:198px" /></td>
@@ -115,12 +115,12 @@
 
         <table border="1" cellpadding="0" cellspacing="0">
             <tr height="35">
-                <td rowspan="2" height="70" width="72"  bgcolor="#9999FF"><div align="center">权限代码</div></td>
-                <td height="26" bgcolor="#9999FF"><div align="center">模块代码 代替符[p]</div></td>
-                <td height="26" bgcolor="#9999FF"><div align="center">A代码</div></td>
-                <td height="26" bgcolor="#9999FF"><div align="center">D代码</div></td>
-                <td height="26" bgcolor="#9999FF"><div align="center">S代码</div></td>
-                <td height="26" bgcolor="#9999FF"><div align="center">U代码</div></td>
+                <td rowspan="2" height="70" width="72"  bgcolor="#ddddf7"><div align="center">权限代码</div></td>
+                <td height="26" bgcolor="#ddddf7"><div align="center">模块代码 代替符[p]</div></td>
+                <td height="26" bgcolor="#ddddf7"><div align="center">A代码</div></td>
+                <td height="26" bgcolor="#ddddf7"><div align="center">D代码</div></td>
+                <td height="26" bgcolor="#ddddf7"><div align="center">S代码</div></td>
+                <td height="26" bgcolor="#ddddf7"><div align="center">U代码</div></td>
             </tr>
             <tr height="35">
                 <td><input type="text" name="power_code" id="power_code" value="${obj.power_code}" style=" width:120px" /></td>  

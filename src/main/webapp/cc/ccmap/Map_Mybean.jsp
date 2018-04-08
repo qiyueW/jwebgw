@@ -34,11 +34,11 @@
             </div>
             <table border="1" cellpadding="0" cellspacing="0">
                 <tr height="35">
-                    <td rowspan="2" height="70" width="72"  bgcolor="#9999FF"><div align="center">bean相关</div></td>
-                    <td bgcolor="#9999FF"><div align="center">bean包</div></td>
-                    <td bgcolor="#9999FF"><div align="center">主键</div></td>
-                    <td bgcolor="#9999FF"><div align="center">类名</div></td>
-                    <td bgcolor="#9999FF"><div align="center">备注</div></td>
+                    <td rowspan="2" height="70" width="72"  bgcolor="#ddddf7"><div align="center">bean相关</div></td>
+                    <td bgcolor="#ddddf7"><div align="center">bean包</div></td>
+                    <td bgcolor="#ddddf7"><div align="center">主键</div></td>
+                    <td bgcolor="#ddddf7"><div align="center">类名</div></td>
+                    <td bgcolor="#ddddf7"><div align="center">备注</div></td>
                 </tr>
                 <tr height="35">
                     <td><div class="ccfield">package_bean</div></td>
@@ -50,16 +50,16 @@
 
             <table border="1" cellpadding="0" cellspacing="0">
                 <tr height="35">
-                    <td rowspan="2" height="70" width="72"  bgcolor="#9999FF"><div align="center">s包|类</div></td>
-                    <td height="26" bgcolor="#9999FF"><div align="center">soo/dao 包</div></td>
-                    <td height="26" bgcolor="#9999FF"><div align="center">soo/dao 类名</div></td>
-                    <td height="26" bgcolor="#9999FF"><div align="center">service 包</div></td>
-                    <td height="26" bgcolor="#9999FF"><div align="center">service 类名</div></td>
-                    <td height="26" bgcolor="#9999FF"><div align="center">hm包</div></td>
-                    <td height="26"  bgcolor="#9999FF"><div align="center">hm增|类名</div></td>
-                    <td height="26"  bgcolor="#9999FF"><div align="center">hm删|类名</div></td>
-                    <td height="26"  bgcolor="#9999FF"><div align="center">hm查|类名</div></td>
-                    <td height="26" bgcolor="#9999FF"><div align="center">hm改|类名</div></td>
+                    <td rowspan="2" height="70" width="72"  bgcolor="#ddddf7"><div align="center">s包|类</div></td>
+                    <td height="26" bgcolor="#ddddf7"><div align="center">soo/dao 包</div></td>
+                    <td height="26" bgcolor="#ddddf7"><div align="center">soo/dao 类名</div></td>
+                    <td height="26" bgcolor="#ddddf7"><div align="center">service 包</div></td>
+                    <td height="26" bgcolor="#ddddf7"><div align="center">service 类名</div></td>
+                    <td height="26" bgcolor="#ddddf7"><div align="center">hm包</div></td>
+                    <td height="26"  bgcolor="#ddddf7"><div align="center">hm增|类名</div></td>
+                    <td height="26"  bgcolor="#ddddf7"><div align="center">hm删|类名</div></td>
+                    <td height="26"  bgcolor="#ddddf7"><div align="center">hm查|类名</div></td>
+                    <td height="26" bgcolor="#ddddf7"><div align="center">hm改|类名</div></td>
                 </tr>
                 <tr height="35">
                     <td><div class="ccfield">package_soo</div></td>
@@ -76,13 +76,13 @@
 
             <table border="1" cellpadding="0" cellspacing="0">
                 <tr height="35">
-                    <td rowspan="2" height="70" width="72"  bgcolor="#9999FF"><div align="center">s2包|类</div></td>
-                    <td height="26" bgcolor="#9999FF"><div align="center">validate 包</div></td>
-                    <td height="26" bgcolor="#9999FF"><div align="center">validate 类名</div></td>
-                    <td height="26" bgcolor="#9999FF"><div align="center">cache 包</div></td>
-                    <td height="26" bgcolor="#9999FF"><div align="center">cache 类名</div></td>
-                    <td height="26" bgcolor="#9999FF"><div align="center">vo 包</div></td>
-                    <td height="26" bgcolor="#9999FF"><div align="center">vo 类名</div></td>
+                    <td rowspan="2" height="70" width="72"  bgcolor="#ddddf7"><div align="center">s2包|类</div></td>
+                    <td height="26" bgcolor="#ddddf7"><div align="center">validate 包</div></td>
+                    <td height="26" bgcolor="#ddddf7"><div align="center">validate 类名</div></td>
+                    <td height="26" bgcolor="#ddddf7"><div align="center">cache 包</div></td>
+                    <td height="26" bgcolor="#ddddf7"><div align="center">cache 类名</div></td>
+                    <td height="26" bgcolor="#ddddf7"><div align="center">vo 包</div></td>
+                    <td height="26" bgcolor="#ddddf7"><div align="center">vo 类名</div></td>
                 </tr>
                 <tr height="35">
                     <td><div class="ccfield">package_validate</div></td>
@@ -97,16 +97,16 @@
 
             <table border="1" cellpadding="0" cellspacing="0">
                 <tr height="35">
-                    <td rowspan="2" height="70" width="72"  bgcolor="#9999FF"><div align="center">v包|类</div></td>
-                    <td height="26" bgcolor="#9999FF"><div align="center">js 包</div></td>
-                    <td height="26" bgcolor="#9999FF"><div align="center">js 名</div></td>
-                    <td height="26" bgcolor="#9999FF"><div align="center">css包</div></td>
-                    <td height="26" bgcolor="#9999FF"><div align="center">css 名</div></td>
-                    <td height="26" bgcolor="#9999FF"><div align="center">jsp包</div></td>
-                    <td height="26" bgcolor="#9999FF"><div align="center">jsp增|名</div></td>
-                    <td height="26" bgcolor="#9999FF"><div align="center">jsp删|名</div></td>
-                    <td height="26" bgcolor="#9999FF"><div align="center">jsp查|名</div></td>
-                    <td height="26" bgcolor="#9999FF"><div align="center">jsp改|名</div></td>
+                    <td rowspan="2" height="70" width="72"  bgcolor="#ddddf7"><div align="center">v包|类</div></td>
+                    <td height="26" bgcolor="#ddddf7"><div align="center">js 包</div></td>
+                    <td height="26" bgcolor="#ddddf7"><div align="center">js 名</div></td>
+                    <td height="26" bgcolor="#ddddf7"><div align="center">css包</div></td>
+                    <td height="26" bgcolor="#ddddf7"><div align="center">css 名</div></td>
+                    <td height="26" bgcolor="#ddddf7"><div align="center">jsp包</div></td>
+                    <td height="26" bgcolor="#ddddf7"><div align="center">jsp增|名</div></td>
+                    <td height="26" bgcolor="#ddddf7"><div align="center">jsp删|名</div></td>
+                    <td height="26" bgcolor="#ddddf7"><div align="center">jsp查|名</div></td>
+                    <td height="26" bgcolor="#ddddf7"><div align="center">jsp改|名</div></td>
                 </tr>
                 <tr height="35">
                     <td><div class="ccfield">vpackage_admin_js</div></td>
@@ -123,12 +123,12 @@
 
             <table border="1" cellpadding="0" cellspacing="0">
                 <tr height="35">
-                    <td rowspan="2" height="70" width="72"  bgcolor="#9999FF"><div align="center">权限代码</div></td>
-                    <td height="26" bgcolor="#9999FF"><div align="center">模块代码</div></td>
-                    <td height="26" bgcolor="#9999FF"><div align="center">A代码</div></td>
-                    <td height="26" bgcolor="#9999FF"><div align="center">D代码</div></td>
-                    <td height="26" bgcolor="#9999FF"><div align="center">S代码</div></td>
-                    <td height="26" bgcolor="#9999FF"><div align="center">U代码</div></td>
+                    <td rowspan="2" height="70" width="72"  bgcolor="#ddddf7"><div align="center">权限代码</div></td>
+                    <td height="26" bgcolor="#ddddf7"><div align="center">模块代码</div></td>
+                    <td height="26" bgcolor="#ddddf7"><div align="center">A代码</div></td>
+                    <td height="26" bgcolor="#ddddf7"><div align="center">D代码</div></td>
+                    <td height="26" bgcolor="#ddddf7"><div align="center">S代码</div></td>
+                    <td height="26" bgcolor="#ddddf7"><div align="center">U代码</div></td>
                 </tr>
                 <tr height="35">
                     <td><div class="ccfield">power_code</div></td>  

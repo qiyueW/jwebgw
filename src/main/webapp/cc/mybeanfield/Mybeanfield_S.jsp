@@ -6,8 +6,8 @@
     update = pck.checkUserORAdmin("Y101_8_2");
     dell = pck.checkUserORAdmin("Y101_8_3");
     String showPower = pck.getStrTool()
+            .put(dell, "<a href='javascript:void(0)' class='easyui-linkbutton' iconCls='icon-remove' plain='true' onclick='dellBeanField()'>删除</a>")
             .put(update, "<a href='javascript:void(0)' class='easyui-linkbutton' iconCls='icon-edit' plain='true' onclick='update()'>修改</a>")
-            .put(dell,   "<a href='javascript:void(0)' class='easyui-linkbutton' iconCls='icon-remove' plain='true' onclick='dellBeanField()'>删除</a>")
             .getString();
 %>
 <%@page import="java.util.Date"%>
@@ -21,19 +21,9 @@
         <%@include file="/WEB-INF/jspf/easyuiLocal.jspf"%>
         <%@include file="/WEB-INF/jspf/artDialog.jspf"%>
         <%@include file="/WEB-INF/jspf/ztree.jspf"%>
-<%@include file="/WEB-INF/jspf/GG.jspf"%>
+        <%@include file="/WEB-INF/jspf/GG.jspf"%>
         <script type="text/javascript">
             $(function () {
-//                var gjs = new GJS();
-//                gjs.setElementWidthPX("table1", 17)
-//                gjs.setElementHeight("table1", 34)
-//                gjs.setElementHeight("divID_Tree_bean", 70)
-//                gjs.setElementHeight("tabletr2", 60)
-//                gjs.setElementHeight("tabletr2td2", 60)
-//                gjs.setElementHeight("dg", 100)
-//                gjs.setElementWidthPX("dg", 300)
-
-
                 var zcfl = new ztree_select(
                         "${path_home}/cc/mypackage/s/selectVast.jw", {},
                         "showmypackageTree", "mypackage_name", "mypackage_id", 220, 390);
@@ -131,12 +121,9 @@
             <div id="divID_Tree_bean" class="ztree">bean</div>
         </div>
         <div data-options="region:'center'"  class="easyui-tabs" id='centerMain'>
-            <div title="添加bean的属性">
-                <iframe width="100%" height="100%" src="${path_home}/cc/mybeanfield/Mybeanfield_A.jsp"></iframe>
-            </div>
             <div title="bean明细" selected>
                 <table id="dg" class="easyui-datagrid"
-                       style="width:97%;height:90%"
+                       style="width:100%;height:100%"
                        data-options="rownumbers:true,singleSelect:true,url:'${path_home}/cc/mybean/field/s/selectAllByJson.jw',method:'post',queryParams: {mybean_zj:''},autoRowHeight:true,
                        pagination:true,
                        pageSize:50,
@@ -151,7 +138,7 @@
                             <th data-options="field:'c_mc',width:120"><div>c属性名</div>c_mc</th>
                             <th data-options="field:'c_setmethod',width:120"><div>c属性的set方法</div>c_setmethod</th>
                             <th data-options="field:'c_getmethod',width:120"><div>c属性的get方法</div>c_getmethod</th>
-                            
+
                             <th data-options="field:'c_bz',width:80"><div>c备注</div>c_bz</th>
 
                             <th data-options="field:'t_lx',width:40"><div>t类型</div>t_lx</th>
@@ -165,16 +152,16 @@
                             <th data-options="field:'v_bxjiancha',width:40"><div>v必须检查</div>v_bxjiancha</th>
 
                             <th data-options="field:'h_lx',width:70"><div>h类型</div>h_lx</th>
-                            <th data-options="field:'h_jb',width:40"><div>h脚本校验</div>h_jb</th>
-                            <th data-options="field:'e_mc',width:80"><div>e展示名</div>e_mc</th>
-                            
-                            <th data-options="field:'mybeanfield_dateformat',width:80"><div>Date格式</div>mybeanfield_dateformat</th>
+                            <th data-options="field:'h_jb',width:80"><div>h脚本校验</div>h_jb</th>
+                            <th data-options="field:'e_mc',width:110"><div>e展示名</div>e_mc</th>
+
+                            <th data-options="field:'mybeanfield_dateformat',width:150"><div>Date格式</div>mybeanfield_dateformat</th>
                         </tr>
                     </thead>
                 </table>
                 <div id="tb" style="padding:2px 5px;">
-<!--                    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="dellBeanField()">删除</a>
-                    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="update()">修改</a>-->
+                    <!--                    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="dellBeanField()">删除</a>
+                                        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="update()">修改</a>-->
                     <%=showPower%>
                     <script>
                         function dellBeanField() {
@@ -212,7 +199,6 @@
                             });
                         }
                     </script>
-                    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加</a>
                     <select onchange="$('#dg').datagrid({singleSelect: (this.value == 0)})">
                         <option value="0">单行选择</option>
                         <option value="1">多行选择</option>

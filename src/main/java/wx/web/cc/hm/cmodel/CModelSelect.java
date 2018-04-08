@@ -47,7 +47,7 @@ public class CModelSelect {
         String mybean_zj = jw.getString("mybean_zj");
         
         if (null == cmodel_zj || cmodel_zj.isEmpty()||null == mybean_zj || mybean_zj.isEmpty()) {
-            jw.printOne("{}");
+            jw.printOne("");
             return;
         }
         //bean相关信息

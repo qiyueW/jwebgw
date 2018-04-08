@@ -50,7 +50,7 @@ public class A_Y implements IPowerData {
                         .setHMNode("Y101_6", "Y101_6_2", "修改")
                         .setHMNode("Y101_6", "Y101_6_3", "删除")
                 
-                    .setEmptyNode("Y101", "Y101_14", "bean数据中心", false) 
+                    .setEmptyNode("Y101", "Y101_14", "bean属性数据中心", false) 
                     .setHMAndViewNode("Y101_14", "Y101_7", "bean属性添加", "cc/mybeanfield/Mybeanfield_A.jsp", true)
                     .setViewNode("Y101_14", "Y101_8", "bean属性维护", "cc/mybeanfield/Mybeanfield_S.jsp", true)
                         .setHMNode("Y101_8", "Y101_8_1", "查询")
@@ -61,7 +61,7 @@ public class A_Y implements IPowerData {
                     .setViewNode("Y101", "Y101_10", "bean模板维护", "cc/mymodel/myModel.jsp", true)
                         .setHMNode("Y101_10", "Y101_10_1", "查询")
                         .setHMNode("Y101_10", "Y101_10_2", "修改")
-                        .setHMNode("Y101_10", "Y101_10_3", "删除")                   
+                        .setHMNode("Y101_10", "Y101_10_3", "删除")
                 
                   .setEmptyNode("0", "Y100", "展示区管理", false)
                     .setHMAndViewNode("Y100", "Y100_6", "首页发布", "spage/index/au/select.jw", true)

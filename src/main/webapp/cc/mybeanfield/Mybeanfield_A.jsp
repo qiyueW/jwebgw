@@ -98,25 +98,25 @@
     </head>
     <body>
         <div id="root" class="container" style=" overflow-y:scroll;">
-<!--            <table class="table" id="table1">
-                <tr>
-                    <td style="width: 80px;">包</td>
-                    <td>
-                        
-                    </td>
-                </tr>
-                <tr>
-                    <td>bean</td>
-                    <td>
-                        
-                    </td>
-                </tr>
-            </table>-->
+            <!--            <table class="table" id="table1">
+                            <tr>
+                                <td style="width: 80px;">包</td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>bean</td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        </table>-->
             <div class="show2">
                 <table cellspacing="0" cellpadding="0" border="1">
                     <tr height="34">
                         <td rowspan="2" height="68" width="72"><div align="center">bean相关</div></td>
-                        <td width="200"><div align="center">包</div></td>
+                        <td width="200"><div align="center">分类</div></td>
                         <td width="200"><div align="center">bean</div></td>
                     </tr>
                     <tr height="34">
@@ -131,7 +131,7 @@
                 <table cellspacing="0" cellpadding="0" border="1">
                     <tr height="34">
                         <td rowspan="2" height="68" width="72"><div align="center" style=" font-style: initial"><div>预设</div>方案</div></td>
-                        <td width="150"><div align="center">方案</div></td>
+                        <td width="150"><div align="center" style=" color: red"><h4>方案</h4></div></td>
                         <td width="124"><div align="center">备注</div></td>
                         <td width="150"><div align="center">Date格式</div></td>
                     </tr>
@@ -306,11 +306,12 @@
                     </tr>
                 </table>
             </div>
+            <div style="width:100%">
+                <button type="submit" id="myMybeanButton" data-loading-text="执行中" style="width:1000px;"
+                        class="btn btn-primary" >添加</button>
+            </div>
         </div>
-        <div style=" text-align:center">
-            <button type="submit" id="myMybeanButton" data-loading-text="执行中"
-                    class="btn btn-primary" >添加</button>
-        </div>
+
         <!--root div end-->
     </body>
 </html>

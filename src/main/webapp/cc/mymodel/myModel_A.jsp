@@ -1,8 +1,7 @@
 <%@include file="/WEB-INF/jspf/power/userPower.jspf"%>
-<%
-        if (!pck.checkUser("Y101_9")) {
-            return;
-        }
+<%    if (!pck.checkUser("Y101_9")) {
+        return;
+    }
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <base href="${path_home}/">
@@ -51,15 +50,16 @@
                     $('#dg').datagrid('reload');
                 }, "cmodelfl_id", "cmodelfl_pid", "cmodelfl_name");
                 $('#dg').datagrid('hideColumn', 'cmodel_zj');
+                pageCN('dg',20,[20,50,100]);
             });
             function onclickModel(rowIndex, rowData) {
-                var mybean= $("#mybean_zj").val();
-                if(!mybean){
+                var mybean = $("#mybean_zj").val();
+                if (!mybean) {
                     aalert("请先选择bean分类，再选择具体的bean");
                     return;
                 }
                 $("#mymodel_nr").html('');
-                $.post('${path_home}/cc/cmodal/s/selectOne3.jw', {cmodel_zj: rowData.cmodel_zj, mybean_zj:mybean}, function (data) {
+                $.post('${path_home}/cc/cmodal/s/selectOne3.jw', {cmodel_zj: rowData.cmodel_zj, mybean_zj: mybean}, function (data) {
                     $("#mymodel_mc").val(rowData.cmodel_mc);
                     $("#mymodel_nr").html(data);
                     console.log(data)

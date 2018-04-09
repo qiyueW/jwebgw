@@ -72,12 +72,12 @@ public class CModelSelect {
         EasyuiPage page = EasyuiService.getPage(jw);
         
         
-        
-        List<CModel> list = DBO.service.S.selectVastByCondition(CModel.class, page.page, page.rows,"WHERE cmodelfl_id IN('"+fl+"')");
+        String where="WHERE cmodelfl_id IN('"+fl+"')";
+        List<CModel> list = DBO.service.S.selectVastByCondition(CModel.class, page.page, page.rows,where);
         for (CModel obj : list) {
             obj.setCmodel_nr("");
         }
-        jw.printOne(EasyuiService.formatGrid(list));
+        jw.printOne(EasyuiService.formatGrid(list,DBO.service.S.selectCountByCondition(CModel.class, where)));
     }
 
     @M("/selectAllByJson2")//用作tree 生成select

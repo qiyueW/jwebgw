@@ -25,17 +25,33 @@
         <%@include file="/WEB-INF/jspf/GG.jspf"%>
         <script type="text/javascript">
             $(function () {
-                var zcfl = new ztree_select(
-                        "${path_home}/cc/cmodel/cmodelfl/s/selectVast.jw", {},
-                        "showmycmodelflTree", "cmodelfl_name", "cmodelfl_id", 320, 390);
-                zcfl.init(function (treeId, treeNode) {
-                    zcfl.setMyValue(treeNode)
-                    zcfl.hideMenu();
-                    var queryParams = $('#dg').datagrid('options').queryParams;
-                    queryParams.flzj = treeNode.cmodelfl_id;
-                    $('#dg').datagrid('reload');
-                }, "cmodelfl_id", "cmodelfl_pid", "cmodelfl_name")
+                var setting2 = {
+                    treeId: 'cmodelfl_id',
+                    async: {enable: true, type: "post", url: '${path_home}/cc/cmodel/cmodelfl/s/selectVast.jw'},
+                    data: {
+                        simpleData: {enable: true, idKey: 'cmodelfl_id', pIdKey: 'cmodelfl_pid', rootPId: "0"},
+                        key: {name: 'cmodelfl_name'}
+                    },
+                    callback: {
+                        onClick: function (event, id, treeNode) {
+                            var queryParams = $('#dg').datagrid('options').queryParams;
+                            queryParams.flzj = treeNode.cmodelfl_id;
+                            $('#dg').datagrid('reload');
+                        }
+                        , onAsyncSuccess: function (event, treeId, treeNode, msg) {
+                            var treeObj = $.fn.zTree.getZTreeObj(treeId);
+                            treeObj.expandAll(true);
+                        }
+                    }
+                }
+                $.fn.zTree.init($("#showmycmodelflTree"), setting2);
+
+
+
+
+
                 $('#dg').datagrid('hideColumn', 'cmodel_zj');
+                pageCN('dg')
             });
             function onclickModel(rowIndex, rowData) {
                 $("#showMymodel_nrTEXT").html('');
@@ -67,29 +83,19 @@
                     $.messager.alert('Info', '请选择行');
                     return;
                 }
-                addPanel('修改' + row.cmodel_mc + '模型', row.cmodel_zj);
-            }
-            function addPanel(title, cmodel_zj) {
-                $('#centerMain').tabs('add', {
-                    title: title
-                    , content: '<iframe width="100%" height="100%" src="${path_home}/cc/cmodel/u/update/select.jw?selectUpdateID=' + cmodel_zj + '"></iframe>'
-                            //                                ,href: '${path_home}/cc/mybean/field/u/update/select.jw?selectUpdateID=' + mybeanfield_zj
-                    , closable: true
-                });
+                window.open('${path_home}/cc/cmodel/u/update/select.jw?selectUpdateID=' + row.cmodel_zj);
             }
         </script>
     </head>
     <body class="easyui-layout">
-        <div data-options="region:'west',split:true,title:'bean'" style="width:355px;padding:10px;">
-            <div id="showmycmodelflTree" style="position: relative; z-index: 1000"></div>
+        <div data-options="region:'west',split:true,title:'模板'" style="width:280px;">
             <table id="dg" class="easyui-datagrid"
-                   style="width:320px;height:95%"
+                   style="width:100%;height:100%"
                    data-options="rownumbers:true,singleSelect:true,url:'${path_home}/cc/cmodal/s/selectAllByJson.jw'
                    ,method:'post'
                    ,queryParams: {flzj:''}
                    ,autoRowHeight:false
-                   ,pagination:true
-                   ,pageSize:50
+                   ,pagination:false
                    ,toolbar:'#tb'
                    ,onClickRow:onclickModel
                    ">
@@ -103,23 +109,19 @@
             </table>
             <div id="tb" style="padding:2px 5px;">
                 <%=showPower%>
-                <!--                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="dellBeanField()">删除</a>
-                                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="update()">修改</a>-->
                 <select onchange="$('#dg').datagrid({singleSelect: (this.value == 0)})">
                     <option value="0">单行选择</option>
                     <option value="1">多行选择</option>
                 </select>
             </div>
         </div>
-        <div data-options="region:'center'"  class="easyui-tabs" id='centerMain'>
-            <!--            <div title="添加通用模板">
-                            <iframe width="100%" height="100%" src="${path_home}/cc/cmodel/cModel_A.jsp"></iframe>
-                        </div>-->
-            <div title="模板展示区" selected>
-                <div>
-                    <textarea style="width:700px;height:97%" id="showMymodel_nrTEXT" readonly="readonly"></textarea>
-                </div>
-            </div>
+        <div data-options="region:'east',split:true,title:'模板分类'" style="width:250px;padding:10px;">
+            <!--<div id="showmycmodelflTree" style="position: relative; z-index: 1000"></div>-->
+            <div id="showmycmodelflTree" class="ztree">bean</div>
+        </div>
+
+        <div data-options="region:'center'" id='centerMain'>
+            <textarea style="width:100%;height:100%" id="showMymodel_nrTEXT" readonly="readonly"></textarea>
         </div>
     </body>
 </html>

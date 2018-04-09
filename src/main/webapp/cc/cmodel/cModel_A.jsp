@@ -18,8 +18,7 @@
         <script>
             $(function () {
                 var zcfl = new ztree_select(
-                        "${path_home}/cc/cmodel/cmodelfl/s/selectVast.jw", {},
-                        "showmycmodelflTree", "cmodelfl_name", "cmodelfl_id", 320, 390);
+                        "${path_home}/cc/cmodel/cmodelfl/s/selectVast.jw", {},"showmycmodelflTree", "cmodelfl_name", "cmodelfl_id", 320, 390);
                 zcfl.init(function (treeId, treeNode) {
                     zcfl.setMyValue(treeNode)
                     zcfl.hideMenu();

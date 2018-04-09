@@ -17,6 +17,26 @@
         <script type="text/javascript" src="${path_home}/cc/mymodel/js/myModel_A.js"></script>
         <script type="text/javascript">
             $(function () {
+                var setting2 = {
+                    treeId: 'cmodelfl_id',
+                    async: {enable: true, type: "post", url: '${path_home}/cc/cmodel/cmodelfl/s/selectVast.jw'},
+                    data: {
+                        simpleData: {enable: true, idKey: 'cmodelfl_id', pIdKey: 'cmodelfl_pid', rootPId: "0"},
+                        key: {name: 'cmodelfl_name'}
+                    },
+                    callback: {
+                        onClick: function (event, id, treeNode) {
+                            var queryParams = $('#dg').datagrid('options').queryParams;
+                            queryParams.flzj = treeNode.cmodelfl_id;
+                            $('#dg').datagrid('reload');
+                        }
+                        , onAsyncSuccess: function (event, treeId, treeNode, msg) {
+                            var treeObj = $.fn.zTree.getZTreeObj(treeId);
+                            treeObj.expandAll(true);
+                        }}
+                }
+                $.fn.zTree.init($("#showmycmodelflTree"), setting2);
+
                 var mybean;
                 var beanfl = new ztree_select("${path_home}/cc/mypackage/s/selectVast.jw", {}, "showmypackageTree", "mypackage_name", "mypackage_id", 220, 390);
                 beanfl.init(function (treeId, treeNode) {
@@ -38,19 +58,8 @@
                 $("#" + mybean.treeID).on('click', function () {
                     $("#mymodel_nr").html("");
                 })
-
-                var cmodelfl = new ztree_select(
-                        "${path_home}/cc/cmodel/cmodelfl/s/selectVast.jw", {},
-                        "showmycmodelflTree", "cmodelfl_name", "cmodelfl_id", 320, 390);
-                cmodelfl.init(function (treeId, treeNode) {
-                    cmodelfl.setMyValue(treeNode)
-                    cmodelfl.hideMenu();
-                    var queryParams = $('#dg').datagrid('options').queryParams;
-                    queryParams.flzj = treeNode.cmodelfl_id;
-                    $('#dg').datagrid('reload');
-                }, "cmodelfl_id", "cmodelfl_pid", "cmodelfl_name");
                 $('#dg').datagrid('hideColumn', 'cmodel_zj');
-                pageCN('dg',20,[20,50,100]);
+                pageCN('dg', 20, [20, 50, 100]);
             });
             function onclickModel(rowIndex, rowData) {
                 var mybean = $("#mybean_zj").val();
@@ -68,28 +77,27 @@
         </script>
     </head>
     <body class="easyui-layout">
-        <div data-options="region:'west',split:true" style="width:350px;padding:1px;">
-            <div id="showmycmodelflTree" style="position: relative; z-index: 1000"></div>
+        <div data-options="region:'west',split:true" style="width:250px;padding:1px;">
             <table id="dg" class="easyui-datagrid"
-                   style="width:320px;height:95%"
+                   style="width:100%;height:100%"
                    data-options="rownumbers:true,singleSelect:true,url:'${path_home}/cc/cmodal/s/selectAllByJson.jw'
                    ,method:'post'
                    ,queryParams: {flzj:''}
                    ,autoRowHeight:false
-                   ,pagination:true
-                   ,pageSize:50
+                   ,pagination:false
                    ,onClickRow:onclickModel
                    ">
                 <thead>
                     <tr>
                         <th data-options="field:'cmodel_zj'">ID</th>
-                        <!--<th data-options="field:'ck',checkbox:true"></th>-->
                         <th data-options="field:'cmodel_mc',width:200">模板名</th>
                     </tr>
                 </thead>
             </table>
         </div>
-
+        <div data-options="region:'east',split:true,title:'模板分类'" style="width:200px;">
+            <div id="showmycmodelflTree" class="ztree">bean</div>
+        </div>
 
         <div data-options="region:'center'"  id='centerMain'>
             <div style="width:100%; height:90px;margin-top:8px;">

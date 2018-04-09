@@ -10,11 +10,10 @@
 <html>
     <head>
         <title></title>
-        <script src="${path_home}/lib/jquery/jquery-1.11.1.js"
-        type="text/javascript"></script>
+        <script src="${path_home}/lib/jquery/jquery-1.11.1.js" type="text/javascript"></script>
         <%@include file="/WEB-INF/jspf/GG.jspf"%>
         <%@include file="/WEB-INF/jspf/artDialog.jspf"%>
-
+        <%@include file="/WEB-INF/jspf/ztree.jspf"%>
         <script type="text/javascript">
             $(function () {
                 var zcfl = new ztree_select(
@@ -28,7 +27,7 @@
                     $('#dg').datagrid('reload');
                 }, "cmodelfl_id", "cmodelfl_pid", "cmodelfl_name", "${obj.cmodelfl_name}", '${obj.cmodelfl_id}')
             })
-            
+
             function postCModelFormData(btid) {
                 var data = {};
                 data.cmodel_zj = $('#cmodel_zj').val()

@@ -6,8 +6,8 @@
     update = pck.checkUserORAdmin("Y101_6_2");
     dell = pck.checkUserORAdmin("Y101_6_3");
     String showPower = pck.getStrTool()
-            .put(update, "<a href='javascript:void(0)' class='easyui-linkbutton' iconCls='icon-edit' plain='true' onclick='update()'>修改</a>")
             .put(dell, "<a href='javascript:void(0)' class='easyui-linkbutton' iconCls='icon-remove' plain='true' onclick='dellBeanField()'>删除</a>")
+            .put(update, "<a href='javascript:void(0)' class='easyui-linkbutton' iconCls='icon-edit' plain='true' onclick='update()'>修改</a>")
             .getString();
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -75,7 +75,7 @@
                         </div>
                         <div title="bean明细" selected>-->
             <table id="dg" class="easyui-datagrid"
-                   style="width:97%;height:100%"
+                   style="width:100%;height:100%"
                    data-options="rownumbers:true,singleSelect:true,url:'${path_home}/cc/mybean/s/selectVast.jw',method:'post',queryParams: {mypackage_id:''},autoRowHeight:true,
                    pagination:true,
                    pageSize:50,

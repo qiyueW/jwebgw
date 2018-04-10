@@ -75,6 +75,11 @@
                 }, "text");
             }
         </script>
+        <style>
+            input{
+                border: 0;
+            }
+        </style>
     </head>
     <body class="easyui-layout">
         <div data-options="region:'west',split:true" style="width:250px;padding:1px;">

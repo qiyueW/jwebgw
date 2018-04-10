@@ -18,6 +18,7 @@ import wx.web.cc.bean.Mybeanfield;
 import wx.web.cc.service.MybeanService;
 //import static configuration.DBO.service;
 //import wx.web.cc.bean.Mybean;
+
 @SQ("Y101_10_1")
 @H("cc/mybean/modal/s")
 public class MyModelSelect {
@@ -71,7 +72,7 @@ public class MyModelSelect {
         String where = "WHERE mybean_zj='" + mybean_zj + "'";
         EasyuiPage page = EasyuiService.getPage(jw);
 
-        List<MyModel> list = DBO.service.S.selectVastByCondition(MyModel.class, page.page, page.rows, where);
+        List<MyModel> list = null == jw.getString("page") ? DBO.service.S.selectByCondition(MyModel.class, where) : DBO.service.S.selectVastByCondition(MyModel.class, page.page, page.rows, where);
         for (MyModel obj : list) {
             obj.setMymodel_nr("");
         }

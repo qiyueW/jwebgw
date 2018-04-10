@@ -51,7 +51,7 @@
         </script>
     </head>
     <body class="easyui-layout">
-        <div data-options="region:'west',title:'模板',split:true" style="width:350px;">
+        <div data-options="region:'west',title:'模板',split:true" style="width:280px;">
             <!--<div style="width:300px;height: 97%; float: left">-->
             <table id="dg" class="easyui-datagrid"
                    style="width:100%;height:100%"
@@ -59,8 +59,7 @@
                    ,method:'post'
                    ,queryParams: {mybean_zj:''}
                    ,autoRowHeight:false
-                   ,pagination:true
-                   ,pageSize:50
+                   ,pagination:false
                    ,toolbar:'#tb'
                    ,onClickRow:onclickModel
                    ">

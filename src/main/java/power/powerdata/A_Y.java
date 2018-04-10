@@ -49,19 +49,26 @@ public class A_Y implements IPowerData {
                         .setHMNode("Y101_6", "Y101_6_1", "查询")
                         .setHMNode("Y101_6", "Y101_6_2", "修改")
                         .setHMNode("Y101_6", "Y101_6_3", "删除")
-                
-                    .setEmptyNode("Y101", "Y101_14", "bean属性数据中心", false) 
-                    .setHMAndViewNode("Y101_14", "Y101_7", "bean属性添加", "cc/mybeanfield/Mybeanfield_A.jsp", true)
-                    .setViewNode("Y101_14", "Y101_8", "bean属性维护", "cc/mybeanfield/Mybeanfield_S.jsp", true)
+                    .setHMAndViewNode("Y101_13", "Y101_7", "bean属性添加", "cc/mybeanfield/Mybeanfield_A.jsp", true)
+                    .setViewNode("Y101_13", "Y101_8", "bean属性维护", "cc/mybeanfield/Mybeanfield_S.jsp", true)
                         .setHMNode("Y101_8", "Y101_8_1", "查询")
                         .setHMNode("Y101_8", "Y101_8_2", "修改")
                         .setHMNode("Y101_8", "Y101_8_3", "删除")
                 
-                    .setHMAndViewNode("Y101", "Y101_9", "bean模板添加", "cc/mymodel/myModel_A.jsp", true)
-                    .setViewNode("Y101", "Y101_10", "bean模板维护", "cc/mymodel/myModel.jsp", true)
+                .setEmptyNode("Y101", "Y101_14", "数据产出", false)   
+                    .setHMAndViewNode("Y101_14", "Y101_9", "bean模板添加", "cc/mymodel/myModel_A.jsp", true)
+                    .setViewNode("Y101_14", "Y101_10", "bean模板维护", "cc/mymodel/myModel.jsp", true)
                         .setHMNode("Y101_10", "Y101_10_1", "查询")
                         .setHMNode("Y101_10", "Y101_10_2", "修改")
                         .setHMNode("Y101_10", "Y101_10_3", "删除")
+                
+                .setEmptyNode("Y101", "Y101_15", "数据产出", false)   
+                    .setHMAndViewNode("Y101_15", "Y101_15_1A", "方案分类添加", "cc/fangan/fanganfl/fanganfl_A.jsp", true)
+                    .setViewNode("Y101_15", "Y101_15_2", "方案分类维护", "cc/fangan/fanganfl/fanganfl.jsp", true)
+                        .setHMNode("Y101_15_2", "Y101_15_1S", "查询")
+                        .setHMNode("Y101_15_2", "Y101_15_1U", "修改")
+                        .setHMNode("Y101_15_2", "Y101_15_1D", "删除")                
+                
                 
                   .setEmptyNode("0", "Y100", "展示区管理", false)
                     .setHMAndViewNode("Y100", "Y100_6", "首页发布", "spage/index/au/select.jw", true)
@@ -77,6 +84,8 @@ public class A_Y implements IPowerData {
                         .setHMNode("Y100_3", "Y100_3_1", "查询")
                         .setHMNode("Y100_3", "Y100_3_2", "修改")
                         .setHMNode("Y100_3", "Y100_3_3", "删除")
+                
+                
                 ;
     }
 }

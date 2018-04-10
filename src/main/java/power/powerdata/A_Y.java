@@ -62,7 +62,7 @@ public class A_Y implements IPowerData {
                         .setHMNode("Y101_10", "Y101_10_2", "修改")
                         .setHMNode("Y101_10", "Y101_10_3", "删除")
                 
-                .setEmptyNode("Y101", "Y101_15", "数据产出", false)   
+                .setEmptyNode("Y101", "Y101_15", "方案产出", false)   
                     .setHMAndViewNode("Y101_15", "Y101_15_1A", "方案分类添加", "cc/fangan/fanganfl/fanganfl_A.jsp", true)
                     .setViewNode("Y101_15", "Y101_15_2", "方案分类维护", "cc/fangan/fanganfl/fanganfl.jsp", true)
                         .setHMNode("Y101_15_2", "Y101_15_1S", "查询")

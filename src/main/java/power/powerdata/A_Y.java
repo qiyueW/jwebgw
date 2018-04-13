@@ -84,8 +84,6 @@ public class A_Y implements IPowerData {
                         .setHMNode("Y100_3", "Y100_3_1", "查询")
                         .setHMNode("Y100_3", "Y100_3_2", "修改")
                         .setHMNode("Y100_3", "Y100_3_3", "删除")
-                
-                
                 ;
     }
 }

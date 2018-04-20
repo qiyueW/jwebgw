@@ -2,7 +2,6 @@ package wx.web.base.dao;
 
 import java.util.List;
 
-import system.db.dao.vo.CID;
 import configuration.DBO;
 import wx.web.base.bean.RY;
 import wx.web.base.bean.vo.RYView;
@@ -88,26 +87,30 @@ public class RYDao {
         }
         int[] i = DBO.service.ADUS.executeBatch(
                 "UPDATE RY SET ry_style=2 WHERE ry_id IN(" + sb1.substring(1) + ")",
-                "UPDATE RY SET ry_style=1 WHERE ry_id IN(" + sb2.substring(1) + ")"
+                 "UPDATE RY SET ry_style=1 WHERE ry_id IN(" + sb2.substring(1) + ")"
         );
         return null == i ? -1 : i[0] + i[1];
     }
 
     public static final int dellStye(final String ids, final int style) {
         return DBO.service.D.deleteVastByID_CheckToDeny_CID(RY.class,
-                ids//将被删除的id集合
-                ,
-                 "(ry_sort=0 OR ry_sort=1 OR ry_style!=" + style + ")"//如果被删除的是超管员或管理员或不是我们指定的状态，阻止删除
-        )//在提问表，资料库检查，人员是否已经使用
-                ;
+                 ids//将被删除的id集合
+                , "(ry_sort=0 OR ry_sort=1 OR ry_style!=" + style + ")"//如果被删除的是超管员或管理员或不是我们指定的状态，阻止删除
+        );
+//                ,
+//                 null
+//                 new CID(TWT.class, "twt_people_id"), new CID(WTJH.class, "wtjh_people_id"))//在提问表，资料库检查，人员是否已经使用
+//                ;
     }
 
     public static final int dellStye(final String ids) {
         return DBO.service.D.deleteVastByID_CheckToDeny_CID(RY.class,
-                ids//将被删除的id集合
+                 ids//将被删除的id集合
                 ,
                  "(ry_sort=0 OR ry_sort=1 OR ry_style=0)"//如果被删除的是超管员或管理员或是新建的人员（新建的人员，有新建人员的删除权限，所以分开) 阻止删除
-        )//在提问表，资料库检查，人员是否已经使用
+        )
+//                ,
+//                 new CID(TWT.class, "twt_people_id"), new CID(WTJH.class, "wtjh_people_id"))//在提问表，资料库检查，人员是否已经使用
                 ;
     }
 
@@ -131,7 +134,7 @@ public class RYDao {
      */
     public static final List<RY> selectVast(final String condition, final int page, final int pageCount, String orderby) {
         return DBO.service.S.selectVastByCondition(RY.class,
-                page, pageCount//分页
+                 page, pageCount//分页
                 ,
                  condition//条件
                 ,

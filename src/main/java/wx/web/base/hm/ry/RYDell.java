@@ -8,7 +8,7 @@ import wx.web.base.dao.RYDao;
 import system.base.annotation.H;
 
 @H("/base/ry")
-//@system.web.filter.annotation.JWFilter(过滤是否有权限的类)
+@system.web.power.ann.ZDY(zdy = power.hm.zdy.SQ_UA.class, value = "J43_3")
 public class RYDell {
 
     JWeb jw;

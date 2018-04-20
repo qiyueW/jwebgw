@@ -1,25 +1,19 @@
 package wx.web.base.hm.ry;
 
-import configuration.DBO;
 import static configuration.DBO.service;
-import java.util.ArrayList;
-import java.util.List;
 
 import plugins.ligerui.LigeruiKey;
 import plugins.ligerui.LigeruiService;
 import plugins.ligerui.vo.LigerUIPage;
-import power.bean.AdminUser;
 import system.base.annotation.H;
 import system.base.annotation.M;
 import system.web.JWeb;
-import system.web.power.PDK;
-import system.web.power.session.Login;
-import wx.web.base.bean.BM;
 import wx.web.base.bean.RY;
 import wx.web.base.dao.RYDao;
 import wx.web.base.hm.ry.vo.SelectConditionVo;
 
 @H("/base/ry")
+@system.web.power.ann.ZDY(zdy = power.hm.zdy.SQ_UA.class, value = "J44_1")//正式区有查询权限。
 public class RYSelect {
 
     @M("/selectVast")///base/ry/selectVast
@@ -35,6 +29,7 @@ public class RYSelect {
 
     }
 
+    @system.web.power.ann.ZDY(zdy = power.hm.zdy.SQ_UA.class, value = "J43_1")//待审区有查询权限。
     @M("/selectVast0")///base/ry/selectVast0
     public static void selec0_UIGridt(JWeb jw) {
 

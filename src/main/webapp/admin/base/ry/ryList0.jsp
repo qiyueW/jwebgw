@@ -35,7 +35,7 @@
                     $("#bm_id").val(data.data['bm_id']);
                     /* $("#bm_name").val(data.data['bm_name']); */
                     var id = getMyNodeID("bm_id", data.data);
-                    id = "'" + id.replace(/,/g, "','") + "'";
+//                    id = "'" + id.replace(/,/g, "','") + "'";
                     GRID.setParm("bm_id", id);
                     GRID.setParm("nameOrAccount", $("#nameOrAccount").val());
                     GRID.reload();
@@ -44,7 +44,8 @@
                 GRID = $("#divID_GRID").ligerGrid({
                     columns: [
                         {display: '部门', name: 'bm_name', width: 125, align: 'center'}
-                        , {display: '岗位', name: 'gw_name', width: 75, align: 'center'}
+                        , {display: '岗位', name: 'gangwei_name', width: 75, align: 'center'}
+                         , {display: '职务', name: 'zhiwu_name', width: 75, align: 'center'}
                         , {display: '名字', name: 'ry_name', width:95, align: 'center'}
                         , {display: '账号', name: 'ry_account', width: 80, align: 'center'}
                         , {display: '性别', name: 'ry_sex', width: 46, align: 'center'}
@@ -80,9 +81,9 @@
                             }
                         }
                         , {display: '备注', name: 'ry_info', width: 120, align: 'center'}
-                        , {display: 'ry_id', name: 'ry_id', hide: true}
-                        , {display: 'bm_id', name: 'bm_id', hide: true}
-                        , {display: 'bm_id', name: 'gw_id', hide: true}
+//                        , {display: 'ry_id', name: 'ry_id', hide: true}
+//                        , {display: 'bm_id', name: 'bm_id', hide: true}
+//                        , {display: 'bm_id', name: 'gw_id', hide: true}
                     ]
                     , usePager: true
                     , url: '${path_home}/base/ry/selectVast0.jw'
@@ -99,7 +100,7 @@
                 var rows = GRID.getSelecteds();
                 var ids = "";
                 for (var i = 0; i < rows.length; i++) {
-                    ids = ids + ",'" + rows[i].ry_id + "'";
+                    ids = ids + "," + rows[i].ry_id;
                 }
                 ids = ids.substring(1);
                 if (rows.length < 1) {
@@ -119,7 +120,7 @@
                 var rows = GRID.getSelecteds();
                 var ids = "";
                 for (var i = 0; i < rows.length; i++) {
-                    ids = ids + ",'" + rows[i].ry_id + "'";
+                    ids = ids + "," + rows[i].ry_id;
                 }
                 ids = ids.substring(1);
                 if (rows.length < 1) {

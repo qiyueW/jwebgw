@@ -9,6 +9,7 @@ import system.base.annotation.M;
 import system.base.annotation.Validate;
 import system.web.JWeb;
 import configuration.DBO;
+import system.base.StringTool;
 import system.web.power.PDK;
 import wx.web.base.bean.RY;
 import wx.web.base.dao.RYDao;
@@ -33,12 +34,11 @@ public class RYUpdate {
         }
         //【针对用户】必须是指定范围，首先检查是否在范围内
         Object ua = jw.session.getAttribute(PDK.SESSION_DEFAULT_USER_KEY);
-        
-        String rejectField = null != ua 
+
+        String rejectField = null != ua
                 ? "ry_style,ry_sort,ry_account,ry_password"//用户不能修改密码
-                : "ry_style,ry_sort,ry_account" ; //管理员可以修改密码
-        
-        
+                : "ry_style,ry_sort,ry_account"; //管理员可以修改密码
+
         DBO.out_update_1_0_f1(jw, DBO.service.U.updateSome_reject(
                 obj, rejectField));
     }
@@ -64,7 +64,7 @@ public class RYUpdate {
         if (null == ids || ids.length() < 24) {
             return;
         }
-        ids = RYDao.formatListToIds(ids, 0);//取出其中 为新增待审核 的id集合
+        ids = RYDao.formatListToIds(StringTool.replaceDToDDD(ids), 0);//取出其中 为新增待审核 的id集合
         if (null == ids) {
             return;//如果没有，直接中止客户请求
         }
@@ -78,7 +78,7 @@ public class RYUpdate {
         if (null == ids || ids.length() < 24) {
             return;
         }
-        List<RY> list = RYDao.formatListToIds(ids);//取出其中 为新增待审核 的id集合
+        List<RY> list = RYDao.formatListToIds(StringTool.replaceDToDDD(ids));//取出其中 为新增待审核 的id集合
         if (list.isEmpty()) {
             return;//如果没有，直接中止客户请求
         }

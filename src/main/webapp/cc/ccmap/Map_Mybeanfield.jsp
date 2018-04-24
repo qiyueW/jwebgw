@@ -147,10 +147,9 @@
                 </table>
             </div>
         </div>
-        <!--        <div style=" text-align:center">
-                    <button type="submit" id="myMybeanButton" data-loading-text="执行中"
-                            class="btn btn-primary" >添加</button>
-                </div>-->
-        <!--root div end-->
+          
+        <div>
+            其它，预设值方案key: bean
+        </div>
     </body>
 </html>

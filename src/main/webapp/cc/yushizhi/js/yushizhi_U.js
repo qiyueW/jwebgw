@@ -1,26 +1,26 @@
 ////iniEvent inieditor
 ////初始化事件
 ////绑定FORM提交事件
-function postCModelFormData(btid) {
-    var row = $("#dg").datagrid('getSelected');
-    var index = $("#dg").datagrid('getRowIndex', row);
-    $("#dg").datagrid('endEdit', index);
+function u_postFormData(btid) {
+    var row = $("#u_dg").datagrid('getSelected');
+    var index = $("#u_dg").datagrid('getRowIndex', row);
+    $("#u_dg").datagrid('endEdit', index);
     $.messager.confirm('确认项', '请确认是否写入数据库', function (r) {
         if (r) {
-            var datas = $('#dg').datagrid('getData');
+            var datas = $('#u_dg').datagrid('getData');
             var rs = "";
             for (var i = 0; i < datas.total; i++) {
                 if (datas.rows[i].yushizhi2_key)
                     rs = rs + getJsonByYushizhi2(datas.rows[i], i == 0 ? null : ",");
             }
             var data = {};
-//                data.yushizhi_zj = $('#yushizhi_zj').val()
+            data.yushizhi_zj = $('#yushizhi_zj').val()
             data.yushizhi_mc = toFormatZT($('#yushizhi_mc').val())
             data.yushizhifl_id = $('#yushizhifl_id').val()
             data.yushizhifl_name = $('#yushizhifl_name').val()
-            data.yushizhi_bz =toFormatZT($('#yushizhi_bz').val())
+            data.yushizhi_bz = toFormatZT($('#yushizhi_bz').val())
             data.yushizhi2 = "[" + rs + "]";
-            mypost('cc/yushizhi/adu/a/add.jw', data, btid);
+            mypost('cc/yushizhi/adu/u/update.jw', data, btid);
         }
     });
 }
@@ -32,13 +32,4 @@ function getJsonByYushizhi2(obj, fh) {
             + ',"yushizhi2_key":"' + toFormatZT(obj.yushizhi2_key) + '"'
             + ',"yushizhi2_value":"' + toFormatZT(obj.yushizhi2_value) + '"'
     return str + "}";
-}
-
-function a_toClearCell(tableID, updateValues, msg) {
-    $.messager.confirm('确认项', msg ? msg : '请确认是否执行清空操作', function (r) {
-        var datas = $('#' + tableID).datagrid('getData');
-        for (var i = 0; i < datas.total; i++) {
-            $('#' + tableID).datagrid('updateRow', {index: i, row: updateValues});
-        }
-    });
 }

@@ -139,9 +139,10 @@
                 </tr>
             </table>        
         </div>
-        <!--        <div style=" margin-top: 28px;">
-                    <input type="button" id="myMybeanButton" data-loading-text="执行中" style=" width:99%;"
-                            class="btn btn-primary"  value="修改"/>
-                </div>-->
+        
+        
+        <div>
+            其它，预设值方案key: fields
+        </div>
     </body>
 </html>

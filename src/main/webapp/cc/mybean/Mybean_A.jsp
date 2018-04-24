@@ -16,17 +16,23 @@
         <script type="text/javascript"src="${path_home}/cc/mybean/js/Mybean_A.js?<%=new Date()%>"></script>
         <%@include file="/WEB-INF/jspf/artDialog.jspf"%>
         <%@include file="/WEB-INF/jspf/ztree.jspf"%>
-
+       <script type="text/javascript" src="${path_home}/CJ.js"></script>
+        <script type="text/javascript"src="${path_home}/cc/yushizhi/js/yushizhiEngine.js?i=<%=new Date()%>"></script>
+        
         <script type="text/javascript">
             var path_home = "${path_home}/";
+
             $(function () {
                 iniMybeanEventA();
                 var zcfl = new ztree_select("${path_home}/cc/mypackage/s/selectVast.jw", {}, "showmypackageTree", "mypackage_name", "mypackage_id", 375, 390);
                 zcfl.init(function (treeId, treeNode) {
                     zcfl.setMyValue(treeNode)
                     zcfl.hideMenu();//$("#" +zcfl.menuContentDIV).fadeOut("fast");
-                }, "mypackage_id", "mypackage_pid", "mypackage_name")
+                }, "mypackage_id", "mypackage_pid", "mypackage_name");
+                var yobg = new YSZEngine();
+                yobg.beanOption("ysfaSelectID")
             });
+
             function ysfaSelect() {
                 var v = $("#ysfaSelectID").val();
                 $.get("${path_home}/cc/mybean/modeldata/" + v + ".json?ss=<%=new Date()%>", {}, function (data) {
@@ -82,14 +88,7 @@
     </head>
     <body>
         <div>
-            <select id="ysfaSelectID" onchange="ysfaSelect()">
-                <option value="empty">无</option>
-                <option value="jwebBase">JWEB 基础模板 相关预设方案</option>
-                <option value="jwebService">JWEB 业务模板 相关预设方案</option>
-                
-                <option value="jwebBase_tree">JWEB 基础模板_tree 相关预设方案</option>
-                <option value="jwebBase_select">JWEB 基础模板_select 相关预设方案</option>
-            </select>
+            <select id="ysfaSelectID" style=" width:200px;height: 30px;"> </select>
         </div>
         <table border="1" cellpadding="0" cellspacing="0">
             <tr height="35">

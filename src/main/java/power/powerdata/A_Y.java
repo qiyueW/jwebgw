@@ -75,6 +75,11 @@ public class A_Y implements IPowerData {
                         .setHMNode("Y101_16_2", "Y101_16_1S", "查询")
                         .setHMNode("Y101_16_2", "Y101_16_1U", "修改")
                         .setHMNode("Y101_16_2", "Y101_16_1D", "删除")
+                    .setHMAndViewNode("Y101_16", "Y101_17_1A", "数据预设添加", "cc/yushizhi/yushizhi_A.jsp", true)
+                    .setViewNode("Y101_16", "Y101_17_2", "数据预设维护", "cc/yushizhi/yushizhi_S.jsp", true)
+                        .setHMNode("Y101_17_2", "Y101_17_1S", "查询")
+                        .setHMNode("Y101_17_2", "Y101_17_1U", "修改")
+                        .setHMNode("Y101_17_2", "Y101_17_1D", "删除")                
                 
                 
                   .setEmptyNode("0", "Y100", "展示区管理", false)

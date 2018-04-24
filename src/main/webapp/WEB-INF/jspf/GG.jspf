@@ -1,9 +1,12 @@
 <%@ page pageEncoding="UTF-8" %>
 
 <script type="text/javascript">
-     var path_home = "${path_home}/";
+    var path_home = "${path_home}/";
     function toFormatZT(str) {
-        return str ? str.replace(/\'/g, "&#39;").replace(/\"/g, "&#34;").replace(/\\/g, "&#92;") : "";
+        return str ? str.replace(/\'/g, "&#39;").replace(/\"/g, "&#34;").replace(/\\/g, "&#92;").replace(/</g,"&#60;").replace(/>/g,"&#62;") : "";
+    }
+    function fzFormatZT(str) {
+        return str ? str.replace(/&#39;/g, "'").replace(/&#34;/g,"\"" ).replace(/&#92;/g, "\\").replace(/&#60;/g, "<").replace(/&#62;/g, ">") : "";
     }
     /**
      * 
@@ -19,10 +22,10 @@
     }
 
     function mypost(url, data, btid, func) {
-        var btname=document.getElementById(btid).value;
+        var btname = document.getElementById(btid).value;
         btfunctionStyel(btid, "执行中", 0)
-        $.post(path_home+url, data, function (result) {
-            if(func){
+        $.post(path_home + url, data, function (result) {
+            if (func) {
                 func(result);
                 return;
             }
@@ -37,9 +40,9 @@
                 aalert(result.msg);
             }
             setTimeout(function () {
-                btfunctionStyel(btid,btname, 1);
+                btfunctionStyel(btid, btname, 1);
             }, 1000);
-            
+
         }, 'json');
     }
 </script>

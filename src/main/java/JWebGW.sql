@@ -246,3 +246,27 @@ CREATE TABLE IF NOT EXISTS `Mybean`(
     ,PRIMARY KEY (`mybean_zj`)
     ,KEY `mypackage_id` (`mypackage_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE IF NOT EXISTS `Yushizhi`(
+    `yushizhi_zj` CHAR(24)  NOT NULL  /*主键*/
+    ,`yushizhi_mc` VARCHAR(255)  NOT NULL /*名称*/
+    ,`yushizhifl_id` CHAR(24)  NOT NULL /*分类外键*/
+    ,`yushizhifl_name` VARCHAR(50)  NOT NULL /*分类名*/
+    ,`yushizhi_bz` VARCHAR(255)  DEFAULT NULL /*备注*/
+
+    ,PRIMARY KEY (`yushizhi_zj`)
+    ,KEY `yushizhi_mc` (`yushizhi_mc`)
+    ,KEY `yushizhifl_id` (`yushizhifl_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS `Yushizhi2`(
+    `yushizhi2_zj` CHAR(24)  NOT NULL  /*主键*/
+    ,`yushizhi2_bz` VARCHAR(50)  DEFAULT NULL /*备注*/
+    ,`yushizhi2_key` VARCHAR(200)  NOT NULL /*键*/
+    ,`yushizhi2_value` TEXT  DEFAULT NULL /*值*/
+    ,`yushizhi_zj` CHAR(24)  NOT NULL /*领头-主键*/
+
+    ,PRIMARY KEY (`yushizhi2_zj`)
+    ,KEY `yushizhi2_key` (`yushizhi2_key`)
+    ,KEY `yushizhi_zj` (`yushizhi_zj`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

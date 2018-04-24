@@ -7,7 +7,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>管理区</title>
         <%@include file="/WEB-INF/jspf/admin-ui.jspf"%>
-        <script src="admin/indexdata.js" type="text/javascript"></script>
+        <!--<script src="admin/indexdata.js" type="text/javascript"></script>-->
         <script type="text/javascript">
             var tab = null;
             var accordion = null;

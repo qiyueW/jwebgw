@@ -9,7 +9,16 @@ public class Yushizhi {
     private String yushizhifl_id;// 分类外键
     private String yushizhifl_name;// 分类名
     private String yushizhi_bz;// 备注
+    private Integer yushizhi_px;//排序
 
+    public Integer getYushizhi_px() {
+        return yushizhi_px;
+    }
+
+    public void setYushizhi_px(Integer yushizhi_px) {
+        this.yushizhi_px = yushizhi_px;
+    }
+    
     /**
      * 设置 主键
      *

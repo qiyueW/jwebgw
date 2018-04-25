@@ -247,18 +247,19 @@ CREATE TABLE IF NOT EXISTS `Mybean`(
     ,KEY `mypackage_id` (`mypackage_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
 CREATE TABLE IF NOT EXISTS `Yushizhi`(
     `yushizhi_zj` CHAR(24)  NOT NULL  /*主键*/
     ,`yushizhi_mc` VARCHAR(255)  NOT NULL /*名称*/
     ,`yushizhifl_id` CHAR(24)  NOT NULL /*分类外键*/
     ,`yushizhifl_name` VARCHAR(50)  NOT NULL /*分类名*/
     ,`yushizhi_bz` VARCHAR(255)  DEFAULT NULL /*备注*/
+    ,`yushizhi_px` INT  DEFAULT NULL /*排序*/
 
     ,PRIMARY KEY (`yushizhi_zj`)
     ,KEY `yushizhi_mc` (`yushizhi_mc`)
     ,KEY `yushizhifl_id` (`yushizhifl_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 CREATE TABLE IF NOT EXISTS `Yushizhi2`(
     `yushizhi2_zj` CHAR(24)  NOT NULL  /*主键*/
     ,`yushizhi2_bz` VARCHAR(50)  DEFAULT NULL /*备注*/

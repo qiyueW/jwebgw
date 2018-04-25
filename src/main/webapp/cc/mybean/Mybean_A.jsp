@@ -16,9 +16,10 @@
         <script type="text/javascript"src="${path_home}/cc/mybean/js/Mybean_A.js?<%=new Date()%>"></script>
         <%@include file="/WEB-INF/jspf/artDialog.jspf"%>
         <%@include file="/WEB-INF/jspf/ztree.jspf"%>
-       <script type="text/javascript" src="${path_home}/CJ.js"></script>
+        <%@include file="/WEB-INF/jspf/GG.jspf"%>
+        <script type="text/javascript" src="${path_home}/CJ.js"></script>
         <script type="text/javascript"src="${path_home}/cc/yushizhi/js/yushizhiEngine.js?i=<%=new Date()%>"></script>
-        
+
         <script type="text/javascript">
             var path_home = "${path_home}/";
 

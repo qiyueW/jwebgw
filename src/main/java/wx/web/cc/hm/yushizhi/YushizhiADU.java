@@ -30,6 +30,8 @@ public class YushizhiADU {
             jw.printOne(DBO.getJSONModel("0", "添加异常：同个分类下，预方案重名"));
             return;
         }
+        int px = DBO.service.S.selectCountByCondition(Yushizhi.class, "WHERE yushizhifl_id='" + obj.getYushizhifl_id() + "'");
+        obj.setYushizhi_px(px);
         List<Yushizhi2> obj2 = (List<Yushizhi2>) jw.request.getAttribute("obj2");
         int[] i = DBO.service.A.add_OM(obj, obj2);
         DBO.out_add_1_0_f1(jw, null == i ? -1 : i[0]);
@@ -79,12 +81,23 @@ public class YushizhiADU {
             o2.setYushizhi_zj(obj.getYushizhi_zj());//锁定表头主键
         }
         int[] i = DBO.service.ADUS.executeBatch(
-                DBO.service.SQL.update_all(obj)//修改表头的数据
+                DBO.service.SQL.updateSome_reject(obj, "yushizhi_px")//修改表头的数据,排序字段不进行修改
                 ,
                  DBO.service.SQL.dellByCondition(Yushizhi2.class, "WHERE yushizhi_zj='" + obj.getYushizhi_zj() + "'")//清空旧表体的值
                 ,
                  DBO.service.SQL.addVast(obj2)//加入新表体的值
         );
+        DBO.out_update_1_0_f1(jw, null == i ? -1 : i[0]);
+    }
+
+    @system.web.power.ann.SQ("Y101_17_1U")
+    @M("/u/update/saveMove")
+    public void updateMove() {
+        String ids = jw.getString("ids");
+        if (null == ids || ids.isEmpty()) {
+            return;
+        }
+        int[] i = YushizhiService.topx(ids.split(","));
         DBO.out_update_1_0_f1(jw, null == i ? -1 : i[0]);
     }
 

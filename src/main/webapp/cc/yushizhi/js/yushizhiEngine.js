@@ -7,7 +7,7 @@ function YSZEngine() {
     this.loadBody = function (zj) {
         $.post(path_home + "cc/yushizhi/s2/findBody.jw?", {zj: zj}, function (data) {
             for (var i = 0; i < data.length; i++) {
-                $("#" + data[i].yushizhi2_key).val(data[i].yushizhi2_value);
+                $("#" + data[i].yushizhi2_key).val(fzFormatZT(data[i].yushizhi2_value));
             }
         }, "json");
     };
@@ -24,7 +24,7 @@ YSZEngine.prototype.beanOption = function (selectID) {
 YSZEngine.prototype.fieldsOption = function (selectID) {
     this.loadhead(selectID, this.fields);
     var yy = this.loadBody;
-    $("#" + selectID).on('onchange', function () {
-        yy($("#" + selectID).val());
-    });
+    $("#" + selectID).change(function () {
+        yy($(this).val());
+    })
 };

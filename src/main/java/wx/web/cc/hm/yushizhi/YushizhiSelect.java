@@ -46,7 +46,7 @@ public class YushizhiSelect {
         String where = "WHERE yushizhifl_id='" + yushizhifl_id + "'";
         EasyuiPage page = EasyuiService.getPage(jw);
 
-        List<Yushizhi> list = null == jw.getString("page") ? DBO.service.S.selectByCondition(Yushizhi.class, where) : DBO.service.S.selectVastByCondition(Yushizhi.class, page.page, page.rows, where);
+        List<Yushizhi> list = null == jw.getString("page") ? DBO.service.S.selectByCondition(Yushizhi.class, where,"ORDER BY yushizhi_px  ASC") : DBO.service.S.selectVastByCondition(Yushizhi.class, page.page, page.rows, where,"ORDER BY yushizhi_px ASC");
         jw.printOne(EasyuiService.formatGrid(list, DBO.service.S.selectCountByCondition(Yushizhi.class, where)));
     }
 

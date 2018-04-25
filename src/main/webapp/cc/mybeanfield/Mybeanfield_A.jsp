@@ -17,6 +17,9 @@
         <%@include file="/WEB-INF/jspf/artDialog.jspf"%>
         <%@include file="/WEB-INF/jspf/ztree.jspf"%>
         <%@include file="/WEB-INF/jspf/GG.jspf"%>
+        <script type="text/javascript" src="${path_home}/CJ.js?i=<%=new Date()%>"></script>
+        <script type="text/javascript"src="${path_home}/cc/yushizhi/js/yushizhiEngine.js?i=<%=new Date()%>"></script>
+
         <script type="text/javascript">
             var path_home = "${path_home}/";
             $(function () {
@@ -49,6 +52,8 @@
                 $("#" + beanfl.treeID).on('click', function () {
                     iniEmpty();
                 })
+                var yobg = new YSZEngine();
+                yobg.fieldsOption("y_fanan");
             });
             //              class=""
         </script>
@@ -137,7 +142,8 @@
                     </tr>
                     <tr height="34">
                         <td height="34"><div align="center">
-                                <select id="y_fanan" onchange="selectY_fanan()">
+                                <select id="y_fanan"></select>
+<!--                                <select id="y_fanan" onchange="selectY_fanan()">
                                     <option value="">无</option>
                                     <option value="id">主键</option>
                                     <option value="text">文本</option>
@@ -151,7 +157,7 @@
                                     <option value="filepath">上传类-路径-单</option>
                                     <option value="filepaths">上传类-路径-集合</option>
                                     <option value="style">单据状态0或1或其他</option>
-                                </select>
+                                </select>-->
                             </div></td>
                         <td><div align="center"> <input type="text" name="mybeanfield_bz" id="mybeanfield_bz" /> </div></td>
                         <td><div align="center">

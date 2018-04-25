@@ -80,7 +80,7 @@
                         <th data-options="field:'yushizhi_zj'">ID</th>
                         <th data-options="field:'yushizhifl_id'">FLID</th>
                         <th data-options="field:'ck',checkbox:true"></th>
-                        <!--<th data-options="field:'yushizhifl_name',width:160"><div>分类名</div>yushizhifl_name</th>-->
+                        <th data-options="field:'yushizhi_px',width:40"><div>排序</div>yushizhi_px</th>
                         <th data-options="field:'yushizhi_mc',width:260,formatter:f_mc"><div>名称</div>yushizhi_mc</th>
                         <th data-options="field:'yushizhi_bz',width:300,formatter:f_bz"><div>备注</div>yushizhi_bz</th>
                         <th data-options="field:'a',width:200,formatter:f_cz">操作区</th>
@@ -88,8 +88,9 @@
                 </thead>
             </table>
             <div id="tb" style="padding:2px 5px;">
-                <!--                    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="dellBeanField()">删除</a>
-                                    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="update()">修改</a>-->
+                <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" id="saveMove"onclick="MoveSave()">生效移动位置</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="MoveUp()">上移</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="MoveDown()">下移</a>
                 <%=showPower%>
                 <script>
                     function f_bz(value, row, index) {
@@ -140,12 +141,59 @@
                             return;
                         }
                         $('#showUpdatePage').panel({title: row.yushizhi_mc + " 预设值修改"});
-
-                        $('#showUpdatePage').window('open');//.window('refresh', '${path_home}/cc/yushizhi/adu/u/update/select.jw?selectUpdateID=' + row.yushizhi_zj);
+                        $('#showUpdatePage').window('open');
                         loadHeader("showUpdatePage", '${path_home}/cc/yushizhi/adu/u/update/select.jw?selectUpdateID=' + row.yushizhi_zj);
                     }
+//移动------------------------------------
+                    function MoveSave() {
+                        var datas = $('#dg').datagrid('getData');
+                        var rs = "";
+                        for (var i = 0; i < datas.total; i++) {
+                            rs = rs + (datas.rows[i], i == 0 ? "" : ",") + datas.rows[i].yushizhi_zj;
+                        }
+                        var data = {};
+                        data.ids = rs;
+                        mypost('cc/yushizhi/adu/u/update/saveMove.jw', data, "saveMove");
+                    }
+                    function MoveUp() {
+                        var row = $("#dg").datagrid('getSelected');
+                        var index = $("#dg").datagrid('getRowIndex', row);
+                        mysort(index, 'up', 'dg');
+                    }
+                    //下移
+                    function MoveDown() {
+                        var row = $("#dg").datagrid('getSelected');
+                        var index = $("#dg").datagrid('getRowIndex', row);
+                        mysort(index, 'down', 'dg');
+                    }
+                    function mysort(index, type, gridname) {
+                        $("#dg").datagrid('endEdit', index);
+                        if ("up" == type) {
+                            if (index != 0) {
+                                var toup = $('#' + gridname).datagrid('getData').rows[index];
+                                var todown = $('#' + gridname).datagrid('getData').rows[index - 1];
+                                $('#' + gridname).datagrid('getData').rows[index] = todown;
+                                $('#' + gridname).datagrid('getData').rows[index - 1] = toup;
+                                $('#' + gridname).datagrid('refreshRow', index);
+                                $('#' + gridname).datagrid('refreshRow', index - 1);
+                                $('#' + gridname).datagrid('selectRow', index - 1);
+                            }
+                        } else if ("down" == type) {
+                            var rows = $('#' + gridname).datagrid('getRows').length;
+                            if (index != rows - 1) {
+                                var todown = $('#' + gridname).datagrid('getData').rows[index];
+                                var toup = $('#' + gridname).datagrid('getData').rows[index + 1];
+                                $('#' + gridname).datagrid('getData').rows[index + 1] = todown;
+                                $('#' + gridname).datagrid('getData').rows[index] = toup;
+                                $('#' + gridname).datagrid('refreshRow', index);
+                                $('#' + gridname).datagrid('refreshRow', index + 1);
+                                $('#' + gridname).datagrid('selectRow', index + 1);
+                            }
+                        }
+                    }
+
                 </script>
-                <select onchange="$('#dg').datagrid({singleSelect: (this.value == 0)})">
+                <select onchange="$('#dg').datagrid({singleSelect: (this.value == 0)});pageCN('dg', 100)">
                     <option value="0">单行选择</option>
                     <option value="1">多行选择</option>
                 </select>

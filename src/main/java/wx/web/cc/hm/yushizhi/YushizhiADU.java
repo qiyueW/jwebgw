@@ -10,7 +10,7 @@ import java.util.List;
 import plugins.easyui.EasyuiService;
 import wx.web.cc.bean.Yushizhi;
 import wx.web.cc.bean.Yushizhi2;
-import wx.web.cc.hm.yushizhi.service.YushizhiService;
+import wx.web.cc.service.YushizhiService;
 
 @H("cc/yushizhi/adu")
 public class YushizhiADU {

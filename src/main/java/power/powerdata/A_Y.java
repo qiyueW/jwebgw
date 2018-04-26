@@ -68,6 +68,11 @@ public class A_Y implements IPowerData {
                         .setHMNode("Y101_15_2", "Y101_15_1S", "查询")
                         .setHMNode("Y101_15_2", "Y101_15_1U", "修改")
                         .setHMNode("Y101_15_2", "Y101_15_1D", "删除")                
+                    .setHMAndViewNode("Y101_15", "Y101_18_1A", "方案添加", "cc/fangan/fangan_A.jsp", true)
+                    .setViewNode("Y101_15", "Y101_18_2", "方案维护", "cc/fangan/fangan_S.jsp", true)
+                        .setHMNode("Y101_18_2", "Y101_18_1S", "查询")
+                        .setHMNode("Y101_18_2", "Y101_18_1U", "修改")
+                        .setHMNode("Y101_18_2", "Y101_18_1D", "删除")  
                 
                 .setEmptyNode("Y101", "Y101_16", "数据预设", false)   
                     .setHMAndViewNode("Y101_16", "Y101_16_1A", "数据预设分类添加", "cc/yushizhi/yushizhifl/yushizhifl_A.jsp", true)
@@ -80,7 +85,7 @@ public class A_Y implements IPowerData {
                         .setHMNode("Y101_17_2", "Y101_17_1S", "查询")
                         .setHMNode("Y101_17_2", "Y101_17_1U", "修改")
                         .setHMNode("Y101_17_2", "Y101_17_1D", "删除")                
-                
+                //Y101_19_1
                 
                   .setEmptyNode("0", "Y100", "展示区管理", false)
                     .setHMAndViewNode("Y100", "Y100_6", "首页发布", "spage/index/au/select.jw", true)

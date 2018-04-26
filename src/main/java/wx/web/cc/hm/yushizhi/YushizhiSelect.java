@@ -8,7 +8,7 @@ import system.web.JWeb;
 import system.base.annotation.H;
 import system.base.annotation.M;
 import wx.web.cc.bean.Yushizhi;
-import wx.web.cc.hm.yushizhi.service.YushizhiService;
+import wx.web.cc.service.YushizhiService;
 
 @system.web.power.ann.SQ("Y101_17_1S")
 @H("cc/yushizhi/s")

@@ -204,7 +204,6 @@ CREATE TABLE `MyPackage` (
   PRIMARY KEY (`mypackage_id`)
 ) ENGINE=InnoDB;
 
-DROP TABLE `Mybean`;
 CREATE TABLE IF NOT EXISTS `Mybean`(
     `mybean_zj` CHAR(24)  NOT NULL  /*主键*/
     ,`mybean_px` INT  DEFAULT NULL /*排序*/
@@ -270,4 +269,40 @@ CREATE TABLE IF NOT EXISTS `Yushizhi2`(
     ,PRIMARY KEY (`yushizhi2_zj`)
     ,KEY `yushizhi2_key` (`yushizhi2_key`)
     ,KEY `yushizhi_zj` (`yushizhi_zj`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `Fangan1`(
+    `fanganfl_id` CHAR(24)  NOT NULL  /*分类外键*/
+    ,`fanganfl_name` VARCHAR(50)  NOT NULL /*方案分类*/
+    ,`fangan1_zj` CHAR(24)  NOT NULL /*主键*/
+    ,`fangan1_mc` VARCHAR(50)  NULL /*方案名*/
+    ,`fangan1_bz` VARCHAR(50)  DEFAULT NULL /*备注*/
+    ,`fangan1_zt` CHAR(1)  NOT NULL /*状态*/
+    ,`ry_id` CHAR(24)  NOT NULL /*方案制定人主键*/
+    ,`ry_name` VARCHAR(50)  NOT NULL /*方案制定人名称*/
+    ,`fangan1_zhidanshijian` DATETIME  NOT NULL /*制单时间*/
+    ,`fangan1_shenpishijian` DATETIME  NOT NULL /*审批时间*/
+    ,`fangan1_px` INT  NOT NULL /*排序*/
+
+    ,KEY `fanganfl_id` (`fanganfl_id`)
+    ,PRIMARY KEY (`fangan1_zj`)
+    ,UNIQUE KEY `fangan1_mc` (`fangan1_mc`)
+    ,KEY `fangan1_zt` (`fangan1_zt`)
+    ,KEY `fangan1_zhidanshijian` (`fangan1_zhidanshijian`)
+    ,KEY `fangan1_shenpishijian` (`fangan1_shenpishijian`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `Fangan2`(
+    `fangan1_zj` CHAR(24)  NOT NULL  /*父键*/
+    ,`fangan2_zj` CHAR(24)  NOT NULL /*主键*/
+    /*,`fangan2_px` INT  NOT NULL 排序*/
+    ,`fangan2_filepath` VARCHAR(200)  NOT NULL /*文件路径*/
+    ,`fangan2_filename` VARCHAR(200)  NOT NULL /*文件名*/
+    ,`fangan2_bz` VARCHAR(200)  NULL /*备注*/
+    ,`cmodel_zj` CHAR(24)  NOT NULL /*模型主键*/
+    ,`cmodel_mc` VARCHAR(50)  NOT NULL /*模型名*/
+    
+    ,KEY `fangan1_zj` (`fangan1_zj`)
+    ,PRIMARY KEY (`fangan2_zj`)
+    ,KEY `cmodel_zj` (`cmodel_zj`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -1,4 +1,4 @@
-package wx.web.cc.hm.yushizhi.service;
+package wx.web.cc.service;
 
 import configuration.DBO;
 import java.util.List;

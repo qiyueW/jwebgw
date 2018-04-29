@@ -87,39 +87,39 @@ public class CModelSelect {
         }
         jw.printOne(JCJSON.toSimpleJSON(list));
     }
-
-    @M("/base/selectVast") // cc/mybean/modal/s/selectVast.jw
-    public static void select(JWeb jw) {
-        String mybean_zj = jw.getString("mybean_zj");
-        if (null == mybean_zj || mybean_zj.isEmpty()) {
-            jw.printOne("[]");
-            return;
-        }
-        Mybean bean = DBO.service.S.selectOneByID(Mybean.class, mybean_zj);
-        if (null == bean.getMybean_zj()) {
-            jw.printOne("[]");
-            return;
-        }
-
-        String sort = jw.getString("sort", "bean");
-        String where = "WHERE mybean_zj='" + mybean_zj + "'";
-        List<Mybeanfield> listBF = DBO.service.S.selectByCondition(Mybeanfield.class, where);
-        switch (sort) {
-            case "bean": {
-                jw.printOne(MybeanService.toBeanData(listBF, bean.getMybean_mc()));
-                return;
-            }
-            case "sql": {
-                jw.printOne(MybeanService.toSQLData(listBF, bean.getMybean_mc()));
-                return;
-            }
-            case "jsgetset": {
-                String js = MybeanService.toJSGet(listBF, bean.getMybean_mc());
-                js = js + "\n\n" + MybeanService.toJSSet(listBF, bean.getMybean_mc());
-                jw.printOne(js);
-            }
-        }
-
-    }
+//
+//    @M("/base/selectVast") // cc/mybean/modal/s/selectVast.jw
+//    public static void select(JWeb jw) {
+//        String mybean_zj = jw.getString("mybean_zj");
+//        if (null == mybean_zj || mybean_zj.isEmpty()) {
+//            jw.printOne("[]");
+//            return;
+//        }
+//        Mybean bean = DBO.service.S.selectOneByID(Mybean.class, mybean_zj);
+//        if (null == bean.getMybean_zj()) {
+//            jw.printOne("[]");
+//            return;
+//        }
+//
+//        String sort = jw.getString("sort", "bean");
+//        String where = "WHERE mybean_zj='" + mybean_zj + "'";
+//        List<Mybeanfield> listBF = DBO.service.S.selectByCondition(Mybeanfield.class, where);
+//        switch (sort) {
+//            case "bean": {
+//                jw.printOne(MybeanService.toBeanData(listBF, bean.getMybean_mc()));
+//                return;
+//            }
+//            case "sql": {
+//                jw.printOne(MybeanService.toSQLData(listBF, bean.getMybean_mc()));
+//                return;
+//            }
+//            case "jsgetset": {
+//                String js = MybeanService.toJSGet(listBF, bean.getMybean_mc());
+//                js = js + "\n\n" + MybeanService.toJSSet(listBF, bean.getMybean_mc());
+//                jw.printOne(js);
+//            }
+//        }
+//
+//    }
 
 }

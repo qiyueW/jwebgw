@@ -108,7 +108,7 @@
                     function doo(mc, zj) {
                         $('#showOneObj').window({
                             title: mc + " 方案预设值明细",
-                            width: 900,
+                            width: 1000,
                             height: 400,
                             modal: true,
                             href: '${path_home}/cc/fangan/s/selectOne.jw?fangan_zj=' + zj

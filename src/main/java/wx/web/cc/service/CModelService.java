@@ -25,4 +25,20 @@ public final class CModelService {
         }
         return map;
     }
+
+    public static CModel selectOne(String id) {
+        return DBO.service.S.selectOneByID(CModel.class, id);
+    }
+
+    public static List<CModel> selectAll() {
+        return DBO.service.S.select(CModel.class);
+    }
+
+    public static Map<String, String> toMapDataZJ_NR(List<CModel> list) {
+        Map<String, String> map = new HashMap();
+        for (CModel obj : list) {
+            map.put(obj.getCmodel_zj(), obj.getCmodel_nr());
+        }
+        return map;
+    }
 }

@@ -1,13 +1,13 @@
 ////iniEvent inieditor
 ////初始化事件
 ////绑定FORM提交事件
-function postFanganFormData(btid) {
-    var row = $("#dg").datagrid('getSelected');
-    var index = $("#dg").datagrid('getRowIndex', row);
-    $("#dg").datagrid('endEdit', index);
+function u_postFanganFormData(btid) {
+    var row = $("#u_dg").datagrid('getSelected');
+    var index = $("#u_dg").datagrid('getRowIndex', row);
+    $("#u_dg").datagrid('endEdit', index);
     $.messager.confirm('确认项', '请确认是否写入数据库', function (r) {
         if (r) {
-            var datas = $('#dg').datagrid('getData');
+            var datas = $('#u_dg').datagrid('getData');
             var rs = "";
             for (var i = 0; i < datas.total; i++) {
                 if (datas.rows[i].fangan2_filename)
@@ -19,8 +19,9 @@ function postFanganFormData(btid) {
             data.fangan1_mc = $('#fangan1_mc').val()
             data.fangan1_bz = $('#fangan1_bz').val()
             data.fangan1_zt = $('#fangan1_zt').val()
+            data.fangan1_zj = $('#fangan1_zj').val()
             data.fangan2 = "[" + rs + "]";
-            mypost('cc/fangan/adu/a/add.jw', data, btid);
+            mypost('cc/fangan/adu/u/update.jw', data, btid);
         }
     });
     function getJsonByFangan2(obj, fh) {

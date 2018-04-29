@@ -10,31 +10,30 @@
         <%@include file="/WEB-INF/jspf/artDialog.jspf"%>
         <%@include file="/WEB-INF/jspf/ztree.jspf"%>
         <%@include file="/WEB-INF/jspf/GG.jspf"%>
-        <script type="text/javascript" src="${path_home}/cc/yushizhi/js/yushizhi_U.js"></script>
+        <script type="text/javascript" src="${path_home}/cc/fangan/js/fangan_U.js"></script>
         <script>
             $(function () {
-                var u_fl = new ztree_select(
-                        "${path_home}/cc/yushizhi/yushizhifl/s/selectVast.jw", {}, "u_showmyyushizhiflTree", "yushizhifl_name", "yushizhifl_id", 320, 390);
+                var u_fl = new ztree_select("${path_home}/cc/fangan/fanganfl/s/selectVast.jw", {}, "u_showmyfanganflTree", "fanganfl_name", "fanganfl_id", 320, 390);
                 u_fl.init(function (treeId, treeNode) {
                     u_fl.setMyValue(treeNode)
                     u_fl.hideMenu();
-                }, "yushizhifl_id", "yushizhifl_pid", "yushizhifl_name", "${obj.yushizhifl_name}", "${obj.yushizhifl_id}");
+                }, "fanganfl_id", "fanganfl_pid", "fanganfl_name", "${obj.fanganfl_name}", "${obj.fanganfl_id}");
             });
         </script>
-
-        <input type="hidden" name="yushizhi_zj" id="yushizhi_zj" value="${obj.yushizhi_zj}" />
+        <input type="hidden" name="fangan1_zt" id="fangan1_zt" value="0" />
+        <input type="hidden" name="fangan1_zj" id="fangan1_zj" value="${obj.fangan1_zj}" />
         <table class="table" id="table1">
             <tr>
                 <td>归类</td>
-                <td><div id="u_showmyyushizhiflTree" style="position: relative; z-index: 1000"></div></td>
+                <td><div id="u_showmyfanganflTree" style="position: relative; z-index: 1000"></div></td>
             </tr>
             <tr>
                 <td>预设模板模板名</td>
-                <td><input type="text" name="yushizhi_mc" id="yushizhi_mc" value="${obj.yushizhi_mc}" /></td>
+                <td><input type="text" name="fangan1_mc" id="fangan1_mc" value="${obj.fangan1_mc}" /></td>
             </tr>
             <tr>
                 <td>备注</td>
-                <td><input type="text" name="yushizhi_bz" id="yushizhi_bz"value="${obj.yushizhi_bz}" /></td>
+                <td><input type="text" name="fangan1_bz" id="fangan1_bz"value="${obj.fangan1_bz}" /></td>
             </tr>
             <tr>
                 <td>模板内容</td>
@@ -43,18 +42,19 @@
                            data-options="
                            rownumbers:true,
                            singleSelect:true,
-                           url:'${path_home}/cc/yushizhi/s/select2OneByJson.jw',
+                           url:'${path_home}/cc/fangan/s/select2OneByJson.jw',
                            method:'post',
-                           queryParams: {yushizhi_zj:'${obj.yushizhi_zj}'},
+                           queryParams: {fangan_zj:'${obj.fangan1_zj}'},
                            iconCls: 'icon-edit',
                            toolbar:'#u_tb',
                            onClickCell: u_onClickCell
                            ">
                         <thead>
                             <tr>
-                                <th data-options="field:'yushizhi2_key',width:180,editor:'text',formatter:f_key">健</th>
-                                <th data-options="field:'yushizhi2_value',width:450,editor:'text',formatter:f_value">值</th>
-                                <th data-options="field:'yushizhi2_bz',width:300,editor:'text',formatter:f_bz">备注</th>
+                                <th data-options="field:'fangan2_filepath',width:280,editor:'text',formatter:f_flj">投产路径</th>
+                                <th data-options="field:'fangan2_filename',width:280,editor:'text',formatter:f_fmc">生产文件名</th>
+                                <th data-options="field:'cmodel_mc',width:180,editor:{type:'combobox',options:{url:'${path_home}/cc/cmodal/s/selectAllByJson2.jw',editable:true,panelHeight:170,valueField:'cmodel_mc',textField:'cmodel_mc'}}">投产模板</th>
+                                <th data-options="field:'fangan2_bz',width:200,formatter:f_bz,editor:'text'">备注</th>
                             </tr>
                         </thead>
                     </table>
@@ -67,16 +67,16 @@
 
                         <script>
                             function f_bz(value, row, index) {
-                                $('#u_dg').datagrid('updateRow', {index: index, row: {yushizhi2_bz: fzFormatZT(row.yushizhi2_bz)}})
-                                return toFormatZT(row.yushizhi2_bz);
+                                $('#u_dg').datagrid('updateRow', {index: index, row: {fangan2_bz: fzFormatZT(row.fangan2_bz)}})
+                                return toFormatZT(row.fangan2_bz);
                             }
-                            function f_key(value, row, index) {
-                                $('#u_dg').datagrid('updateRow', {index: index, row: {yushizhi2_key: fzFormatZT(row.yushizhi2_key)}})
-                                return toFormatZT(row.yushizhi2_key);
+                            function f_flj(value, row, index) {
+                                $('#u_dg').datagrid('updateRow', {index: index, row: {fangan2_filepath: fzFormatZT(row.fangan2_filepath)}})
+                                return toFormatZT(row.fangan2_filepath);
                             }
-                            function f_value(value, row, index) {
-                                $('#u_dg').datagrid('updateRow', {index: index, row: {yushizhi2_value: fzFormatZT(row.yushizhi2_value)}})
-                                return toFormatZT(row.yushizhi2_value);
+                            function f_fmc(value, row, index) {
+                                $('#u_dg').datagrid('updateRow', {index: index, row: {fangan2_filename: fzFormatZT(row.fangan2_filename)}})
+                                return toFormatZT(row.fangan2_filename);
                             }
                             function dellRow() {
                                 var row = $("#u_dg").datagrid('getSelected');
@@ -141,7 +141,7 @@
             <tr>
                 <td colspan="2">
                     <div style="text-align: center">
-                        <input type="button" value="保存" id="myMybeanButton" onclick="u_postFormData('myMybeanButton')">
+                        <input type="button" value="保存" id="myMybeanButton" onclick="u_postFanganFormData('myMybeanButton')">
                     </div>
                 </td>
             </tr>

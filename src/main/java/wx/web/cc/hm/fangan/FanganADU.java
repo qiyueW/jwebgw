@@ -88,7 +88,7 @@ public class FanganADU {
             return;
         }
         if (DBO.service.S.selectCountByCondition(Fangan1.class, "WHERE fangan1_zj<>'" + obj.getFangan1_zj() + "' AND  fangan1_mc='" + obj.getFangan1_mc() + "'") > 0) {
-            jw.printOne(DBO.getJSONModel("0", "保存异常：同个分类下，预方案重名"));
+            jw.printOne(DBO.getJSONModel("0", "保存异常：方案重名"));
             return;
         }
         List<Fangan2> obj2 = (List<Fangan2>) jw.request.getAttribute("obj2");
@@ -96,7 +96,7 @@ public class FanganADU {
             o2.setFangan1_zj(obj.getFangan1_zj());//锁定表头主键
         }
         int[] i = DBO.service.ADUS.executeBatch(
-                DBO.service.SQL.updateSome_reject(obj, "fangan1_px")//修改表头的数据,排序字段不进行修改
+                DBO.service.SQL.updateSome_reject(obj, "fangan1_px,ry_id,ry_name,fangan1_zhidanshijian,fangan1_shenpishijian")//修改表头的数据,排序字段不进行修改
                 ,
                  DBO.service.SQL.dellByCondition(Fangan2.class, "WHERE fangan1_zj='" + obj.getFangan1_zj() + "'")//清空旧表体的值
                 ,

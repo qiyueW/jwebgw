@@ -89,9 +89,9 @@
             <thead>
                 <tr>
                     <th data-options="field:'fangan2_filepath',width:280,editor:'text'">投产路径</th>
-                    <th data-options="field:'fangan2_filename',width:150,editor:'text'">生产文件名</th>
-                    <th data-options="field:'cmodel_mc',width:450,editor:{type:'combobox',options:{url:'${path_home}/cc/cmodal/s/selectAllByJson2.jw',editable:true,panelHeight:170,valueField:'cmodel_mc',textField:'cmodel_mc'}}">投产模板</th>
-                    <th data-options="field:'fangan2_bz',width:300,editor:'text'">备注</th>
+                    <th data-options="field:'fangan2_filename',width:280,editor:'text'">生产文件名</th>
+                    <th data-options="field:'cmodel_mc',width:180,editor:{type:'combobox',options:{url:'${path_home}/cc/cmodal/s/selectAllByJson2.jw',editable:true,panelHeight:170,valueField:'cmodel_mc',textField:'cmodel_mc'}}">投产模板</th>
+                    <th data-options="field:'fangan2_bz',width:180,editor:'text'">备注</th>
                 </tr>
             </thead>
         </table>
@@ -100,24 +100,24 @@
             <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="addRow()">添加行</a>
             <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="MoveUp()">上移</a>
             <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="MoveDown()">下移</a>
-            <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="clearValue()">清空值</a>
-            <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="clearBz()">清空备注</a>
+<!--            <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="clearValue()">清空值</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="clearBz()">清空备注</a>-->
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" plain="true" onclick="copydata()">复制现有模板</a>
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" id="postFanganFormDataID" onclick="postFanganFormData('postFanganFormDataID')">保存</a>
 
             <script>
-                function f_bz(value, row, index) {
-                    $('#dg').datagrid('updateRow', {index: index, row: {yushizhi2_bz: fzFormatZT(row.yushizhi2_bz)}})
-                    return toFormatZT(row.yushizhi2_bz);
-                }
-                function f_key(value, row, index) {
-                    $('#dg').datagrid('updateRow', {index: index, row: {yushizhi2_key: fzFormatZT(row.yushizhi2_key)}})
-                    return toFormatZT(row.yushizhi2_key);
-                }
-                function f_value(value, row, index) {
-                    $('#dg').datagrid('updateRow', {index: index, row: {yushizhi2_value: fzFormatZT(row.yushizhi2_value)}})
-                    return toFormatZT(row.yushizhi2_value);
-                }
+//                function f_bz(value, row, index) {
+//                    $('#u_dg').datagrid('updateRow', {index: index, row: {fangan2_bz: fzFormatZT(row.fangan2_bz)}})
+//                    return toFormatZT(row.fangan2_bz);
+//                }
+//                function f_flj(value, row, index) {
+//                    $('#u_dg').datagrid('updateRow', {index: index, row: {fangan2_filepath: fzFormatZT(row.fangan2_filepath)}})
+//                    return toFormatZT(row.fangan2_filepath);
+//                }
+//                function f_fmc(value, row, index) {
+//                    $('#u_dg').datagrid('updateRow', {index: index, row: {fangan2_filename: fzFormatZT(row.fangan2_filename)}})
+//                    return toFormatZT(row.fangan2_filename);
+//                }
 //clearValue 清空值
 //clearBz   清空备注
                 function clearValue() {

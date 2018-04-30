@@ -27,7 +27,23 @@ public class MybeanService {
         context.put("fields", fields);
         context.put("bean", bean);
         StringWriter writer = new StringWriter();
-        ve.evaluate(context, writer, "", modelData.replace("&#39;", "'").replace("&#34;", "\"")); // 关键方法
+        ve.evaluate(context, writer, "", modelData.replace("&#39;", "'").replace("&#34;", "\"").replace("&#92;", "\\").replace("&#60;", "<").replace("&#62;", ">")); // 关键方法
+        return writer.toString().replace("#$#", "$");
+    }
+
+    public static String fanganVelocityEngine(String modelData, Map<String, Mybean> beanMap, Map<String, List<Mybeanfield>> fields, Map<String, String> otherMap) {
+        VelocityEngine ve = new VelocityEngine();
+        ve.init();
+        VelocityContext context = new VelocityContext();
+        beanMap.forEach((k, v) ->context.put(k, v));//替换bean集合的每个元素的值
+        fields.forEach((k, v) -> context.put(k, v));//替换bean属性集合的每个元素的值
+        if (null != otherMap && otherMap.size() > 0) {
+            otherMap.forEach((k, v) -> context.put(k, v));
+        }
+        StringWriter writer = new StringWriter();
+        String str=modelData.replace("&#39;", "'").replace("&#34;", "\"").replace("&#92;", "\\").replace("&#60;", "<").replace("&#62;", ">");
+        System.out.println(str);
+        ve.evaluate(context, writer, "", str); // 关键方法
         return writer.toString().replace("#$#", "$");
     }
 
@@ -62,6 +78,7 @@ public class MybeanService {
                 return true;
             }
             map.put(key, obj);//key-obj关联起来
+            System.out.println(key + "//" + obj.getMybean_mc());
         }
         return false;
     }
@@ -69,11 +86,29 @@ public class MybeanService {
 
     public static Map<String, List<Mybeanfield>> getBeanFields(Map<String, Mybean> mb) {
         Map<String, List<Mybeanfield>> map = new HashMap<>();
-        mb.forEach((k, v) -> map.put(k, DBO.service.S.selectByCondition(Mybeanfield.class, "WHERE mybean_zj =" + v.getMybean_zj())));
+        mb.forEach((k, v) -> map.put(getFieldsKeyByBeanKey(k), DBO.service.S.selectByCondition(Mybeanfield.class, "WHERE mybean_zj =" + v.getMybean_zj())));
         return map;
     }
 
     public static Mybean selectOne(final String zj) {
         return DBO.service.S.selectOneByID(Mybean.class, zj);
+    }
+
+    public static String getFieldsKeyByBeanKey(final String beanKey) {
+        switch (beanKey) {
+            case "bean":
+                return "fields";
+            case "bean1":
+                return "fields1";
+            case "bean2":
+                return "fields2";
+            case "bean3":
+                return "fields3";
+            case "bean4":
+                return "fields4";
+            case "bean5":
+                return "fields5";
+        }
+        return "fields";
     }
 }

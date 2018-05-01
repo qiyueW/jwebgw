@@ -44,8 +44,10 @@ public class A_Y implements IPowerData {
                         .setHMNode("Y101_4", "Y101_4_2", "修改")
                         .setHMNode("Y101_4", "Y101_4_3", "删除")
                     //Y2
-                    .setHMAndViewNode("Y101_13", "Y101_5", "bean添加", "cc/mybean/Mybean_A.jsp", true)
-                    .setViewNode("Y101_13", "Y101_6", "bean维护", "cc/mybean/Mybean_S.jsp", true)
+//                    .setHMAndViewNode("Y101_13", "Y101_5", "bean添加", "cc/mybean/Mybean_A.jsp", true)
+//                .setViewNode("Y101_13", "Y101_6", "bean维护", "cc/mybean/Mybean_S.jsp", true)
+                    .setHMAndViewNode("Y101_13", "Y101_5", "bean添加", "cc/bean/bean_A.jsp", true)
+                    .setViewNode("Y101_13", "Y101_6", "bean维护", "cc/bean/bean_S.jsp", true)
                         .setHMNode("Y101_6", "Y101_6_1", "查询")
                         .setHMNode("Y101_6", "Y101_6_2", "修改")
                         .setHMNode("Y101_6", "Y101_6_3", "删除")

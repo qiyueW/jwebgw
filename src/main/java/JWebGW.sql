@@ -306,3 +306,28 @@ CREATE TABLE IF NOT EXISTS `Fangan2`(
     ,PRIMARY KEY (`fangan2_zj`)
     ,KEY `cmodel_zj` (`cmodel_zj`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `Bean`(
+    `bean_zj` CHAR(24)  NOT NULL  /*主键*/
+    ,`bean_mc` VARCHAR(255)  NOT NULL /*名称*/
+    ,`mypackage_id` CHAR(24)  NOT NULL /*分类外键*/
+    ,`mypackage_name` VARCHAR(50)  NOT NULL /*分类名*/
+    ,`bean_bz` VARCHAR(255)  DEFAULT NULL /*备注*/
+    ,`bean_px` INT  DEFAULT NULL /*排序*/
+
+    ,PRIMARY KEY (`bean_zj`)
+    ,KEY `bean_mc` (`bean_mc`)
+    ,KEY `mypackage_id` (`mypackage_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `Bean2`(
+    `bean2_zj` CHAR(24)  NOT NULL  /*主键*/
+    ,`bean2_bz` VARCHAR(50)  DEFAULT NULL /*备注*/
+    ,`bean2_key` VARCHAR(200)  NOT NULL /*键*/
+    ,`bean2_value` TEXT  DEFAULT NULL /*值*/
+    ,`bean_zj` CHAR(24)  NOT NULL /*领头-主键*/
+
+    ,PRIMARY KEY (`bean2_zj`)
+    ,KEY `bean2_key` (`bean2_key`)
+    ,KEY `bean_zj` (`bean_zj`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

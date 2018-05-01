@@ -45,15 +45,15 @@
                     $.fn.zTree.getZTreeObj(mybean.treeID).reAsyncChildNodes(null, "refresh");
                 }, "mypackage_id", "mypackage_pid", "mypackage_name")
 
-                mybean = new ztree_select("${path_home}/cc/mybean/s/selectAllByJson.jw", {
+                mybean = new ztree_select("${path_home}/cc/bean/s2/findHead.jw", {
                     mypackage_id: function () {
                         return $("#mypackage_id").val();
                     }
-                }, "showmybeanTree", "mybean_mc", "mybean_zj", 220, 390);
+                }, "showmybeanTree", "bean_mc", "bean_zj", 220, 390);
                 mybean.init(function (treeId, treeNode) {
                     mybean.setMyValue(treeNode)
                     mybean.hideMenu();
-                }, "mybean_zj", "", "mybean_mc");
+                }, "bean_zj", "", "bean_mc");
 
                 $("#" + mybean.treeID).on('click', function () {
                     $("#mymodel_nr").html("");
@@ -62,16 +62,16 @@
                 pageCN('dg', 20, [20, 50, 100]);
             });
             function onclickModel(rowIndex, rowData) {
-                var mybean = $("#mybean_zj").val();
+                var mybean = $("#bean_zj").val();
                 if (!mybean) {
                     aalert("请先选择bean分类，再选择具体的bean");
                     return;
                 }
                 $("#mymodel_nr").html('');
-                $.post('${path_home}/cc/cmodal/s/selectOne3.jw', {cmodel_zj: rowData.cmodel_zj, mybean_zj: mybean}, function (data) {
+                $.post('${path_home}/cc/cmodal/s/selectOne3.jw', {cmodel_zj: rowData.cmodel_zj, bean_zj: mybean}, function (data) {
                     $("#mymodel_mc").val(rowData.cmodel_mc);
                     $("#mymodel_nr").html(data);
-                    console.log(data)
+//                    console.log(data)
                 }, "text");
             }
         </script>

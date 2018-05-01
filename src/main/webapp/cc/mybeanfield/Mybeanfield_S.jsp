@@ -70,22 +70,22 @@
                 function ajaxDataFilter(treeId, parentNode, responseData) {
                     if (responseData) {
                         for (var i = 0; i < responseData.length; i++) {
-                            responseData[i].mybean_mc = responseData[i].mybean_bz ? responseData[i].mybean_mc
-                                    + "(" + responseData[i].mybean_bz + ")"
-                                    : responseData[i].mybean_mc;
+                            responseData[i].bean_mc = responseData[i].bean_bz ? responseData[i].bean_mc
+                                    + "(" + responseData[i].bean_bz + ")"
+                                    : responseData[i].bean_mc;
                         }
                     }
                     return responseData;
                 }
                 var setting2 = {
-                    treeId: "mybean_zj",
+                    treeId: "bean_zj",
                     check: {
                         enable: true
                     },
                     async: {
                         enable: true,
                         type: "post",
-                        url: "${path_home}/cc/mybean/s/selectAllByJson.jw",
+                        url: "${path_home}/cc/bean/s2/findHead.jw",
                         otherParam: ["mypackage_id", function () {
                                 return $("#mypackage_id").val(); //mypackage_id
                             }],
@@ -94,17 +94,17 @@
                     data: {
                         simpleData: {
                             enable: true,
-                            idKey: "mybean_zj",
+                            idKey: "bean_zj",
                             rootPId: "0"
                         },
                         key: {
-                            name: "mybean_mc"
+                            name: "bean_mc"
                         }
                     },
                     callback: {
                         onClick: function (event, id, treeNode) {
                             var queryParams = $('#dg').datagrid('options').queryParams;
-                            queryParams.mybean_zj = treeNode.mybean_zj;
+                            queryParams.bean_zj = treeNode.bean_zj;
                             $('#dg').datagrid('reload');
                         }
                     }
@@ -124,7 +124,7 @@
             <div title="bean明细" selected>
                 <table id="dg" class="easyui-datagrid"
                        style="width:100%;height:100%"
-                       data-options="rownumbers:true,singleSelect:true,url:'${path_home}/cc/mybean/field/s/selectAllByJson.jw',method:'post',queryParams: {mybean_zj:''},autoRowHeight:true,
+                       data-options="rownumbers:true,singleSelect:true,url:'${path_home}/cc/mybean/field/s/selectAllByJson.jw',method:'post',queryParams: {bean_zj:''},autoRowHeight:true,
                        pagination:true,
                        pageSize:50,
                        toolbar:'#tb'

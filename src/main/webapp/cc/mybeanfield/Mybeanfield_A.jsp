@@ -9,11 +9,11 @@
 <html>
     <head>
         <title></title>
-        <script src="${path_home}/lib/jquery/jquery-1.11.1.js"
-        type="text/javascript"></script>
-        <%@include file="/WEB-INF/jspf/zuiLocal.jspf"%>
-        <script type="text/javascript"
-        src="${path_home}/cc/mybeanfield/js/Mybeanfield_A.js"></script>
+<!--        <script src="${path_home}/lib/jquery/jquery-1.11.1.js"
+        type="text/javascript"></script>-->
+        <%@include file="/WEB-INF/jspf/easyuiLocal.jspf"%>
+        <%--<%@include file="/WEB-INF/jspf/zuiLocal.jspf"%>--%>
+        <script type="text/javascript"src="${path_home}/cc/mybeanfield/js/Mybeanfield_A.js"></script>
         <%@include file="/WEB-INF/jspf/artDialog.jspf"%>
         <%@include file="/WEB-INF/jspf/ztree.jspf"%>
         <%@include file="/WEB-INF/jspf/GG.jspf"%>
@@ -23,44 +23,22 @@
         <script type="text/javascript">
             var path_home = "${path_home}/";
             $(function () {
-                iniMybeanEventA();
                 var wh = new GJS();
                 wh.setElementHeight("root", 40)
-                var beanfl;
                 var zcfl = new ztree_select(
                         "${path_home}/cc/mypackage/s/selectVast.jw", {},
                         "showmypackageTree", "mypackage_name", "mypackage_id", 220, 390);
                 zcfl.init(function (treeId, treeNode) {
                     zcfl.setMyValue(treeNode)
                     zcfl.hideMenu();//$("#" +zcfl.menuContentDIV).fadeOut("fast");
-                    $.fn.zTree.getZTreeObj(beanfl.treeID).reAsyncChildNodes(null,
-                            "refresh");
+                    $('#bean_zj').combobox('reload', "${path_home}/cc/bean/s2/findHead.jw?mypackage_id=" + treeNode.mypackage_id).combobox('clear');
                 }, "mypackage_id", "mypackage_pid", "mypackage_name")
-
-                beanfl = new ztree_select(
-                        "${path_home}/cc/mybean/s/selectAllByJson.jw", {
-                            mypackage_id: function () {
-                                return $("#mypackage_id").val();//mypackage_id
-                            }
-                        }, "showmybeanTree", "mybean_mc", "mybean_zj", 220, 390);
-                beanfl.init(function (treeId, treeNode) {
-                    beanfl.setMyValue(treeNode)
-                    beanfl.hideMenu();//$("#" +zcfl.menuContentDIV).fadeOut("fast");
-                }, "mybean_zj", "", "mybean_mc")
-
                 $("input").addClass("input-sm")
-                $("#" + beanfl.treeID).on('click', function () {
-                    iniEmpty();
-                })
                 var yobg = new YSZEngine();
                 yobg.fieldsOption("y_fanan");
             });
-            //              class=""
         </script>
         <style>
-            /*            table select {
-                            min-width: 90px;
-                        }*/
             select{
                 border: 0;  
                 display: block;  
@@ -128,7 +106,11 @@
                         <td height="34"><div align="center">
                                 <div id="showmypackageTree" style="position: relative; z-index: 1000"></div>
                             </div></td>
-                        <td><div align="center"><div id="showmybeanTree" style="position: relative; z-index: 888"></div></div></td>
+                        <td><div align="center">
+                                <!--<div id="showmybeanTree" style="position: relative; z-index: 888"></div>-->
+                                <input id="bean_zj" class="easyui-combobox" data-options="
+                                       editable: true,valueField: 'bean_zj',textField: 'bean_mc',panelHeight: 'auto',width: 200"/>
+                            </div></td>
                     </tr>
                 </table>
             </div>
@@ -143,21 +125,21 @@
                     <tr height="34">
                         <td height="34"><div align="center">
                                 <select id="y_fanan"></select>
-<!--                                <select id="y_fanan" onchange="selectY_fanan()">
-                                    <option value="">无</option>
-                                    <option value="id">主键</option>
-                                    <option value="text">文本</option>
-                                    <option value="bigtext">文章类</option>
-                                    <option value="int">数字-正数</option>
-                                    <option value="double">数字-浮点</option>
-                                    <option value="date">日期</option>
-                                    <option value="datetime">日期时间</option>
-                                    <option value="zhidan">制单时间</option>
-                                    <option value="shenpi">审批时间</option>
-                                    <option value="filepath">上传类-路径-单</option>
-                                    <option value="filepaths">上传类-路径-集合</option>
-                                    <option value="style">单据状态0或1或其他</option>
-                                </select>-->
+                                <!--                                <select id="y_fanan" onchange="selectY_fanan()">
+                                                                    <option value="">无</option>
+                                                                    <option value="id">主键</option>
+                                                                    <option value="text">文本</option>
+                                                                    <option value="bigtext">文章类</option>
+                                                                    <option value="int">数字-正数</option>
+                                                                    <option value="double">数字-浮点</option>
+                                                                    <option value="date">日期</option>
+                                                                    <option value="datetime">日期时间</option>
+                                                                    <option value="zhidan">制单时间</option>
+                                                                    <option value="shenpi">审批时间</option>
+                                                                    <option value="filepath">上传类-路径-单</option>
+                                                                    <option value="filepaths">上传类-路径-集合</option>
+                                                                    <option value="style">单据状态0或1或其他</option>
+                                                                </select>-->
                             </div></td>
                         <td><div align="center"> <input type="text" name="mybeanfield_bz" id="mybeanfield_bz" /> </div></td>
                         <td><div align="center">
@@ -313,8 +295,9 @@
                 </table>
             </div>
             <div style="width:100%">
-                <button type="submit" id="myMybeanButton" data-loading-text="执行中" style="width:1000px;"
-                        class="btn btn-primary" >添加</button>
+                <!--                <button type="submit" id="myMybeanButton" data-loading-text="执行中" style="width:1000px;"
+                                        class="btn btn-primary" >添加</button>-->
+                <input type="button" value="提交" id="myMybeanButton" style="width:100%;" onclick="postMyBeanFieldFormData('myMybeanButton')">
             </div>
         </div>
 

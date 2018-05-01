@@ -34,14 +34,14 @@
                     $.fn.zTree.getZTreeObj("divID_Tree_bean").reAsyncChildNodes(null, "refresh");
                 }, "mypackage_id", "mypackage_pid", "mypackage_name")
 
-                ztree_Menue('divID_Tree_bean', 'mybean_zj', '', 'mybean_mc'
-                        , '${path_home}/cc/mybean/s/selectAllByJson.jw',
+                ztree_Menue('divID_Tree_bean', 'bean_zj', '', 'bean_mc'
+                        , '${path_home}/cc/bean/s2/findHead.jw',
                         ["mypackage_id", function () {
                                 return $("#mypackage_id").val();
                             }]
                         , function (event, id, treeNode) {
                             var queryParams = $('#dg').datagrid('options').queryParams;
-                            queryParams.mybean_zj = treeNode.mybean_zj;
+                            queryParams.bean_zj = treeNode.bean_zj;
                             $('#dg').datagrid('reload');
                         }
                 )
@@ -57,7 +57,7 @@
                    style="width:100%;height:100%"
                    data-options="rownumbers:true,singleSelect:true,url:'${path_home}/cc/mybean/modal/s/selectAllByJson.jw'
                    ,method:'post'
-                   ,queryParams: {mybean_zj:''}
+                   ,queryParams: {bean_zj:''}
                    ,autoRowHeight:false
                    ,pagination:false
                    ,toolbar:'#tb'
@@ -108,7 +108,7 @@
                             return;
                         }
                          window.open('${path_home}/cc/mymodel/u/update/select.jw?selectUpdateID=' + row.mymodel_zj);
-//                        addPanel('修改' + row.mymodel_mc + '模型(' + row.mybean_mc + ')', '${path_home}/cc/mymodel/u/update/select.jw?selectUpdateID=' + row.mymodel_zj);
+//                        addPanel('修改' + row.mymodel_mc + '模型(' + row.bean_mc + ')', '${path_home}/cc/mymodel/u/update/select.jw?selectUpdateID=' + row.mymodel_zj);
                     }
                     function addPanel(title, url) {
                         $('#centerMain').tabs('add', {

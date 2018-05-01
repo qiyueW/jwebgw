@@ -21,7 +21,7 @@ public class MyModelADU {
     @M("/a/add")//cc/mymodel/a/add.jw
     public void add() {
         wx.web.cc.bean.MyModel obj = jw.getObject(wx.web.cc.bean.MyModel.class);
-        if (DBO.service.ADUS.executeQueryCount("SELECT COUNT(*) FROM MyModel WHERE mybean_zj='" + obj.getMybean_zj()
+        if (DBO.service.ADUS.executeQueryCount("SELECT COUNT(*) FROM MyModel WHERE bean_zj='" + obj.getBean_zj()
                 + "' AND mymodel_mc='" + obj.getMymodel_mc() + "'") > 0) {
             jw.printOne(DBO.getJSONModel("0", "同个bean，不能同时存在相同的模型"));
             return;
@@ -58,7 +58,7 @@ public class MyModelADU {
         if (null == obj.getMymodel_zj() || obj.getMymodel_zj().length() != 24) {
             return;
         }
-        DBO.out_update_1_0_f1(jw, DBO.service.U.updateSome_reject(obj, "mybean_zj,mybean_mc"));
+        DBO.out_update_1_0_f1(jw, DBO.service.U.updateSome_reject(obj, "bean_zj,bean_mc"));
     }
 
     @SQ("Y101_10_2")

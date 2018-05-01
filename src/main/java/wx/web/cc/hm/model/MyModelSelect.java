@@ -23,7 +23,6 @@ public class MyModelSelect {
             return;
         }
         MyModel obj = DBO.service.S.selectOneByID(MyModel.class, mymodel_zj);
-        System.out.println(obj.getMymodel_nr());
         obj.setMymodel_nr(obj.getMymodel_nr().replace("'", "&#39;").replace("\r", "&#39;n"));
         jw.printOne(JCJSON.toSimpleJSON(obj));
     }
@@ -41,12 +40,12 @@ public class MyModelSelect {
     }
     @M("/selectAllByJson")
     public static void selectJSON(JWeb jw) {
-        String mybean_zj = jw.getString("mybean_zj");
-        if (null == mybean_zj || mybean_zj.isEmpty()) {
+        String bean_zj = jw.getString("bean_zj");
+        if (null == bean_zj || bean_zj.isEmpty()) {
             jw.printOne("[]");
             return;
         }
-        String where = "WHERE mybean_zj='" + mybean_zj + "'";
+        String where = "WHERE bean_zj='" + bean_zj + "'";
         EasyuiPage page = EasyuiService.getPage(jw);
 
         List<MyModel> list = null == jw.getString("page") ? DBO.service.S.selectByCondition(MyModel.class, where) : DBO.service.S.selectVastByCondition(MyModel.class, page.page, page.rows, where);
@@ -55,39 +54,5 @@ public class MyModelSelect {
         }
         jw.printOne(EasyuiService.formatGrid(list, DBO.service.S.selectCountByCondition(MyModel.class, where)));
     }
-
-//    @M("/base/selectVast") // cc/mybean/modal/s/selectVast.jw
-//    public static void select(JWeb jw) {
-//        String mybean_zj = jw.getString("mybean_zj");
-//        if (null == mybean_zj || mybean_zj.isEmpty()) {
-//            jw.printOne("[]");
-//            return;
-//        }
-//        Mybean bean = DBO.service.S.selectOneByID(Mybean.class, mybean_zj);
-//        if (null == bean.getMybean_zj()) {
-//            jw.printOne("[]");
-//            return;
-//        }
-//
-//        String sort = jw.getString("sort", "bean");
-//        String where = "WHERE mybean_zj='" + mybean_zj + "'";
-//        List<Mybeanfield> listBF = DBO.service.S.selectByCondition(Mybeanfield.class, where);
-//        switch (sort) {
-//            case "bean": {
-//                jw.printOne(MybeanService.toBeanData(listBF, bean.getMybean_mc()));
-//                return;
-//            }
-//            case "sql": {
-//                jw.printOne(MybeanService.toSQLData(listBF, bean.getMybean_mc()));
-//                return;
-//            }
-//            case "jsgetset": {
-//                String js = MybeanService.toJSGet(listBF, bean.getMybean_mc());
-//                js = js + "\n\n" + MybeanService.toJSSet(listBF, bean.getMybean_mc());
-//                jw.printOne(js);
-//            }
-//        }
-//
-//    }
 
 }

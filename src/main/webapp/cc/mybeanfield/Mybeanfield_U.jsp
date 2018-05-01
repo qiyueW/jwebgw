@@ -29,7 +29,7 @@
                 $("input").addClass("input-sm")
 
                 $('#mybeanfield_zj').val('${obj.mybeanfield_zj}')
-                $('#mybean_mc').val('${obj.mybean_mc}')
+                $('#bean_mc').val('${obj.bean_mc}')
                 $('#mybeanfield_bz').val('${obj.mybeanfield_bz}')
                 $('#mybeanfield_dateformat').val('${obj.mybeanfield_dateformat}')
 
@@ -101,21 +101,6 @@
         </style>
         <div id="root" class="container" style=" overflow-y:scroll;">
             <input type="hidden" id="mybeanfield_zj"/>
-            <!--            <div class="show2">
-                            <table cellspacing="0" cellpadding="0" border="1">
-                                <tr height="34">
-                                    <td rowspan="2" height="68" width="72"><div align="center">bean相关</div></td>
-                                    <td width="200"><div align="center">分类</div></td>
-                                    <td width="200"><div align="center">bean</div></td>
-                                </tr>
-                                <tr height="34">
-                                    <td height="34"><div align="center">
-                                            <div id="showmypackageTree" style="position: relative; z-index: 1000"></div>
-                                        </div></td>
-                                    <td><div align="center"><div id="showmybeanTree" style="position: relative; z-index: 888"></div></div></td>
-                                </tr>
-                            </table>
-                        </div>-->
             <div class="show3">
                 <table cellspacing="0" cellpadding="0" border="1">
                     <tr height="34">

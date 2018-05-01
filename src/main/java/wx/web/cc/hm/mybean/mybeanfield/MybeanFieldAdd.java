@@ -6,6 +6,7 @@ import system.base.annotation.H;
 import system.base.annotation.M;
 import system.web.JWeb;
 import system.web.power.ann.SQ;
+import wx.web.cc.bean.Bean;
 import wx.web.cc.bean.Mybeanfield;
 
 @H("cc/mybean/field")
@@ -21,8 +22,9 @@ public class MybeanFieldAdd {
     @M("/a/add")
     public void add() {
         wx.web.cc.bean.Mybeanfield obj = jw.getObject(wx.web.cc.bean.Mybeanfield.class);
-        System.out.println(obj.getV_zzbds());
-        if (DBO.service.ADUS.executeQueryCount("SELECT COUNT(*) FROM Mybeanfield WHERE mybean_zj='" + obj.getMybean_zj()
+        Bean b=DBO.service.S.selectOneByID(Bean.class,obj.getBean_zj());
+        obj.setBean_mc(b.getBean_mc());
+        if (DBO.service.ADUS.executeQueryCount("SELECT COUNT(*) FROM Mybeanfield WHERE bean_zj='" + obj.getBean_zj()
                 + "' AND c_mc='" + obj.getC_mc() + "'") > 0) {
             jw.printOne(DBO.getJSONModel("0", "同个bean，不能同时存在相关的字段"));
             return;
@@ -59,7 +61,7 @@ public class MybeanFieldAdd {
         if (null == obj.getMybeanfield_zj() || obj.getMybeanfield_zj().length() != 24) {
             return;
         }
-        DBO.out_update_1_0_f1(jw, DBO.service.U.updateSome_reject(obj, "mybean_zj,mybean_mc"));
+        DBO.out_update_1_0_f1(jw, DBO.service.U.updateSome_reject(obj, "bean_zj,bean_mc"));
     }
 
     @SQ("Y101_8_2")
@@ -69,7 +71,7 @@ public class MybeanFieldAdd {
         String selectUpdateID = jw.getString(KeyModel.ParamKey.UPDATE_SELECT_PARAM_NAME.KEY);
 
         Mybeanfield obj = DBO.service.S.selectOneByID(Mybeanfield.class, selectUpdateID);
-        if (null == obj.getMybean_zj()) {
+        if (null == obj.getBean_zj()) {
             return;
         }
         jw.request.setAttribute("obj", obj);

@@ -28,12 +28,12 @@ public class MybeanFieldSelect {
 
     @M("/selectAllByJson")
     public static void selectJSONByCache(JWeb jw) {
-        String mybean_zj = jw.getString("mybean_zj");
-        if (null == mybean_zj || mybean_zj.isEmpty()) {
+        String bean_zj = jw.getString("bean_zj");
+        if (null == bean_zj || bean_zj.isEmpty()) {
             jw.printOne("[]");
             return;
         }
-        String where = "WHERE mybean_zj='" + mybean_zj + "'";
+        String where = "WHERE bean_zj='" + bean_zj + "'";
         EasyuiPage page = EasyuiService.getPage(jw);
 
         List<Mybeanfield> list = DBO.service.S.selectVastByCondition(Mybeanfield.class, page.page, page.rows, where);

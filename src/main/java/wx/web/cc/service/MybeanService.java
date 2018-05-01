@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
-import wx.web.cc.bean.Mybean;
+import wx.web.cc.bean.Bean;
 import wx.web.cc.bean.Mybeanfield;
 import wx.web.cc.hm.fangan.vo.FanganBeanVo;
 
@@ -17,7 +17,7 @@ import wx.web.cc.hm.fangan.vo.FanganBeanVo;
  */
 public class MybeanService {
 
-    public static String myVelocityEngine(String modelData, List<Mybeanfield> fields, Mybean bean) {
+    public static String myVelocityEngine(String modelData, List<Mybeanfield> fields, Bean bean) {
         if (null == fields || fields.isEmpty()) {
             return "";
         }
@@ -31,7 +31,7 @@ public class MybeanService {
         return writer.toString().replace("#$#", "$");
     }
 
-    public static String fanganVelocityEngine(String modelData, Map<String, Mybean> beanMap, Map<String, List<Mybeanfield>> fields, Map<String, String> otherMap) {
+    public static String fanganVelocityEngine(String modelData, Map<String, Bean> beanMap, Map<String, List<Mybeanfield>> fields, Map<String, String> otherMap) {
         VelocityEngine ve = new VelocityEngine();
         ve.init();
         VelocityContext context = new VelocityContext();
@@ -47,8 +47,8 @@ public class MybeanService {
         return writer.toString().replace("#$#", "$");
     }
 
-    public static Map<String, Mybean> getBean(FanganBeanVo vo) {
-        Map<String, Mybean> map = new HashMap<>();
+    public static Map<String, Bean> getBean(FanganBeanVo vo) {
+        Map<String, Bean> map = new HashMap<>();
         if (iniMapData_ErrorByTrue(map, "bean", vo.bean)) {
             return null;
         }
@@ -70,28 +70,28 @@ public class MybeanService {
         return map;
     }
 
-    //浓缩 方法Map<String, Mybean> getBean(FanganBeanVo vo)的逻辑。方便复用。
-    private static boolean iniMapData_ErrorByTrue(final Map<String, Mybean> map, final String key, final String bean_zj) {
+    //浓缩 方法Map<String, Bean> getBean(FanganBeanVo vo)的逻辑。方便复用。
+    private static boolean iniMapData_ErrorByTrue(final Map<String, Bean> map, final String key, final String bean_zj) {
         if (null != bean_zj && bean_zj.length() == 24) {
-            Mybean obj = selectOne(bean_zj);
-            if (null == obj || null == obj.getMybean_zj()) {//bean异常 没找到bean或数据库查询时出了问题
+            Bean obj = selectOne(bean_zj);
+            if (null == obj || null == obj.getBean_zj()) {//bean异常 没找到bean或数据库查询时出了问题
                 return true;
             }
             map.put(key, obj);//key-obj关联起来
-            System.out.println(key + "//" + obj.getMybean_mc());
+            System.out.println(key + "//" + obj.getBean_mc());
         }
         return false;
     }
 //==============================================key-beanfields
 
-    public static Map<String, List<Mybeanfield>> getBeanFields(Map<String, Mybean> mb) {
+    public static Map<String, List<Mybeanfield>> getBeanFields(Map<String, Bean> mb) {
         Map<String, List<Mybeanfield>> map = new HashMap<>();
-        mb.forEach((k, v) -> map.put(getFieldsKeyByBeanKey(k), DBO.service.S.selectByCondition(Mybeanfield.class, "WHERE mybean_zj =" + v.getMybean_zj())));
+        mb.forEach((k, v) -> map.put(getFieldsKeyByBeanKey(k), DBO.service.S.selectByCondition(Mybeanfield.class, "WHERE bean_zj =" + v.getBean_zj())));
         return map;
     }
 
-    public static Mybean selectOne(final String zj) {
-        return DBO.service.S.selectOneByID(Mybean.class, zj);
+    public static Bean selectOne(final String zj) {
+        return DBO.service.S.selectOneByID(Bean.class, zj);
     }
 
     public static String getFieldsKeyByBeanKey(final String beanKey) {

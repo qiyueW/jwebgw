@@ -10,7 +10,7 @@ import system.base.annotation.M;
 import system.base.beanjson.JCJSON;
 import system.web.power.ann.SQ;
 import wx.web.cc.bean.CModel;
-import wx.web.cc.bean.Mybean;
+import wx.web.cc.bean.Bean;
 import wx.web.cc.bean.Mybeanfield;
 import wx.web.cc.service.MybeanService;
 
@@ -52,7 +52,7 @@ public class CModelSelect {
             return;
         }
         //bean相关信息
-        Mybean bean = DBO.service.S.selectOneByID(Mybean.class, bean_zj);
+        Bean bean = DBO.service.S.selectOneByID(Bean.class, bean_zj);
         //bean属性相关信息
         List<Mybeanfield> fields = DBO.service.S.selectByCondition(Mybeanfield.class, "WHERE bean_zj='" + bean_zj + "'");
         //找到具体的模板

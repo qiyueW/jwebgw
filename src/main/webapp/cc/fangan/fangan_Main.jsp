@@ -63,7 +63,7 @@
                 zcfl2.init(function (treeId, treeNode) {
                     zcfl2.setMyValue(treeNode)
                     zcfl2.hideMenu();
-                    $('#bean_value' + i).combobox('reload', "${path_home}/cc/mybean/s/selectAllByJson.jw?mypackage_id=" + treeNode.mypackage_id).combobox('clear');
+                    $('#bean_value' + i).combobox('reload', "${path_home}/cc/bean/s2/findHead.jw?mypackage_id=" + treeNode.mypackage_id).combobox('clear');
 //                    $('#bean_id1' + i).val('');
                 }, "mypackage_id", "mypackage_pid", "mypackage_name");
             }
@@ -118,8 +118,8 @@
                 <td><div id="bean_pak"></div></td>
                 <td>
                     <input id="bean_value" class="easyui-combobox" data-options="
-                           editable: true,valueField: 'mybean_zj',textField: 'mybean_mc',panelHeight: 'auto',width: 200,
-                           onSelect: function(d){$('#bean_id').val(d.mybean_zj)}"/>
+                           editable: true,valueField: 'bean_zj',textField: 'bean_mc',panelHeight: 'auto',width: 200,
+                           onSelect: function(d){$('#bean_id').val(d.bean_zj)}"/>
                 </td>
             </tr>
             <tr height="28">
@@ -127,8 +127,8 @@
                 <td><div id="bean_pak1"></div></td>
                 <td>
                     <input id="bean_value1" class="easyui-combobox" data-options="
-                           editable: true,valueField: 'mybean_zj',textField: 'mybean_mc',panelHeight: 'auto',width: 200,
-                           onSelect: function(d){$('#bean_id1').val(d.mybean_zj)}"/>
+                           editable: true,valueField: 'bean_zj',textField: 'bean_mc',panelHeight: 'auto',width: 200,
+                           onSelect: function(d){$('#bean_id1').val(d.bean_zj)}"/>
                 </td>
             </tr>
             <tr height="28">
@@ -136,8 +136,8 @@
                 <td><div id="bean_pak2"></div></td>
                 <td>
                     <input id="bean_value2" class="easyui-combobox" data-options="
-                           editable: true,valueField: 'mybean_zj',textField: 'mybean_mc',panelHeight: 'auto',width: 200,
-                           onSelect: function(d){$('#bean_id2').val(d.mybean_zj)}"/>
+                           editable: true,valueField: 'bean_zj',textField: 'bean_mc',panelHeight: 'auto',width: 200,
+                           onSelect: function(d){$('#bean_id2').val(d.bean_zj)}"/>
                 </td>
             </tr>
             <tr height="28">
@@ -145,8 +145,8 @@
                 <td><div id="bean_pak3"></div></td>
                 <td>
                     <input id="bean_value3" class="easyui-combobox" data-options="
-                           editable: true,valueField: 'mybean_zj',textField: 'mybean_mc',panelHeight: 'auto',width: 200,
-                           onSelect: function(d){$('#bean_id3').val(d.mybean_zj)}"/>
+                           editable: true,valueField: 'bean_zj',textField: 'bean_mc',panelHeight: 'auto',width: 200,
+                           onSelect: function(d){$('#bean_id3').val(d.bean_zj)}"/>
                 </td>
             </tr>
             <tr height="28">
@@ -154,8 +154,8 @@
                 <td><div id="bean_pak4"></div></td>
                 <td>
                     <input id="bean_value4" class="easyui-combobox" data-options="
-                           editable: true,valueField: 'mybean_zj',textField: 'mybean_mc',panelHeight: 'auto',width: 200,
-                           onSelect: function(d){$('#bean_id4').val(d.mybean_zj)}"/>
+                           editable: true,valueField: 'bean_zj',textField: 'bean_mc',panelHeight: 'auto',width: 200,
+                           onSelect: function(d){$('#bean_id4').val(d.bean_zj)}"/>
                 </td>
             </tr>
             <tr height="28">
@@ -163,8 +163,8 @@
                 <td><div id="bean_pak5"></div></td>
                 <td>
                     <input id="bean_value5" class="easyui-combobox" data-options="
-                           editable: true,valueField: 'mybean_zj',textField: 'mybean_mc',panelHeight: 'auto',width: 200,
-                           onSelect: function(d){$('#bean_id5').val(d.mybean_zj)}"/>
+                           editable: true,valueField: 'bean_zj',textField: 'bean_mc',panelHeight: 'auto',width: 200,
+                           onSelect: function(d){$('#bean_id5').val(d.bean_zj)}"/>
                 </td>
             </tr>
         </table>

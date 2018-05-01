@@ -13,7 +13,7 @@ import system.web.power.session.Login;
 import websocket.CCDoServet;
 import wx.web.base.bean.RY;
 import wx.web.cc.bean.Fangan2;
-import wx.web.cc.bean.Mybean;
+import wx.web.cc.bean.Bean;
 import wx.web.cc.bean.Mybeanfield;
 import wx.web.cc.hm.fangan.cache.CCDataCache;
 import wx.web.cc.hm.fangan.vo.FanganBeanVo;
@@ -37,7 +37,7 @@ public class UseFangan {
         FanganBeanVo obj = jw.getObject(FanganBeanVo.class);
 //========================准备数据阶段==================================
         //要替换的bean，bean1,bean2......bean5
-        Map<String, Mybean> beanMap = MybeanService.getBean(obj);
+        Map<String, Bean> beanMap = MybeanService.getBean(obj);
         //要替换的bean，bean1,bean2......bean5的属性值
         Map<String, List<Mybeanfield>> fields = MybeanService.getBeanFields(beanMap);
         if (null == beanMap) {

@@ -204,48 +204,6 @@ CREATE TABLE `MyPackage` (
   PRIMARY KEY (`mypackage_id`)
 ) ENGINE=InnoDB;
 
-CREATE TABLE IF NOT EXISTS `Mybean`(
-    `mybean_zj` CHAR(24)  NOT NULL  /*主键*/
-    ,`mybean_px` INT  DEFAULT NULL /*排序*/
-    ,`mypackage_id` CHAR(24)  NOT NULL /*外键（归属包）*/
-    ,`mybean_mc` VARCHAR(50)  NOT NULL /*类名*/
-    ,`mybean_bz` VARCHAR(50)  DEFAULT NULL /*备注*/
-    ,`package_bean` VARCHAR(100)  DEFAULT NULL /*bean类包*/
-    ,`package_soo` VARCHAR(100)  DEFAULT NULL /*soo/dao 类包*/
-    ,`name_soo` VARCHAR(100)  DEFAULT NULL /*soo/dao 类*/
-    ,`package_service` VARCHAR(100)  DEFAULT NULL /*service类包*/
-    ,`name_service` VARCHAR(100)  DEFAULT NULL /*service类*/
-    ,`package_hm` VARCHAR(100)  DEFAULT NULL /*hm类包*/
-    ,`name_hmA` VARCHAR(100)  DEFAULT NULL /*hmA类*/
-    ,`name_hmD` VARCHAR(100)  DEFAULT NULL /*hmD类*/
-    ,`name_hmU` VARCHAR(100)  DEFAULT NULL /*hmU类*/
-    ,`name_hmS` VARCHAR(100)  DEFAULT NULL /*hmS类*/
-    ,`package_validate` VARCHAR(100)  DEFAULT NULL /*validate类包*/
-    ,`name_validate` VARCHAR(100)  DEFAULT NULL /*validate类*/
-    ,`package_cache` VARCHAR(100)  DEFAULT NULL /*cache类包*/
-    ,`name_cache` VARCHAR(100)  DEFAULT NULL /*cache类*/
-    ,`package_vo` VARCHAR(100)  DEFAULT NULL /*vo类包*/
-    ,`name_vo` VARCHAR(100)  DEFAULT NULL /*vo类*/
-    ,`vpackage_admin` VARCHAR(100)  DEFAULT NULL /*jsp/html包*/
-    ,`vname_admin` VARCHAR(100)  DEFAULT NULL /*jsp/html包*/
-    ,`vname_adminA` VARCHAR(100)  DEFAULT NULL /*jsp/html_A*/
-    ,`vname_adminD` VARCHAR(100)  DEFAULT NULL /*jsp/html_D*/
-    ,`vname_adminS` VARCHAR(100)  DEFAULT NULL /*jsp/html_S*/
-    ,`vname_adminU` VARCHAR(100)  DEFAULT NULL /*jsp/html_U*/
-    ,`vpackage_admin_js` VARCHAR(100)  DEFAULT NULL /*js包*/
-    ,`vname_admin_js` VARCHAR(100)  DEFAULT NULL /*js*/
-    ,`vpackage_admin_css` VARCHAR(100)  DEFAULT NULL /*css包*/
-    ,`vname_admin_css` VARCHAR(100)  DEFAULT NULL /*css*/
-    ,`power_code` VARCHAR(100)  DEFAULT NULL /*模块权限代码*/
-    ,`power_codeA` VARCHAR(100)  DEFAULT NULL /*权限代码A*/
-    ,`power_codeD` VARCHAR(100)  DEFAULT NULL /*权限代码D*/
-    ,`power_codeS` VARCHAR(100)  DEFAULT NULL /*权限代码S*/
-    ,`power_codeU` VARCHAR(100)  DEFAULT NULL /*权限代码U*/
-
-    ,PRIMARY KEY (`mybean_zj`)
-    ,KEY `mypackage_id` (`mypackage_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 CREATE TABLE IF NOT EXISTS `Yushizhi`(
     `yushizhi_zj` CHAR(24)  NOT NULL  /*主键*/
     ,`yushizhi_mc` VARCHAR(255)  NOT NULL /*名称*/

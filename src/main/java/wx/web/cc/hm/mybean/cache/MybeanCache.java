@@ -1,7 +1,7 @@
 package wx.web.cc.hm.mybean.cache;
 
 import static configuration.DBO.service;
-import wx.web.cc.bean.Mybean;
+import wx.web.cc.bean.Bean;
 
 /**
  *
@@ -14,7 +14,7 @@ public class MybeanCache extends system.base.cache.CacheData {
 
     @Override
     public void loadData(system.db.Service db) {
-        this.json = system.base.beanjson.JCJSON.toSimpleJSON(service.S.select(Mybean.class,"order by mybean_px ASC"));//作用树
+        this.json = system.base.beanjson.JCJSON.toSimpleJSON(service.S.select(Bean.class, "order by bean_px ASC"));//作用树
     }
 
     public String getJSON() {

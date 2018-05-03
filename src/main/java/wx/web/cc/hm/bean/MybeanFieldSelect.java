@@ -1,4 +1,4 @@
-package wx.web.cc.hm.mybean.mybeanfield;
+package wx.web.cc.hm.bean;
 
 import java.util.List;
 
@@ -18,13 +18,13 @@ import wx.web.cc.bean.Mybeanfield;
 @H("cc/mybean/field/s")
 public class MybeanFieldSelect {
 
-    @M("/selectVast")
-    public static void selectGridByCache(JWeb jw) {
-        jw.printOne(
-                "{\"Rows\":" + wx.web.cc.hm.mybean.cache.MybeanCache.CACHE.getCacheData(wx.web.cc.hm.mybean.cache.MybeanCache.class).getJSON()
-                + ",\"" + plugins.ligerui.LigeruiConfig.record + "\":\"0\"}"
-        );
-    }
+//    @M("/selectVast")
+//    public static void selectGridByCache(JWeb jw) {
+//        jw.printOne(
+//                "{\"Rows\":" + wx.web.cc.hm.mybean.cache.MybeanCache.CACHE.getCacheData(wx.web.cc.hm.mybean.cache.MybeanCache.class).getJSON()
+//                + ",\"" + plugins.ligerui.LigeruiConfig.record + "\":\"0\"}"
+//        );
+//    }
 
     @M("/selectAllByJson")
     public static void selectJSONByCache(JWeb jw) {

@@ -1,4 +1,4 @@
-package wx.web.cc.hm.mybean.mybeanfield;
+package wx.web.cc.hm.bean;
 
 import com.alibaba.fastjson.JSON;
 import configuration.DBO;
@@ -32,18 +32,22 @@ public class MybeanFieldAdd {
             return;
         }
         beanfield.setBean_mc(bean.getBean_mc());
+        //通用与强制的翻译
+        String jsonData = MybeanService.toEngineCommonData(JSON.toJSONString(beanfield).replace("[?c?]", bean.getBean_mc().toLowerCase()), null);
+        List<Bean2> listBean2 = DBO.service.S.selectByCondition(Bean2.class, "WHERE bean_zj IN('" + bean.getBean_zj() + "')");
+        //Bean,Bean2,Beanfield 的翻译
+        jsonData = MybeanService.toEngineBean(jsonData, bean, listBean2, beanfield);
+        beanfield = JSON.parseObject(jsonData, wx.web.cc.bean.Mybeanfield.class);
+
         if (DBO.service.ADUS.executeQueryCount("SELECT COUNT(*) FROM Mybeanfield WHERE bean_zj='" + beanfield.getBean_zj()
                 + "' AND c_mc='" + beanfield.getC_mc() + "'") > 0) {
             jw.printOne(DBO.getJSONModel("0", "同个bean，不能同时存在相关的字段"));
             return;
         }
-        List<Bean2> listBean2 = DBO.service.S.selectByCondition(Bean2.class, "WHERE bean_zj IN('" + bean.getBean_zj() + "')");
-        //通用与强制的翻译
-        String jsonData = MybeanService.toEngineCommonData(JSON.toJSONString(beanfield).replace("[?c?]", bean.getBean_mc().toLowerCase()), null);
-        //Bean,Bean2,Beanfield 的翻译
-        jsonData = MybeanService.toEngineBean(jsonData, bean, listBean2, beanfield);
-        beanfield = JSON.parseObject(jsonData, wx.web.cc.bean.Mybeanfield.class);
-        
+        String methodname = beanfield.getC_mc().substring(0, 1).toUpperCase() + beanfield.getC_mc().substring(1);
+        beanfield.setC_setmethod("set" + methodname);
+        beanfield.setC_getmethod("get" + methodname);
+
         int i = DBO.service.A.addOne(beanfield);
         jw.printOne(i == -1 ? DBO.getJSONModel("-1", "添加出错")
                 : (i == 0 ? DBO.getJSONModel("0", "添加失败，未知原因。请通知管理员调试系统") : DBO.getJSONModel("1", "添加成功。")));

@@ -1,6 +1,6 @@
 package wx.web.cc.hm.bean.validate;
 
-
+import com.alibaba.fastjson.JSON;
 import java.util.List;
 import java.util.Map;
 import system.web.JWeb;
@@ -29,7 +29,12 @@ public class BeanValidate extends ValidateModel {
 
     @Override
     public ValidateResultModel recheck(JWeb jw, Map<String, ValidateFieldModel> map, ValidateResultModel vr) {
-        List<Bean2> list = jw.getListBySimpleJsonData(Bean2.class, "bean2");
+
+        String data = jw.getString("bean2");
+        if (null == data || data.isEmpty()) {
+            return vr.put("bean2", "表体数据异常");
+        }
+        List<Bean2> list = JSON.parseArray(data.replace("&#34;", "\""), Bean2.class);//jw.getListBySimpleJsonData(Bean2.class, "bean2");
         for (Bean2 obj : list) {
             if (null == obj.getBean2_key() || obj.getBean2_key().isEmpty()) {
                 vr.put("bean2", "表体的key不能为空");

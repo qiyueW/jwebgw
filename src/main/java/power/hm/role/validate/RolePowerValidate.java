@@ -17,8 +17,8 @@ public class RolePowerValidate extends ValidateModel {
 
 		super
 			.put("role_id", "(,?[1-9]{1}[0-9]{23})*", "主键丢失", true)
-                        .put("power_id", "(,?[0-9a-zA-Z\\_]){0,5000}", "权限格式或长度不对", true)
-                        ;   
+                        .put("power_id", "(,?[0-9a-zA-Z\\_.]){0,9000}", "角色权限格式或长度不对", true)
+                        ;   //(,?[0-9a-zA-Z\\_.]){0,9000}
  }
 
     @Override

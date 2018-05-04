@@ -4,6 +4,7 @@ import configuration.DBO;
 import configuration.KeyModel.ParamKey;
 import power.bean.AdminUser;
 import power.service.AdminService;
+import system.base.StringTool;
 import system.base.annotation.H;
 import system.base.annotation.M;
 import system.base.annotation.Validate;
@@ -48,7 +49,7 @@ public class AdminUserUpdate {
         if (null == ids || ids.length() < 24) {
             return;
         }
-        int i = AdminService.updateStyle(ids);
+        int i = AdminService.updateStyle(StringTool.replaceDToDDD(ids));
         if (i == -1) {
             DBO.getJSONModel("-1", "执行出错!");
             return;

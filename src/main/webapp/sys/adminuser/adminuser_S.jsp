@@ -43,7 +43,7 @@
                 var rows = GRID.getSelecteds();
                 var ids = "";
                 for (var i = 0; i < rows.length; i++) {
-                    ids = ids + ",'" + rows[i].user_id + "'";
+                    ids = ids + "," + rows[i].user_id;
                 }
                 ids = ids.substring(1);
                 if (rows.length < 1) {

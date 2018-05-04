@@ -18,7 +18,7 @@ public class UserPowerValidate extends ValidateModel {
 		super
                         .put("user_id", "(,?[1-9]{1}[0-9]{23}){1,}", "主键丢失", true)
 			.put("role_id", "(,?[1-9]{1}[0-9]{23})*", "角色权限非法", true)
-                        .put("power_id", "(,?[0-9a-zA-Z\\_]){0,5000}", "权限格式或长度不对", true)
+                        .put("power_id", "(,?[0-9a-zA-Z\\_.]){0,9000}", "权限格式或长度不对", true)
                         ;   
  }
 

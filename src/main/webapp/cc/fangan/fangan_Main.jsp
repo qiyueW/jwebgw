@@ -196,7 +196,18 @@
             </div>
         </div>
 
-        <div align="center"> <input type="button" value="结果私有化" id="myMybeanButton" onclick="postFanganAndBeanFormData('myMybeanButton')"/></div>
+        <div align="center"> <input type="button" value="=====生产=====" id="myMybeanButton" onclick="postFanganAndBeanFormData('myMybeanButton')"/></div>
+
+        <hr/>
+        <div style="font-size:8px;">
+            <p>注：</p>
+            <p>bean行，是必定填的。取值方式如下：bean对象$&#123;bean.xxxx},xxxx为我们的属性名；bean对象的拓展值：直接$&#123;拓展键}；bean字段的取值：通过fields.是List集合，如$&#123;fields.xxxx}</p>
+            <p>bean1行，是选填的。取值方式如下：bean对象$&#123;bean1.xxxx},xxxx为我们的属性名；bean对象的拓展值：直接$&#123;拓展键1}；bean字段的取值：通过fields.是List集合，如$&#123;fields1.xxxx}</p>
+            <p>bean2行，是选填的。取值方式如下：bean对象$&#123;bean2.xxxx},xxxx为我们的属性名；bean对象的拓展值：直接$&#123;拓展键2}；bean字段的取值：通过fields.是List集合，如$&#123;fields2.xxxx}</p>
+            <p>bean3行，是选填的。取值方式如下：bean对象$&#123;bean3.xxxx},xxxx为我们的属性名；bean对象的拓展值：直接$&#123;拓展键3}；bean字段的取值：通过fields.是List集合，如$&#123;fields3.xxxx}</p>
+            <p>...</p>
+            <p>发现规律了吗？1，2，3，4，5</p>
+        </div>
         <script>
             function postFanganAndBeanFormData(btid) {
                 var data = {};

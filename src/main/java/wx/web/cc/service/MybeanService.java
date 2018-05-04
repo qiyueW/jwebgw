@@ -30,6 +30,10 @@ public class MybeanService {
         VelocityContext context = new VelocityContext();
         context.put("fields", fields);
         context.put("bean", bean);
+        List<Bean2> list = DBO.service.S.selectByCondition(Bean2.class, "WHERE bean_zj IN('" + bean.getBean_zj() + "')");
+        for (Bean2 b2 : list) {
+            context.put(b2.getBean2_key(), b2.getBean2_value());
+        }
         StringWriter writer = new StringWriter();
         ve.evaluate(context, writer, "", modelData.replace("&#39;", "'").replace("&#34;", "\"").replace("&#92;", "\\").replace("&#60;", "<").replace("&#62;", ">")); // 关键方法
         return writer.toString().replace("#$#", "$");

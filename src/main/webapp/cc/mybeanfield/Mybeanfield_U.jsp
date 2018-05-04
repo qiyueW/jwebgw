@@ -28,30 +28,30 @@
 
                 $("input").addClass("input-sm")
 
-                $('#mybeanfield_zj').val('${obj.mybeanfield_zj}')
-                $('#bean_mc').val('${obj.bean_mc}')
-                $('#mybeanfield_bz').val('${obj.mybeanfield_bz}')
-                $('#mybeanfield_dateformat').val('${obj.mybeanfield_dateformat}')
+                $('#mybeanfield_zj').val(fzFormatZT('${obj.mybeanfield_zj}'))
+                $('#bean_mc').val(fzFormatZT('${obj.bean_mc}'))
+                $('#mybeanfield_bz').val(fzFormatZT('${obj.mybeanfield_bz}'))
+                $('#mybeanfield_dateformat').val(fzFormatZT('${obj.mybeanfield_dateformat}'))
 
-                $('#c_zyy').val('${obj.c_zyy}')
-                $('#c_lx').val('${obj.c_lx}')
-                $('#c_mc').val('${obj.c_mc}')
-                $('#c_bz').val('${obj.c_bz}')
+                $('#c_zyy').val(fzFormatZT('${obj.c_zyy}'))
+                $('#c_lx').val(fzFormatZT('${obj.c_lx}'))
+                $('#c_mc').val(fzFormatZT('${obj.c_mc}'))
+                $('#c_bz').val(fzFormatZT('${obj.c_bz}'))
 
-                $('#t_lx').val('${obj.t_lx}')
-                $('#t_sy').val('${obj.t_sy}')
-                $('#t_yxkong').val('${obj.t_yxkong}')
-                $('#t_cd').val('${obj.t_cd}')
-                $('#t_bz').val('${obj.t_bz}')
+                $('#t_lx').val(fzFormatZT('${obj.t_lx}'))
+                $('#t_sy').val(fzFormatZT('${obj.t_sy}'))
+                $('#t_yxkong').val(fzFormatZT('${obj.t_yxkong}'))
+                $('#t_cd').val(fzFormatZT('${obj.t_cd}'))
+                $('#t_bz').val(fzFormatZT('${obj.t_bz}'))
 
-                $('#v_zzbds').val('${obj.v_zzbds}')
-                $('#v_cuowuxx').val('${obj.v_cuowuxx}')
-                $('#v_bxjiancha').val('${obj.v_bxjiancha}')
+                $('#v_zzbds').val(fzFormatZT('${obj.v_zzbds}'))
+                $('#v_cuowuxx').val(fzFormatZT('${obj.v_cuowuxx}'))
+                $('#v_bxjiancha').val(fzFormatZT('${obj.v_bxjiancha}'))
 
-                $('#h_lx').val('${obj.h_lx}')
-                $('#h_jb').val('${obj.h_jb}')
+                $('#h_lx').val(fzFormatZT('${obj.h_lx}'))
+                $('#h_jb').val(fzFormatZT('${obj.h_jb}'))
 
-                $('#e_mc').val('${obj.e_mc}')
+                $('#e_mc').val(fzFormatZT('${obj.e_mc}'))
 
             });
             //              class=""

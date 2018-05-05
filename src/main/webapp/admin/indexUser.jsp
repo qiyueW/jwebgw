@@ -1,3 +1,4 @@
+<%@include file="/WEB-INF/jspf/power/userPower.jspf"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

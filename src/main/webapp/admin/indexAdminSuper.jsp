@@ -307,9 +307,9 @@
 
             </div>
             <div position="center" id="framecenter"> 
-                <div tabid="home" title="我的主页" style="height:300px" >
-                    <!--<iframe frameborder="0" name="home" id="home" src="admin/iniView.jsp"></iframe>-->
-                </div>
+       <!--          <div tabid="home" title="我的主页" style="height:300px" >
+                    <iframe frameborder="0" name="home" id="home" src="admin/iniView.jsp"></iframe>
+                </div> -->
             </div>
         </div>
         <div id="topmenu" style="height:15px;">

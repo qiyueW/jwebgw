@@ -11,7 +11,7 @@
         <%@include file="/WEB-INF/jspf/GG.jspf"%>
         <%@include file="/WEB-INF/jspf/artDialog.jspf"%>
         <%@include file="/WEB-INF/jspf/ztree.jspf"%>
-        <script src="${path_home}/admin/js/indexUser.js?id=<%=new Date()%>" type="text/javascript"></script>
+        <script src="${path_home}/admin/js/indexUser.js" type="text/javascript"></script>
 
         <title>您好</title>
         <script type="text/javascript">

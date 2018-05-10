@@ -199,7 +199,7 @@
             </script>
         </div>
         <div id="findMyCopyData" class="easyui-window" title="明细" style="width:980px;height:90%"
-             data-options="closable:true,closed:true"
+             data-options="closable:true,closed:true,maximized:true"
              >
             <div  class="easyui-layout"  data-options="fit:true">
                 <div data-options="region:'west',split:true,title:'预设值分类'" style="width:250px;padding:10px;">

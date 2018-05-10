@@ -18,11 +18,11 @@ final public class EasyuiService {
     public final static String KEY_GRID_COUNT = "#KEY_GRID_COUNT";
 
     final public static String formatGrid(List<?> rsList, int count) {
-        return rsList.isEmpty() ? EMPTYDATA : "{\"total\": \"" + count + "\",\"rows\":" + JCJSON.toSimpleJSON(rsList) + "}";
+        return null == rsList || rsList.isEmpty() ? EMPTYDATA : "{\"total\": \"" + count + "\",\"rows\":" + JCJSON.toSimpleJSON(rsList) + "}";
     }
 
     final public static String formatGrid(List<?> rsList) {
-        return rsList.isEmpty() ? EMPTYDATA : "{\"total\": \"" + rsList.size() + "\",\"rows\":" + JCJSON.toSimpleJSON(rsList) + "}";
+        return null == rsList || rsList.isEmpty() ? EMPTYDATA : "{\"total\": \"" + rsList.size() + "\",\"rows\":" + JCJSON.toSimpleJSON(rsList) + "}";
     }
 
     /**

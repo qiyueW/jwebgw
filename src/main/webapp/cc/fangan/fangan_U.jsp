@@ -35,117 +35,109 @@
                 <td>备注</td>
                 <td><input type="text" name="fangan1_bz" id="fangan1_bz"value="${obj.fangan1_bz}" /></td>
             </tr>
-            <tr>
-                <td>模板内容</td>
-                <td>
-                    <table id="u_dg" class="easyui-datagrid"  style="width:980px;height:400px"
-                           data-options="
-                           rownumbers:true,
-                           singleSelect:true,
-                           url:'${path_home}/cc/fangan/s/select2OneByJson.jw',
-                           method:'post',
-                           queryParams: {fangan_zj:'${obj.fangan1_zj}'},
-                           iconCls: 'icon-edit',
-                           toolbar:'#u_tb',
-                           onClickCell: u_onClickCell
-                           ">
-                        <thead>
-                            <tr>
-                                <th data-options="field:'fangan2_filepath',width:280,editor:'text',formatter:f_flj">投产路径</th>
-                                <th data-options="field:'fangan2_filename',width:280,editor:'text',formatter:f_fmc">生产文件名</th>
-                                <th data-options="field:'cmodel_mc',width:180,editor:{type:'combobox',options:{url:'${path_home}/cc/cmodal/s/selectAllByJson2.jw',editable:true,panelHeight:170,valueField:'cmodel_mc',textField:'cmodel_mc'}}">投产模板</th>
-                                <th data-options="field:'fangan2_bz',width:200,formatter:f_bz,editor:'text'">备注</th>
-                            </tr>
-                        </thead>
-                    </table>
-                    <div id="u_tb" style="padding:1px 1px;">
-                        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="MoveUp()">上移</a>
-                        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="MoveDown()">下移</a>
-                        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="dellRow()">移除行</a>
-                        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addRow()">添加行</a>
-
-
-                        <script>
-                            function f_bz(value, row, index) {
-                                $('#u_dg').datagrid('updateRow', {index: index, row: {fangan2_bz: fzFormatZT(row.fangan2_bz)}})
-                                return toFormatZT(row.fangan2_bz);
-                            }
-                            function f_flj(value, row, index) {
-                                $('#u_dg').datagrid('updateRow', {index: index, row: {fangan2_filepath: fzFormatZT(row.fangan2_filepath)}})
-                                return toFormatZT(row.fangan2_filepath);
-                            }
-                            function f_fmc(value, row, index) {
-                                $('#u_dg').datagrid('updateRow', {index: index, row: {fangan2_filename: fzFormatZT(row.fangan2_filename)}})
-                                return toFormatZT(row.fangan2_filename);
-                            }
-                            function dellRow() {
-                                var row = $("#u_dg").datagrid('getSelected');
-                                var index = $("#u_dg").datagrid('getRowIndex', row);
-                                $("#u_dg").datagrid('deleteRow', index)
-                                if (editIndex) {
-                                    $('#u_dg').datagrid('endEdit', editIndex);
-                                    editIndex = undefined;
-                                }
-                            }
-                            function addRow() {
-                                var row = $("#u_dg").datagrid('getSelected');
-                                var index = $("#u_dg").datagrid('getRowIndex', row);
-                                $("#u_dg").datagrid('insertRow', {
-                                    index: (++index),
-                                    row: {}
-                                });
-                            }
-                            function MoveUp() {
-                                var row = $("#u_dg").datagrid('getSelected');
-                                var index = $("#u_dg").datagrid('getRowIndex', row);
-                                mysort(index, 'up', 'u_dg');
-
-                            }
-                            //下移
-                            function MoveDown() {
-                                var row = $("#u_dg").datagrid('getSelected');
-                                var index = $("#u_dg").datagrid('getRowIndex', row);
-                                mysort(index, 'down', 'u_dg');
-
-                            }
-                            function mysort(index, type, gridname) {
-                                $("#u_dg").datagrid('endEdit', index);
-                                if ("up" == type) {
-                                    if (index != 0) {
-                                        var toup = $('#' + gridname).datagrid('getData').rows[index];
-                                        var todown = $('#' + gridname).datagrid('getData').rows[index - 1];
-                                        $('#' + gridname).datagrid('getData').rows[index] = todown;
-                                        $('#' + gridname).datagrid('getData').rows[index - 1] = toup;
-                                        $('#' + gridname).datagrid('refreshRow', index);
-                                        $('#' + gridname).datagrid('refreshRow', index - 1);
-                                        $('#' + gridname).datagrid('selectRow', index - 1);
-                                    }
-                                } else if ("down" == type) {
-                                    var rows = $('#' + gridname).datagrid('getRows').length;
-                                    if (index != rows - 1) {
-                                        var todown = $('#' + gridname).datagrid('getData').rows[index];
-                                        var toup = $('#' + gridname).datagrid('getData').rows[index + 1];
-                                        $('#' + gridname).datagrid('getData').rows[index + 1] = todown;
-                                        $('#' + gridname).datagrid('getData').rows[index] = toup;
-                                        $('#' + gridname).datagrid('refreshRow', index);
-                                        $('#' + gridname).datagrid('refreshRow', index + 1);
-                                        $('#' + gridname).datagrid('selectRow', index + 1);
-                                    }
-                                }
-
-                            }
-                        </script>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <div style="text-align: center">
-                        <input type="button" value="保存" id="myMybeanButton" onclick="u_postFanganFormData('myMybeanButton')">
-                    </div>
-                </td>
-            </tr>
         </table>
+        <table id="u_dg" class="easyui-datagrid"  style="width:100%;height:400px"
+               data-options="
+               rownumbers:true,
+               singleSelect:true,
+               url:'${path_home}/cc/fangan/s/select2OneByJson.jw',
+               method:'post',
+               queryParams: {fangan_zj:'${obj.fangan1_zj}'},
+               iconCls: 'icon-edit',
+               toolbar:'#u_tb',
+               onClickCell: u_onClickCell
+               ">
+            <thead>
+                <tr>
+                    <th data-options="field:'fangan2_filepath',width:280,editor:'text',formatter:f_flj">投产路径</th>
+                    <th data-options="field:'fangan2_filename',width:280,editor:'text',formatter:f_fmc">生产文件名</th>
+                    <th data-options="field:'cmodel_mc',width:180,editor:{type:'combobox',options:{url:'${path_home}/cc/cmodal/s/selectAllByJson2.jw',editable:true,panelHeight:170,valueField:'cmodel_mc',textField:'cmodel_mc'}}">投产模板</th>
+                    <th data-options="field:'fangan2_bz',width:200,formatter:f_bz,editor:'text'">备注</th>
+                </tr>
+            </thead>
+        </table>
+        <div id="u_tb" style="padding:1px 1px;">
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="MoveUp()">上移</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="MoveDown()">下移</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="dellRow()">移除行</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addRow()">添加行</a>
+
+
+            <script>
+                function f_bz(value, row, index) {
+                    $('#u_dg').datagrid('updateRow', {index: index, row: {fangan2_bz: fzFormatZT(row.fangan2_bz)}})
+                    return toFormatZT(row.fangan2_bz);
+                }
+                function f_flj(value, row, index) {
+                    $('#u_dg').datagrid('updateRow', {index: index, row: {fangan2_filepath: fzFormatZT(row.fangan2_filepath)}})
+                    return toFormatZT(row.fangan2_filepath);
+                }
+                function f_fmc(value, row, index) {
+                    $('#u_dg').datagrid('updateRow', {index: index, row: {fangan2_filename: fzFormatZT(row.fangan2_filename)}})
+                    return toFormatZT(row.fangan2_filename);
+                }
+                function dellRow() {
+                    var row = $("#u_dg").datagrid('getSelected');
+                    var index = $("#u_dg").datagrid('getRowIndex', row);
+                    $("#u_dg").datagrid('deleteRow', index)
+                    if (editIndex) {
+                        $('#u_dg').datagrid('endEdit', editIndex);
+                        editIndex = undefined;
+                    }
+                }
+                function addRow() {
+                    var row = $("#u_dg").datagrid('getSelected');
+                    var index = $("#u_dg").datagrid('getRowIndex', row);
+                    $("#u_dg").datagrid('insertRow', {
+                        index: (++index),
+                        row: {}
+                    });
+                }
+                function MoveUp() {
+                    var row = $("#u_dg").datagrid('getSelected');
+                    var index = $("#u_dg").datagrid('getRowIndex', row);
+                    mysort(index, 'up', 'u_dg');
+
+                }
+                //下移
+                function MoveDown() {
+                    var row = $("#u_dg").datagrid('getSelected');
+                    var index = $("#u_dg").datagrid('getRowIndex', row);
+                    mysort(index, 'down', 'u_dg');
+
+                }
+                function mysort(index, type, gridname) {
+                    $("#u_dg").datagrid('endEdit', index);
+                    if ("up" == type) {
+                        if (index != 0) {
+                            var toup = $('#' + gridname).datagrid('getData').rows[index];
+                            var todown = $('#' + gridname).datagrid('getData').rows[index - 1];
+                            $('#' + gridname).datagrid('getData').rows[index] = todown;
+                            $('#' + gridname).datagrid('getData').rows[index - 1] = toup;
+                            $('#' + gridname).datagrid('refreshRow', index);
+                            $('#' + gridname).datagrid('refreshRow', index - 1);
+                            $('#' + gridname).datagrid('selectRow', index - 1);
+                        }
+                    } else if ("down" == type) {
+                        var rows = $('#' + gridname).datagrid('getRows').length;
+                        if (index != rows - 1) {
+                            var todown = $('#' + gridname).datagrid('getData').rows[index];
+                            var toup = $('#' + gridname).datagrid('getData').rows[index + 1];
+                            $('#' + gridname).datagrid('getData').rows[index + 1] = todown;
+                            $('#' + gridname).datagrid('getData').rows[index] = toup;
+                            $('#' + gridname).datagrid('refreshRow', index);
+                            $('#' + gridname).datagrid('refreshRow', index + 1);
+                            $('#' + gridname).datagrid('selectRow', index + 1);
+                        }
+                    }
+
+                }
+            </script>
+        </div>
+        <div style="text-align: center">
+            <input type="button" value="保存" id="myMybeanButton" onclick="u_postFanganFormData('myMybeanButton')">
+        </div>
+
         <script type="text/javascript">
             $.extend($.fn.datagrid.methods, {
                 editCell: function (jq, param) {

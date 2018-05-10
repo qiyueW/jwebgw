@@ -55,12 +55,12 @@ public class MybeanService {
         for (ABA aba : set) {
             aba.toSetEngineData(context);
         }
-        String str = modelData.replace("&#39;", "'").replace("&#34;", "\"").replace("&#92;", "\\").replace("&#60;", "<").replace("&#62;", ">");
+        String str = modelData.replace("&#39;", "'").replace("&#34;", "\"").replace("&#60;", "<").replace("&#62;", ">");//.replace("&#92;", "\\")
         return EngineService.workByEngine(str, context);
     }
 
     public static String toEngineCommonData(String model, Map<String, String> otherMap) {
-        model = model.replace("&#39;", "'").replace("&#92;", "\\").replace("&#60;", "<").replace("&#62;", ">");//.replace("&#34;", "\"")
+        model = model.replace("&#39;", "'").replace("&#60;", "<").replace("&#62;", ">");//.replace("&#34;", "\"").replace("&#92;", "\\")
         if (null == otherMap) {
             return model;
         }

@@ -4,55 +4,43 @@
 <html>
     <head>
         <title>修改bean</title>
-    </head>
-    <body class="easyui-layout">
         <%@include file="/WEB-INF/jspf/easyuiLocal.jspf"%>
         <%@include file="/WEB-INF/jspf/artDialog.jspf"%>
         <%@include file="/WEB-INF/jspf/ztree.jspf"%>
         <%@include file="/WEB-INF/jspf/GG.jspf"%>
-        <script type="text/javascript" src="${path_home}/cc/bean/js/bean_U.js"></script>
-        <script>
-            $(function () {
-                var u_fl = new ztree_select(
-                        "${path_home}/cc/mypackage/s/selectVast.jw", {}, "u_showmybeanflTree", "mypackage_name", "mypackage_id", 320, 390);
-                u_fl.init(function (treeId, treeNode) {
-                    u_fl.setMyValue(treeNode)
-                    u_fl.hideMenu();
-                }, "mypackage_id", "mypackage_pid", "mypackage_name", "${obj.mypackage_name}", "${obj.mypackage_id}");
-            });
-        </script>
+        <script type="text/javascript" src="${path_home}/cc/bean/beanfield/js/beanfield_U.js"></script>
 
+    </head>
+    <body  class="easyui-layout">
+        <input type="hidden" name="beanfield_zj" id="beanfield_zj" value="${obj.beanfield_zj}" />
         <input type="hidden" name="bean_zj" id="bean_zj" value="${obj.bean_zj}" />
+        <input type="hidden" name="bean_mc" id="bean_mc" value="${obj.bean_mc}" />
+        
         <table class="table" id="table1">
             <tr>
-                <td>归类</td>
-                <td><div id="u_showmybeanflTree" style="position: relative; z-index: 1000"></div></td>
+                <td>字段名</td>
+                <td><input type="text" name="beanfield_mc" id="beanfield_mc"  value="${obj.beanfield_mc}"/></td>
+                <td>，备注</td>
+                <td><input type="text" name="beanfield_bz" id="beanfield_bz" value="${obj.beanfield_bz}"/></td>
             </tr>
-            <tr>
-                <td>预设模板模板名</td>
-                <td><input type="text" name="bean_mc" id="bean_mc" value="${obj.bean_mc}" /></td>
-            </tr>
-            <tr>
-                <td>备注</td>
-                <td><input type="text" name="bean_bz" id="bean_bz"value="${obj.bean_bz}" /></td>
-            </tr>
-        </table>   
+        </table>
         <table id="u_dg" class="easyui-datagrid" fit='true'
                data-options="
                rownumbers:true,
+               height:'88%',
                singleSelect:true,
-               url:'${path_home}/cc/bean/s/select2OneByJson.jw',
+               url:'${path_home}/cc/bean/field/s/select2OneByJson.jw',
                method:'post',
-               queryParams: {bean_zj:'${obj.bean_zj}'},
+               queryParams: {beanfield_zj:'${obj.beanfield_zj}'},
                iconCls: 'icon-edit',
                toolbar:'#u_tb',
                onClickCell: u_onClickCell
                ">
             <thead>
                 <tr>
-                    <th data-options="field:'bean2_key',width:180,editor:'text',formatter:f_key">健</th>
-                    <th data-options="field:'bean2_value',width:450,editor:'text',formatter:f_value">值</th>
-                    <th data-options="field:'bean2_bz',width:300,editor:'text',formatter:f_bz">备注</th>
+                    <th data-options="field:'beanfield2_key',width:180,editor:'text',formatter:f_key">健</th>
+                    <th data-options="field:'beanfield2_value',width:300,editor:'text',formatter:f_value">值</th>
+                    <th data-options="field:'beanfield2_bz',width:300,editor:'text',formatter:f_bz">备注</th>
                 </tr>
             </thead>
         </table>            
@@ -62,20 +50,18 @@
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="dellRow()">移除行</a>
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addRow()">添加行</a>
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" id="myMybeanButton" onclick="u_postFormData('myMybeanButton')">保存改动</a>
-
-
             <script>
                 function f_bz(value, row, index) {
-                    $('#u_dg').datagrid('updateRow', {index: index, row: {bean2_bz: fzFormatZT(row.bean2_bz)}})
-                    return toFormatZT(row.bean2_bz);
+                    $('#u_dg').datagrid('updateRow', {index: index, row: {beanfield2_bz: fzFormatZT(row.beanfield2_bz)}})
+                    return toFormatZT(row.beanfield2_bz);
                 }
                 function f_key(value, row, index) {
-                    $('#u_dg').datagrid('updateRow', {index: index, row: {bean2_key: fzFormatZT(row.bean2_key)}})
-                    return toFormatZT(row.bean2_key);
+                    $('#u_dg').datagrid('updateRow', {index: index, row: {beanfield2_key: fzFormatZT(row.beanfield2_key)}})
+                    return toFormatZT(row.beanfield2_key);
                 }
                 function f_value(value, row, index) {
-                    $('#u_dg').datagrid('updateRow', {index: index, row: {bean2_value: fzFormatZT(row.bean2_value)}})
-                    return toFormatZT(row.bean2_value);
+                    $('#u_dg').datagrid('updateRow', {index: index, row: {beanfield2_value: fzFormatZT(row.beanfield2_value)}})
+                    return toFormatZT(row.beanfield2_value);
                 }
                 function dellRow() {
                     var row = $("#u_dg").datagrid('getSelected');

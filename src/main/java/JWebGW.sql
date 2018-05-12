@@ -1373,8 +1373,29 @@ CREATE TABLE IF NOT EXISTS `YushizhiFL` (
 INSERT INTO `YushizhiFL` (`yushizhifl_id`, `yushizhifl_pid`, `yushizhifl_name`) VALUES
 	('201804181456266560000001', '0', '[bean]模板预设'),
 	('201804181456341320000002', '0', '[fields]属性模板预设');
-/*!40000 ALTER TABLE `YushizhiFL` ENABLE KEYS */;
 
-/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+
+
+CREATE TABLE IF NOT EXISTS `BeanField` (
+  `beanfield_zj` char(24) NOT NULL,
+  `beanfield_mc` varchar(255) NOT NULL,
+  `beanfield_bz` varchar(255) DEFAULT NULL,
+  `beanfield_px` int(11) DEFAULT NULL,
+  `bean_zj` char(24) NOT NULL,
+  `bean_mc` varchar(255) NOT NULL,
+
+  PRIMARY KEY (`beanfield_zj`),
+  KEY `beanfield_mc` (`beanfield_mc`),
+  KEY `bean_zj` (`bean_zj`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `BeanField2` (
+  `beanfield2_zj` char(24) NOT NULL,
+  `beanfield2_bz` varchar(50) DEFAULT NULL,
+  `beanfield2_key` varchar(200) NOT NULL,
+  `beanfield2_value` text DEFAULT NULL,
+  `beanfield_zj` char(24) NOT NULL,
+  PRIMARY KEY (`beanfield2_zj`),
+  KEY `beanfield2_key` (`beanfield2_key`),
+  KEY `beanfield_zj` (`beanfield_zj`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

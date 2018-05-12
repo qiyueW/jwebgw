@@ -25,7 +25,7 @@ public class BeanADU {
 
     @system.web.power.ann.SQ("Y101_5")
     @M("/a/add")
-    @Validate(wx.web.cc.hm.bean.validate.BeanValidate.class)
+    @Validate(wx.web.cc.hm._validate.BeanValidate.class)
     public void add() {
         Bean obj = jw.getObject(Bean.class);
         if (DBO.service.S.selectCountByCondition(Bean.class, "WHERE mypackage_id='" + obj.getMypackage_id() + "' AND bean_mc='" + obj.getBean_mc() + "'") > 0) {
@@ -43,9 +43,6 @@ public class BeanADU {
                 obj,
                 obj2
         ), Bean2.class);
-        System.out.println("小写类名：" + obj.getBean_mc().toLowerCase());
-        System.out.println("小写类名：" + JSON.toJSONString(obj2));
-        System.out.println("小写类名：" + JSON.toJSONString(obj2).replace("[?c?]", obj.getBean_mc().toLowerCase()));
         int[] i = DBO.service.A.add_OM(obj, obj2);
         DBO.out_add_1_0_f1(jw, null == i ? -1 : i[0]);
     }
@@ -78,7 +75,7 @@ public class BeanADU {
 
     @system.web.power.ann.SQ("Y101_6_2")
     @M("/u/update")
-    @Validate(wx.web.cc.hm.bean.validate.BeanValidate.class)
+    @Validate(wx.web.cc.hm._validate.BeanValidate.class)
     public void update() {
         Bean obj = jw.getObject(Bean.class);
         if (null == obj.getBean_zj() || obj.getBean_zj().length() != 24) {

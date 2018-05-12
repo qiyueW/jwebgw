@@ -8,7 +8,7 @@
     <body>
         <table id="so_dg" class="easyui-datagrid"
                style="width:100%;height:100%;"
-               data-options="rownumbers:true,url:'${path_home}/cc/bean/s/select2OneByJson.jw',method:'post',queryParams: {bean_zj:'${obj.bean_zj}'},autoRowHeight:true
+               data-options="rownumbers:true,singleSelect:true,url:'${path_home}/cc/bean/s/select2OneByJson.jw',method:'post',queryParams: {bean_zj:'${obj.bean_zj}'},autoRowHeight:true
                ">
             <thead>
                 <tr>

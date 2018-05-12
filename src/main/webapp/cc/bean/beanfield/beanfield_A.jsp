@@ -9,19 +9,29 @@
 <html>
     <head>
         <title>添加bean</title>
-        <script type="text/javascript" src="${path_home}/cc/bean/js/bean_A.js?<%=new Date()%>"></script>
+        <script type="text/javascript" src="${path_home}/cc/bean/beanfield/js/beanfield_A.js?<%=new Date()%>"></script>
         <%@include file="/WEB-INF/jspf/easyuiLocal.jspf"%>
         <%@include file="/WEB-INF/jspf/artDialog.jspf"%>
         <%@include file="/WEB-INF/jspf/ztree.jspf"%>
         <%@include file="/WEB-INF/jspf/GG.jspf"%>
         <script>
             $(function () {
+//                var zcfl = new ztree_select(
+//                        "${path_home}/cc/mypackage/s/selectVast.jw", {}, "showmypackageTree", "mypackage_name", "mypackage_id", 320, 390);
+//                zcfl.init(function (treeId, treeNode) {
+//                    zcfl.setMyValue(treeNode)
+//                    zcfl.hideMenu();
+//                }, "mypackage_id", "mypackage_pid", "mypackage_name");
+
                 var zcfl = new ztree_select(
-                        "${path_home}/cc/mypackage/s/selectVast.jw", {}, "showmypackageTree", "mypackage_name", "mypackage_id", 320, 390);
+                        "${path_home}/cc/mypackage/s/selectVast.jw", {},
+                        "showmypackageTree", "mypackage_name", "mypackage_id", 167, 200);
                 zcfl.init(function (treeId, treeNode) {
                     zcfl.setMyValue(treeNode)
-                    zcfl.hideMenu();
-                }, "mypackage_id", "mypackage_pid", "mypackage_name");
+                    zcfl.hideMenu();//$("#" +zcfl.menuContentDIV).fadeOut("fast");
+                    $('#bean_zj').combobox('reload', "${path_home}/cc/bean/s2/findHead.jw?mypackage_id=" + treeNode.mypackage_id).combobox('clear');
+                }, "mypackage_id", "mypackage_pid", "mypackage_name")
+
                 var setting2 = {
                     treeId: "yushizhifl_id",
                     check: {
@@ -59,16 +69,17 @@
     <body class="easyui-layout">
         <table class="table" id="table1">
             <tr>
-                <td>归类</td>
+                <td>分类</td>
                 <td><div id="showmypackageTree" style="position: relative; z-index: 1000"></div></td>
+                <td>-bean名</td>
+                <td><input id="bean_zj" class="easyui-combobox" data-options="
+                           editable: true,valueField: 'bean_zj',textField: 'bean_mc',panelHeight: 'auto',width: 150"/></td>
             </tr>
             <tr>
-                <td>bean名</td>
-                <td><input type="text" name="bean_mc" id="bean_mc" /></td>
-            </tr>
-            <tr>
-                <td>备注</td>
-                <td><input type="text" name="bean_bz" id="bean_bz" /></td>
+                <td>字段名</td>
+                <td><input type="text" name="beanfield_mc" id="beanfield_mc" style="width: 167px;"/></td>
+                <td>,备注</td>
+                <td><input type="text" name="beanfield_bz" id="beanfield_bz" /></td>
             </tr>
         </table>
 
@@ -87,7 +98,7 @@
             <thead>
                 <tr>
                     <th data-options="field:'yushizhi2_key',width:180,editor:'text',formatter:f_key">健</th>
-                    <th data-options="field:'yushizhi2_value',width:450,editor:'text',formatter:f_value">值</th>
+                    <th data-options="field:'yushizhi2_value',width:300,editor:'text',formatter:f_value">值</th>
                     <th data-options="field:'yushizhi2_bz',width:300,editor:'text',formatter:f_bz">备注</th>
                 </tr>
             </thead>

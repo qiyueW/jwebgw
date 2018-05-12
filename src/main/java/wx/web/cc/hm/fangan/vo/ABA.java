@@ -49,7 +49,8 @@ public class ABA {
             ctx.put(b2.getBean2_key(), b2.getBean2_value());
         }
         for (Mybeanfield f : fields) {
-            fields2.add(EngineService.toWork(f, MybeanService.myself(ctx, f)));//用自己的数据翻译自己
+            EngineService.setMyself(ctx, f);
+            fields2.add(EngineService.toWork(f, ctx));//用自己的数据翻译自己
         }
         this.fields = fields2;//用自己的数据翻译自己 后的新数据;
     }

@@ -1,4 +1,4 @@
-package wx.web.cc.hm.bean.soo;
+package wx.web.cc.soo;
 
 import wx.web.cc.bean.MyPackage;
 

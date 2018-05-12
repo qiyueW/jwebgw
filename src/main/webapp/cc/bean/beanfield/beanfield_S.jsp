@@ -24,7 +24,18 @@
         <%@include file="/WEB-INF/jspf/GG.jspf"%>
         <script type="text/javascript">
             $(function () {
-                var setting2 = {
+                var zcfl = new ztree_select(
+                        "${path_home}/cc/mypackage/s/selectVast.jw", {},
+                        "showmypackageTree", "mypackage_name", "mypackage_id", 220, 390);
+                zcfl.init(function (treeId, treeNode) {
+                    zcfl.setMyValue(treeNode)
+                    zcfl.hideMenu(); //$("#" +zcfl.menuContentDIV).fadeOut("fast");
+                    $.fn.zTree.getZTreeObj("divID_Tree_bean").reAsyncChildNodes(null,
+                            "refresh");
+                }, "mypackage_id", "mypackage_pid", "mypackage_name")
+                //======================================================================================================                
+                //检出包结构  /*               
+                var setting0 = {
                     treeId: "mypackage_id",
                     async: {
                         enable: true,
@@ -43,19 +54,63 @@
                         }
                     },
                     callback: {
-                        onClick: function (event, id, treeNode) {
-                            var queryParams = $('#dg').datagrid('options').queryParams;
-                            queryParams.mypackage_id = treeNode.mypackage_id;
-                            $('#dg').datagrid('reload');
+                        onClick: function (event, id, treeNode) {//点击部门时，重新加载管理员树。参数为
+                            mypackage_id = treeNode.mypackage_id; //动态上传参数
+                            $.fn.zTree.getZTreeObj("divID_Tree_bean")
+                                    .reAsyncChildNodes(null, "refresh");
                         },
                         onAsyncSuccess: function () {
-                            $.fn.zTree.getZTreeObj("divID_Tree_bean").expandAll(true);
+                            $.fn.zTree.getZTreeObj("divID_Tree_BM").expandAll(true);
+                        }
+                    }
+                };
+                $.fn.zTree.init($("#divID_Tree_BM"), setting0);
+                //======================================================================================================
+                //检出bean
+                function ajaxDataFilter(treeId, parentNode, responseData) {
+                    if (responseData) {
+                        for (var i = 0; i < responseData.length; i++) {
+                            responseData[i].bean_mc = responseData[i].bean_bz ? responseData[i].bean_mc
+                                    + "(" + responseData[i].bean_bz + ")"
+                                    : responseData[i].bean_mc;
+                        }
+                    }
+                    return responseData;
+                }
+                var setting2 = {
+                    treeId: "bean_zj",
+                    check: {
+                        enable: true
+                    },
+                    async: {
+                        enable: true,
+                        type: "post",
+                        url: "${path_home}/cc/bean/s2/findHead.jw",
+                        otherParam: ["mypackage_id", function () {
+                                return $("#mypackage_id").val(); //mypackage_id
+                            }],
+                        dataFilter: ajaxDataFilter
+                    },
+                    data: {
+                        simpleData: {
+                            enable: true,
+                            idKey: "bean_zj",
+                            rootPId: "0"
+                        },
+                        key: {
+                            name: "bean_mc"
+                        }
+                    },
+                    callback: {
+                        onClick: function (event, id, treeNode) {
+                            var queryParams = $('#dg').datagrid('options').queryParams;
+                            queryParams.bean_zj = treeNode.bean_zj;
+                            $('#dg').datagrid('reload');
                         }
                     }
                 }
                 $.fn.zTree.init($("#divID_Tree_bean"), setting2);
-                $('#dg').datagrid('hideColumn', 'bean_zj');
-                $('#dg').datagrid('hideColumn', 'mypackage_id');
+                $('#dg').datagrid('hideColumn', 'beanfield_zj');
                 pageCN("dg", 100);
             });
             function loadHeader(divId, pageUri) {
@@ -66,24 +121,25 @@
     </head>
     <body class="easyui-layout">
         <div data-options="region:'west',split:true" style="width:250px;padding:10px;">
+            <div id="showmypackageTree" style="position: relative; z-index: 1000"></div> <!--<div id="divID_Tree_BM"  class="ztree powertablediv">---</div>-->
             <div id="divID_Tree_bean" class="ztree">bean</div>
         </div>
         <div data-options="region:'center'"  id='centerMain'>
             <table id="dg" class="easyui-datagrid"
                    style="width:100%;height:100%"
-                   data-options="rownumbers:true,singleSelect:true,url:'${path_home}/cc/bean/s/selectAllByJson.jw',method:'post',queryParams: {mypackage_id:''},autoRowHeight:true,
+                   data-options="rownumbers:true,singleSelect:true,url:'${path_home}/cc/bean/field/s/selectAllByJson.jw',method:'post',queryParams: {bean_zj:''},autoRowHeight:true,
                    pagination:true,
                    pageSize:50,
                    toolbar:'#tb'
                    ">
                 <thead>
                     <tr>
-                        <th data-options="field:'bean_zj'">ID</th>
-                        <th data-options="field:'mypackage_id'">FLID</th>
+                        <th data-options="field:'beanfield_zj'">ID</th>
+                        <th data-options="field:'bean_zj'">FLID</th>
                         <th data-options="field:'ck',checkbox:true"></th>
-                        <th data-options="field:'bean_px',width:40"><div>排序</div>bean_px</th>
-                        <th data-options="field:'bean_mc',width:260,formatter:f_mc"><div>名称</div>bean_mc</th>
-                        <th data-options="field:'bean_bz',width:300,formatter:f_bz"><div>备注</div>bean_bz</th>
+                        <th data-options="field:'beanfield_px',width:40"><div>排序</div>bean_px</th>
+                        <th data-options="field:'beanfield_mc',width:260,formatter:f_mc"><div>名称</div>bean_mc</th>
+                        <th data-options="field:'beanfield_bz',width:300,formatter:f_bz"><div>备注</div>bean_bz</th>
                         <th data-options="field:'a',width:200,formatter:f_cz">操作区</th>
                     </tr>
                 </thead>
@@ -95,25 +151,25 @@
                 <%=showPower%>
                 <script>
                     function f_bz(value, row, index) {
-                        $('#dg').datagrid('updateRow', {index: index, row: {bean_bz: fzFormatZT(row.bean_bz)}})
-                        return fzFormatZT(row.bean_bz);
+                        $('#dg').datagrid('updateRow', {index: index, row: {beanfield_bz: fzFormatZT(row.beanfield_bz)}})
+                        return fzFormatZT(row.beanfield_bz);
                     }
                     function f_mc(value, row, index) {
-                        $('#dg').datagrid('updateRow', {index: index, row: {bean_mc: fzFormatZT(row.bean_mc)}})
-                        return fzFormatZT(row.bean_mc);
+                        $('#dg').datagrid('updateRow', {index: index, row: {beanfield_mc: fzFormatZT(row.beanfield_mc)}})
+                        return fzFormatZT(row.beanfield_mc);
                     }
 //查询明细-----------------------------------                    
                     function f_cz(value, row, index) {
-                        return "<a href=\"javascript:void(0)\" onclick=\"doo('" + row.bean_mc + "','" + row.bean_zj + "');\">明细</a>";
+                        return "<a href=\"javascript:void(0)\" onclick=\"doo('" + row.beanfield_mc + "','" + row.beanfield_zj + "');\">属性明细</a>";
                     }
                     function doo(mc, zj) {
                         $('#showOneObj').window({
-                            title: mc + " bean拓展【键-值】明细",
+                            title: mc + " bean属性字段 拓展【键-值】明细",
                             width: 900,
                             height: 400,
                             modal: true,
-                            maximized:true,
-                            href: '${path_home}/cc/bean/s/selectOne.jw?bean_zj=' + zj
+                            maximized: true,
+                            href: '${path_home}/cc/bean/field/s/selectOne.jw?beanfield_zj=' + zj
                         });
                     }
 //批量删除-----------------------------------                    
@@ -127,9 +183,9 @@
                             if (r) {
                                 var ids = "";
                                 for (var i = 0; i < rows.length; i++) {
-                                    ids = ids + "," + rows[i]['bean_zj']
+                                    ids = ids + "," + rows[i]['beanfield_zj']
                                 }
-                                if (easyuipost('${path_home}/cc/bean/adu/d/dellOM.jw', {ids: ids.substring(1)})) {
+                                if (easyuipost('${path_home}/cc/bean/field/adu/d/dellOM.jw', {ids: ids.substring(1)})) {
                                     $('#dg').datagrid('reload');
                                 }
                             }
@@ -144,18 +200,18 @@
                         }
                         $('#showUpdatePage').panel({title: row.bean_mc + " bean拓展【键-值】修改"});
                         $('#showUpdatePage').window('open');
-                        loadHeader("showUpdatePage", '${path_home}/cc/bean/adu/u/update/select.jw?selectUpdateID=' + row.bean_zj);
+                        loadHeader("showUpdatePage", '${path_home}/cc/bean/field/adu/u/update/select.jw?selectUpdateID=' + row.beanfield_zj);
                     }
 //移动------------------------------------
                     function MoveSave() {
                         var datas = $('#dg').datagrid('getData');
                         var rs = "";
                         for (var i = 0; i < datas.total; i++) {
-                            rs = rs + (datas.rows[i], i == 0 ? "" : ",") + datas.rows[i].bean_zj;
+                            rs = rs + (datas.rows[i], i == 0 ? "" : ",") + datas.rows[i].beanfield_zj;
                         }
                         var data = {};
                         data.ids = rs;
-                        mypost('cc/bean/adu/u/update/saveMove.jw', data, "saveMove");
+                        mypost('cc/bean/field/adu/u/update/saveMove.jw', data, "saveMove");
                     }
                     function MoveUp() {
                         var row = $("#dg").datagrid('getSelected');

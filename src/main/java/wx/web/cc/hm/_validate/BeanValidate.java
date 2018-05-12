@@ -1,4 +1,4 @@
-package wx.web.cc.hm.bean.validate;
+package wx.web.cc.hm._validate;
 
 import com.alibaba.fastjson.JSON;
 import java.util.List;

@@ -22,6 +22,16 @@ public class BeanService {
     }
 
     /**
+     * 通过主键取得Bean对象
+     *
+     * @param bean_zj
+     * @return
+     */
+    public static Bean getBean(String bean_zj) {
+        return DBO.service.S.selectOneByID(Bean.class, bean_zj);
+    }
+
+    /**
      * 通过表头ID,取得表体ID
      *
      * @param bean_zj

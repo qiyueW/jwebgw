@@ -2,12 +2,9 @@ package wx.web.cc.service;
 
 import configuration.DBO;
 import java.io.StringWriter;
-import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 import wx.web.cc.bean.Bean;
@@ -79,7 +76,7 @@ public class MybeanService {
      */
     public static String toEngineBean(String model, Bean obj, List<Bean2> list) {
         VelocityContext ctx = EngineService.getVelocityContext();
-        myself(ctx, obj);//首先是表头的bean的自我翻译。
+        EngineService.setMyself(ctx, obj);//首先是表头的bean的自我翻译。
         for (Bean2 b2 : list) {
             ctx.put(b2.getBean2_key(), b2.getBean2_value());//表体的自我翻译
         }
@@ -97,27 +94,12 @@ public class MybeanService {
      */
     public static String toEngineBean(String model, Bean obj, List<Bean2> list, Mybeanfield bflist) {
         VelocityContext ctx = EngineService.getVelocityContext();
-        myself(ctx, obj);//首先是表头的bean的自我翻译。
+        EngineService.setMyself(ctx, obj);//首先是表头的bean的自我翻译。
         for (Bean2 b2 : list) {
             ctx.put(b2.getBean2_key(), b2.getBean2_value());//表体的自我翻译
         }
-        myself(ctx, bflist);//属性的自我翻译
+        EngineService.setMyself(ctx, bflist);//属性的自我翻译
         return EngineService.workByEngine(model, ctx);
-    }
-
-    public static <T> VelocityContext myself(VelocityContext context, T t) {
-        Field[] fields = t.getClass().getDeclaredFields();
-        for (Field fieldsobj : fields) {
-            fieldsobj.setAccessible(true);
-        }
-        for (Field f : fields) {
-            try {
-                context.put(f.getName(), f.get(t));
-            } catch (IllegalArgumentException | IllegalAccessException ex) {
-                Logger.getLogger(MybeanService.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        return context;
     }
 
 //==============================================key-beanfields

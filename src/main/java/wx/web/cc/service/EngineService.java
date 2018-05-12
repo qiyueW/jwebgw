@@ -2,7 +2,13 @@ package wx.web.cc.service;
 
 import com.alibaba.fastjson.JSON;
 import java.io.StringWriter;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 import wx.web.cc.bean.Bean;
@@ -45,4 +51,78 @@ final public class EngineService {
         return JSON.parseArray(workByEngine(JSON.toJSONString(t), context), Bean2.class);
     }
 
+    public static <T> List<T> toWorkT(List<T> t, VelocityContext context, Map<String, String> kv) {
+        Class c = t.get(0).getClass();
+        String str = JSON.toJSONString(t);
+        if (null != kv && kv.size() > 0) {
+            for (Map.Entry<String, String> entry : kv.entrySet()) {
+                str = str.replace(entry.getKey(), entry.getValue());
+            }
+        }
+        return JSON.parseArray(workByEngine(str, context), c);
+    }
+
+    public static <T> T toWorkT(T t, VelocityContext context, Map<String, String> kv) {
+        String str = JSON.toJSONString(t);
+        if (null != kv && kv.size() > 0) {
+            for (Map.Entry<String, String> entry : kv.entrySet()) {
+                str = str.replace(entry.getKey(), entry.getValue());
+            }
+        }
+        return JSON.parseObject(workByEngine(str, context), (Class<T>) t.getClass());
+
+    }
+
+    public static Map<String, String> getDefaultEngineData() {
+        Map<String, String> map = new HashMap();
+        map.put("#$#", "$");
+        return map;
+    }
+
+    /**
+     * 拿T对象的值，自己翻译自己
+     *
+     * @param <T>
+     * @param engine
+     * @param t
+     */
+    public static <T> void setMyself(VelocityContext engine, T t) {
+        Field[] fields = t.getClass().getDeclaredFields();
+        for (Field fieldsobj : fields) {
+            fieldsobj.setAccessible(true);
+        }
+        for (Field f : fields) {
+            try {
+                engine.put(f.getName(), f.get(t));
+            } catch (IllegalArgumentException | IllegalAccessException ex) {
+                Logger.getLogger(MybeanService.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    /**
+     * 拿T对象的值，自己翻译自己
+     *
+     * @param <T>
+     * @param engine
+     * @param list
+     * @param methodKey
+     * @param methodValue
+     */
+    public static <T> void setMyself(VelocityContext engine, List<T> list, String methodKey, String methodValue) {
+        Class tc = list.get(0).getClass();
+        try {
+            if (null != list && list.size() > 0) {
+                Field[] fields = tc.getDeclaredFields();
+                for (Field fieldsobj : fields) {
+                    fieldsobj.setAccessible(true);
+                }
+                for (T t : list) {
+                    engine.put(tc.getMethod(methodKey).invoke(t).toString(), tc.getMethod(methodValue).invoke(t).toString());
+                }
+            }
+        } catch (IllegalArgumentException | IllegalAccessException | NoSuchMethodException | SecurityException | InvocationTargetException ex) {
+            Logger.getLogger(EngineService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

@@ -30,7 +30,7 @@ public class BeanFieldService {
         mapkv.put("[?c?1]", svo.bean.getBean_mc().substring(0, 1).toLowerCase() + svo.bean.getBean_mc().substring(1));//小写第1个字符 bean名
         //bean 参加翻译
         VelocityContext context = iniBeanData(svo);
-        //bean的属性-表头 参加翻译
+        //bean的【属性】-表头 参加翻译
         EngineService.setMyself(context, f1);//设置自我翻译
         f1 = EngineService.toWorkT(f1, context, mapkv); //翻译后的对象
 //==================================================================================================
@@ -55,12 +55,22 @@ public class BeanFieldService {
     }
 
     /**
+     * 通过取得bean的属性集合
+     *
+     * @param bean_zj
+     * @return List
+     */
+    public static List<BeanField> getBeanFileHeadByBeanID(String bean_zj) {
+        return DBO.service.S.selectByCondition(BeanField.class, "WHERE bean_zj IN('" + bean_zj + "')");
+    }
+
+    /**
      * 通过表头ID,取得表体
      *
      * @param beanfield_zj
      * @return List
      */
-    public static List<BeanField2> getBody(String beanfield_zj) {
+    public static List<BeanField2> getBeanFileBodyByBeanfieldID(String beanfield_zj) {
         return DBO.service.S.selectByCondition(BeanField2.class, "WHERE beanfield_zj IN('" + beanfield_zj + "')");
     }
 

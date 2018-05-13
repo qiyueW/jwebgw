@@ -32,7 +32,7 @@ public class BeanFieldSelect {
             jw.printOne("{}");
             return;
         }
-        jw.printOne(EasyuiService.formatGrid(BeanFieldService.getBody(beanfield_zj)));
+        jw.printOne(EasyuiService.formatGrid(BeanFieldService.getBeanFileBodyByBeanfieldID(beanfield_zj)));
     }
 
     @M("/selectAllByJson")

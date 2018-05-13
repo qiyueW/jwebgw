@@ -9,8 +9,8 @@ import org.apache.velocity.VelocityContext;
 import wx.web.cc.bean.Bean;
 import wx.web.cc.bean.Bean2;
 import wx.web.cc.bean.Mybeanfield;
+import wx.web.cc.service.BeanService;
 import wx.web.cc.service.EngineService;
-import wx.web.cc.service.MybeanService;
 
 /**
  *
@@ -95,7 +95,7 @@ public class ABA {
         if (null == zj || zj.isEmpty()) {
             return null;
         }
-        Bean b = MybeanService.selectOne(zj);
+        Bean b = BeanService.getBean(zj);
         if (null == b || null == b.getBean_zj()) {
             return null;
         }
@@ -109,7 +109,7 @@ public class ABA {
         if (null == zj || zj.isEmpty()) {
             return false;
         }
-        Bean b = MybeanService.selectOne(zj);
+        Bean b = BeanService.getBean(zj);
         if (null == b || null == b.getBean_zj()) {
             return true;
         }

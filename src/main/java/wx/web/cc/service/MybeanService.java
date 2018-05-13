@@ -83,24 +83,24 @@ public class MybeanService {
         return EngineService.workByEngine(model, ctx);
     }
 
-    /**
-     * 针对添加/修改时，Mybeanfield 的自我翻译
-     *
-     * @param model json字符化的 bean或bean2
-     * @param obj bean对象
-     * @param list bean2集合
-     * @param bflist
-     * @return String 翻译后的字符串
-     */
-    public static String toEngineBean(String model, Bean obj, List<Bean2> list, Mybeanfield bflist) {
-        VelocityContext ctx = EngineService.getVelocityContext();
-        EngineService.setMyself(ctx, obj);//首先是表头的bean的自我翻译。
-        for (Bean2 b2 : list) {
-            ctx.put(b2.getBean2_key(), b2.getBean2_value());//表体的自我翻译
-        }
-        EngineService.setMyself(ctx, bflist);//属性的自我翻译
-        return EngineService.workByEngine(model, ctx);
-    }
+//    /**
+//     * 针对添加/修改时，Mybeanfield 的自我翻译
+//     *
+//     * @param model json字符化的 bean或bean2
+//     * @param obj bean对象
+//     * @param list bean2集合
+//     * @param bflist
+//     * @return String 翻译后的字符串
+//     */
+//    public static String toEngineBean(String model, Bean obj, List<Bean2> list, Mybeanfield bflist) {
+//        VelocityContext ctx = EngineService.getVelocityContext();
+//        EngineService.setMyself(ctx, obj);//首先是表头的bean的自我翻译。
+//        for (Bean2 b2 : list) {
+//            ctx.put(b2.getBean2_key(), b2.getBean2_value());//表体的自我翻译
+//        }
+//        EngineService.setMyself(ctx, bflist);//属性的自我翻译
+//        return EngineService.workByEngine(model, ctx);
+//    }
 
 //==============================================key-beanfields
 //    public static Map<String, List<Mybeanfield>> getBeanFields(Map<String, Bean> mb) {
@@ -108,9 +108,7 @@ public class MybeanService {
 //        mb.forEach((k, v) -> map.put(getFieldsKeyByBeanKey(k), DBO.service.S.selectByCondition(Mybeanfield.class, "WHERE bean_zj =" + v.getBean_zj())));
 //        return map;
 //    }
-    public static Bean selectOne(final String zj) {
-        return DBO.service.S.selectOneByID(Bean.class, zj);
-    }
+
 
 //    public static String getFieldsKeyByBeanKey(final String beanKey) {
 //        switch (beanKey) {

@@ -33,7 +33,7 @@ public class BeanFieldADU {
             jw.printOne(DBO.getJSONModel("0", "添加异常：同个类下，属性重名"));
             return;
         }
-        BeanSVO svo = BeanSVO.selectByID(obj.getBean_zj());
+        BeanSVO svo = BeanSVO.selectByBeanID(obj.getBean_zj());
         if (null == svo) {
             jw.printOne(DBO.getJSONModel("-1", "添加异常：没找到关联的bean"));
             return;

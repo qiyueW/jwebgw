@@ -33,7 +33,9 @@ final public class EngineService {
         ENGINE.evaluate(context, writer, "", modelData); // 关键方法
         return writer.toString().replace("#$#", "$");
     }
-
+    public static String fzFormat(String str) {
+        return str.replace("&#39;", "'").replace("&#34;", "\"").replace("&quot;", "\"").replace("&#92;", "\\").replace("&#60;", "<").replace("&#62;", ">");
+    }
     public static void main(String args[]) {
         Map<String, String> map = new HashMap();
         map.put("1", "value1");

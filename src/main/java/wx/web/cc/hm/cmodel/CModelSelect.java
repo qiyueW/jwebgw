@@ -12,6 +12,7 @@ import system.web.power.ann.SQ;
 import wx.web.cc.bean.CModel;
 import wx.web.cc.bean.Bean;
 import wx.web.cc.bean.Mybeanfield;
+import wx.web.cc.service.CModelService;
 import wx.web.cc.service.MybeanService;
 
 @SQ("Y101_2_1")
@@ -51,14 +52,16 @@ public class CModelSelect {
             jw.printOne("");
             return;
         }
-        //bean相关信息
-        Bean bean = DBO.service.S.selectOneByID(Bean.class, bean_zj);
-        //bean属性相关信息
-        List<Mybeanfield> fields = DBO.service.S.selectByCondition(Mybeanfield.class, "WHERE bean_zj='" + bean_zj + "'");
-        //找到具体的模板
-        CModel obj = DBO.service.S.selectOneByID(CModel.class, cmodel_zj);
-        //执行模板数据绑定
-        jw.printOne(MybeanService.myVelocityEngine(obj.getCmodel_nr(), fields, bean));
+        jw.printOne(CModelService.getEngineData(cmodel_zj, bean_zj));
+
+//        //bean相关信息
+//        Bean bean = DBO.service.S.selectOneByID(Bean.class, bean_zj);
+//        //bean属性相关信息
+//        List<Mybeanfield> fields = DBO.service.S.selectByCondition(Mybeanfield.class, "WHERE bean_zj='" + bean_zj + "'");
+//        //找到具体的模板
+//        CModel obj = DBO.service.S.selectOneByID(CModel.class, cmodel_zj);
+//        //执行模板数据绑定
+//        jw.printOne(MybeanService.myVelocityEngine(obj.getCmodel_nr(), fields, bean));
     }
 
     @M("/selectAllByJson")

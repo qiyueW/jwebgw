@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import wx.web.cc.bean.CModel;
+import wx.web.cc.service.svo.BeanInfoSVO;
 
 /**
  *
@@ -24,6 +25,16 @@ public final class CModelService {
             map.put(obj.getCmodel_mc(), obj.getCmodel_zj());
         }
         return map;
+    }
+
+    public static String getEngineData(String modelID, String bean_id) {
+        CModel cobj=DBO.service.S.selectOneByID(CModel.class, modelID);
+        if(null==cobj||null==cobj.getCmodel_zj()){
+            return "";
+        }
+        BeanInfoSVO bi = new BeanInfoSVO(bean_id);
+        Map<String,String> map=new HashMap<>();
+        return bi.getEngineData_Online(cobj.getCmodel_nr(),map);
     }
 
     public static CModel selectOne(String id) {

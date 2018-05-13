@@ -27,17 +27,17 @@ public class BeanInfoSVO {
         this.bean = BeanSVO.selectByBeanID(bean_zj);
         this.fields = BeanFieldSVO.getListByBeanID(bean_zj);
     }
-
+    
     public String getEngineData_Online(final String modelData, Map<String, String> defaultKV) {
         VelocityContext vc = EngineService.getVelocityContext();
-        vc.put("h", BeanSVO.getBean_KeyValue(this.bean));
-        vc.put("b", BeanFieldSVO.getField_KeyValue(this.fields));
+        vc.put("bean", BeanSVO.getBean_KeyValue(this.bean));
+        vc.put("fields", BeanFieldSVO.getField_KeyValue(this.fields));
         if (null != defaultKV && defaultKV.size() > 0) {
             for (Map.Entry<String, String> m : defaultKV.entrySet()) {
                 vc.put(m.getKey(), m.getValue());
             }
         }
-        return EngineService.workByEngine(modelData, vc);
+        return EngineService.workByEngine(EngineService.fzFormat(modelData), vc);
     }
 
 //

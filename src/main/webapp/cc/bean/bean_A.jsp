@@ -1,5 +1,5 @@
 <%@include file="/WEB-INF/jspf/power/userPower.jspf"%>
-<%    if (!pck.checkUser("Y101_17_1A")) {
+<%    if (!pck.checkUser("Y101_5")) {
         return;
     }
 %>

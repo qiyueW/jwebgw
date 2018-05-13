@@ -1,10 +1,10 @@
 <%@include file="/WEB-INF/jspf/power/adminUserPower.jspf"%>
-<%    if (!pck.checkUserORAdmin("Y101_17_1S")) {
+<%    if (!pck.checkUserORAdmin("Y101_6_1")) {
         return;
     }
     boolean update, dell;
-    update = pck.checkUserORAdmin("Y101_17_1U");
-    dell = pck.checkUserORAdmin("Y101_17_1D");
+    update = pck.checkUserORAdmin("Y101_6_2");
+    dell = pck.checkUserORAdmin("Y101_6_3");
     String showPower = pck.getStrTool()
             .put(dell, "<a href='javascript:void(0)' class='easyui-linkbutton' iconCls='icon-remove' plain='true' onclick='dellBeanField()'>删除</a>")
             .put(update, "<a href='javascript:void(0)' class='easyui-linkbutton' iconCls='icon-edit' plain='true' onclick='update()'>修改</a>")

@@ -46,7 +46,7 @@ public class BeanADU {
         int[] i = DBO.service.A.add_OM(obj, obj2);
         DBO.out_add_1_0_f1(jw, null == i ? -1 : i[0]);
     }
-
+    @system.web.power.ann.SQ("Y101_5")
     @M("/a/add/select2OneByJson")//一对多。通过表头主键，查询体表
     public static void selectOne2(JWeb jw) {
         String bean_zj = jw.getString("bean_zj");

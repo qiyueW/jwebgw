@@ -10,7 +10,7 @@ import system.base.annotation.M;
 import wx.web.cc.bean.BeanField;
 import wx.web.cc.service.BeanFieldService;
 
-@system.web.power.ann.SQ("Y101_6_1")
+@system.web.power.ann.SQ("Y101_8_1")
 @H("cc/bean/field/s")
 public class BeanFieldSelect {
 

@@ -34,6 +34,16 @@ final public class EngineService {
         return writer.toString().replace("#$#", "$");
     }
 
+    public static void main(String args[]) {
+        Map<String, String> map = new HashMap();
+        map.put("1", "value1");
+        map.put("2", "value2");
+        String str = "${map.get(\"1\")}";
+        VelocityContext v = getVelocityContext();
+        v.put("map", map);
+        System.err.println(workByEngine(str, v));
+    }
+
     public static VelocityContext getVelocityContext() {
         VelocityContext context = new VelocityContext();
         return context;

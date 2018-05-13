@@ -11,7 +11,7 @@ function loadUserMainTree(divID) {
                 }
             },
             onAsyncSuccess: function () {
-//                            $.fn.zTree.getZTreeObj("divID_Tree_BM").expandAll(true);
+                $.fn.zTree.getZTreeObj(divID).expandAll(true);
             }
         }
     };

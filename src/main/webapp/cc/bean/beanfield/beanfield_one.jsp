@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>属性字段明细</title>
+        <title>属性明细</title>
     </head>
     <body>
         <table id="so_dg" class="easyui-datagrid"

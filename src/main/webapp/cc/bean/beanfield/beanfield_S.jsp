@@ -1,10 +1,10 @@
 <%@include file="/WEB-INF/jspf/power/adminUserPower.jspf"%>
-<%    if (!pck.checkUserORAdmin("Y101_17_1S")) {
+<%    if (!pck.checkUserORAdmin("Y101_8_1")) {
         return;
     }
     boolean update, dell;
-    update = pck.checkUserORAdmin("Y101_17_1U");
-    dell = pck.checkUserORAdmin("Y101_17_1D");
+    update = pck.checkUserORAdmin("Y101_8_2");
+    dell = pck.checkUserORAdmin("Y101_8_3");
     String showPower = pck.getStrTool()
             .put(dell, "<a href='javascript:void(0)' class='easyui-linkbutton' iconCls='icon-remove' plain='true' onclick='dellBeanField()'>删除</a>")
             .put(update, "<a href='javascript:void(0)' class='easyui-linkbutton' iconCls='icon-edit' plain='true' onclick='update()'>修改</a>")
@@ -17,7 +17,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>bean维护</title>
+        <title>属性维护</title>
         <%@include file="/WEB-INF/jspf/easyuiLocal.jspf"%>
         <%@include file="/WEB-INF/jspf/artDialog.jspf"%>
         <%@include file="/WEB-INF/jspf/ztree.jspf"%>
@@ -111,6 +111,7 @@
                 }
                 $.fn.zTree.init($("#divID_Tree_bean"), setting2);
                 $('#dg').datagrid('hideColumn', 'beanfield_zj');
+                $('#dg').datagrid('hideColumn', 'bean_zj');
                 pageCN("dg", 100);
             });
             function loadHeader(divId, pageUri) {
@@ -138,8 +139,8 @@
                         <th data-options="field:'bean_zj'">FLID</th>
                         <th data-options="field:'ck',checkbox:true"></th>
                         <th data-options="field:'beanfield_px',width:40"><div>排序</div>bean_px</th>
-                        <th data-options="field:'beanfield_mc',width:260,formatter:f_mc"><div>名称</div>bean_mc</th>
-                        <th data-options="field:'beanfield_bz',width:300,formatter:f_bz"><div>备注</div>bean_bz</th>
+                        <th data-options="field:'beanfield_mc',width:160,formatter:f_mc"><div>名称</div>bean_mc</th>
+                        <th data-options="field:'beanfield_bz',width:160,formatter:f_bz"><div>备注</div>bean_bz</th>
                         <th data-options="field:'a',width:200,formatter:f_cz">操作区</th>
                     </tr>
                 </thead>
@@ -268,3 +269,4 @@
     </body>
 </body>
 </html>
+

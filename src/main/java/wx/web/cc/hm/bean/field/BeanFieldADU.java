@@ -12,6 +12,7 @@ import wx.web.cc.bean.BeanField;
 import wx.web.cc.bean.BeanField2;
 import wx.web.cc.service.BeanFieldService;
 import wx.web.cc.service.BeanService;
+import wx.web.cc.service.svo.BeanFieldSVO;
 import wx.web.cc.service.svo.BeanSVO;
 
 @H("cc/bean/field/adu")
@@ -23,32 +24,30 @@ public class BeanFieldADU {
         this.jw = jw;
     }
 
-    @system.web.power.ann.SQ("Y101_5")
+    @system.web.power.ann.SQ("Y101_7")
     @M("/a/add")
     @Validate(wx.web.cc.hm._validate.BeanFieldValidate.class)
     public void add() {
         BeanField obj = jw.getObject(BeanField.class);
-        if (DBO.service.S.selectCountByCondition(BeanField.class, "WHERE bean_zj='" + obj.getBean_zj() + "' AND bean_mc='" + obj.getBeanfield_mc() + "'") > 0) {
-            jw.printOne(DBO.getJSONModel("0", "添加异常：同个分类下，预方案重名"));
+        if (DBO.service.S.selectCountByCondition(BeanField.class, "WHERE bean_zj='" + obj.getBean_zj() + "' AND beanfield_mc='" + obj.getBeanfield_mc() + "'") > 0) {
+            jw.printOne(DBO.getJSONModel("0", "添加异常：同个类下，属性重名"));
             return;
         }
         BeanSVO svo = BeanSVO.selectByID(obj.getBean_zj());
-        int px = DBO.service.S.selectCountByCondition(BeanField.class, "WHERE bean_zj='" + obj.getBean_zj() + "'");
-        obj.setBeanfield_px(px);
-        obj.setBean_mc(svo.bean.getBean_mc());
-        List<BeanField2> obj2 = (List<BeanField2>) jw.request.getAttribute("obj2");
-        
-        
-        
         if (null == svo) {
             jw.printOne(DBO.getJSONModel("-1", "添加异常：没找到关联的bean"));
             return;
         }
-        BeanFieldService.engineToAdd(svo, obj, obj2);//对obj与obj2进行行自我翻译
-        int[] i = DBO.service.A.add_OM(obj, obj2);
+        int px = DBO.service.S.selectCountByCondition(BeanField.class, "WHERE bean_zj='" + obj.getBean_zj() + "'");
+        obj.setBeanfield_px(px);
+        obj.setBean_mc(svo.bean.getBean_mc());
+        List<BeanField2> obj2 = (List<BeanField2>) jw.request.getAttribute("obj2");
+        BeanFieldSVO esvo = BeanFieldService.engineToAdd(svo, obj, obj2); //对obj与obj2进行行自我翻译
+        int[] i = DBO.service.A.add_OM(esvo.beanField, esvo.beanField2List);
         DBO.out_add_1_0_f1(jw, null == i ? -1 : i[0]);
     }
 
+    @system.web.power.ann.SQ("Y101_7")
     @M("/a/add/select2OneByJson")//一对多。通过表头主键，查询体表
     public static void selectOne2(JWeb jw) {
         String bean_zj = jw.getString("beanfield_zj");
@@ -75,7 +74,7 @@ public class BeanFieldADU {
         DBO.out_dell_1_0_f1(jw, i);
     }
 
-    @system.web.power.ann.SQ("Y101_6_2")
+    @system.web.power.ann.SQ("Y101_8_3")
     @M("/u/update")
     @Validate(wx.web.cc.hm._validate.BeanFieldValidate.class)
     public void update() {
@@ -102,7 +101,7 @@ public class BeanFieldADU {
         DBO.out_update_1_0_f1(jw, null == i ? -1 : i[0]);
     }
 
-    @system.web.power.ann.SQ("Y101_6_2")
+    @system.web.power.ann.SQ("Y101_8_2")
     @M("/u/update/saveMove")
     public void updateMove() {
         String ids = jw.getString("ids");
@@ -113,7 +112,7 @@ public class BeanFieldADU {
         DBO.out_update_1_0_f1(jw, null == i ? -1 : i[0]);
     }
 
-    @system.web.power.ann.SQ("Y101_6_2")
+    @system.web.power.ann.SQ("Y101_8_2")
     @M("/u/update/select")
     public void updateSelect_UseFilter_CheckUpdateSelect() {
         jw.request.setAttribute("obj", DBO.service.S.selectOneByCondition(BeanField.class, "WHERE beanfield_zj='" + jw.getString("selectUpdateID") + "'"));

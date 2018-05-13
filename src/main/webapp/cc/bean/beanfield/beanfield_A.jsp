@@ -1,5 +1,5 @@
 <%@include file="/WEB-INF/jspf/power/userPower.jspf"%>
-<%    if (!pck.checkUser("Y101_17_1A")) {
+<%    if (!pck.checkUser("Y101_7")) {
         return;
     }
 %>
@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>添加bean</title>
+        <title>添加属性</title>
         <script type="text/javascript" src="${path_home}/cc/bean/beanfield/js/beanfield_A.js?<%=new Date()%>"></script>
         <%@include file="/WEB-INF/jspf/easyuiLocal.jspf"%>
         <%@include file="/WEB-INF/jspf/artDialog.jspf"%>

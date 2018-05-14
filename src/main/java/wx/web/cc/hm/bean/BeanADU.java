@@ -8,8 +8,10 @@ import configuration.DBO;
 import java.util.ArrayList;
 import java.util.List;
 import plugins.easyui.EasyuiService;
+import system.base.StringTool;
 import wx.web.cc.bean.Bean;
 import wx.web.cc.bean.Bean2;
+import wx.web.cc.bean.BeanField;
 import wx.web.cc.service.BeanService;
 import wx.web.cc.service.svo.BeanSVO;
 
@@ -62,8 +64,16 @@ public class BeanADU {
     @system.web.power.ann.SQ("Y101_6_3")
     @M("/d/dellOM")//删除表头，同时删除表体
     public void dellVast() {
-        int i = DBO.service.D.ooDelete(jw.getString("ids"), Bean.class, Bean2.class);
-        DBO.out_dell_1_0_f1(jw, i);
+        String ids = jw.getString("ids");
+        if (null == ids || ids.isEmpty()) {
+            jw.printOne(DBO.getJSONModel("0", "异常。主键异常"));
+            return;
+        }
+        if (DBO.service.S.selectCountByCondition(BeanField.class, "WHERE bean_zj IN(" + StringTool.replaceDToDDD(ids) + ")") > 0) {
+            jw.printOne(DBO.getJSONModel("0", "异常:某记录存在属性关联。如果非要删除，请先删除相关的属性记录。"));
+            return;
+        }
+        DBO.out_dell_1_0_f1(jw, DBO.service.D.ooDelete(ids, Bean.class, Bean2.class));
     }
 
     @system.web.power.ann.SQ("Y101_6_2")

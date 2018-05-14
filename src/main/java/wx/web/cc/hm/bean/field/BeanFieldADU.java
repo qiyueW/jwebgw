@@ -42,7 +42,10 @@ public class BeanFieldADU {
         obj.setBeanfield_px(px);
         obj.setBean_mc(svo.bean.getBean_mc());
         List<BeanField2> obj2 = (List<BeanField2>) jw.request.getAttribute("obj2");
-        BeanFieldSVO esvo = BeanFieldService.engineToAdd(svo, obj, obj2); //对obj与obj2进行行自我翻译
+        BeanFieldSVO esvo = BeanFieldService.engineToAdd(svo, obj, obj2); //对obj与obj2进行行自我翻译1
+        esvo = BeanFieldService.engineToAdd(svo, esvo.beanField, esvo.beanField2List); //对obj与obj2进行行自我翻译2
+        esvo = BeanFieldService.engineToAdd(svo, esvo.beanField, esvo.beanField2List); //对obj与obj2进行行自我翻译3
+
         int[] i = DBO.service.A.add_OM(esvo.beanField, esvo.beanField2List);
         DBO.out_add_1_0_f1(jw, null == i ? -1 : i[0]);
     }

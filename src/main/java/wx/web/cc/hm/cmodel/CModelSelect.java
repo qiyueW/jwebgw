@@ -10,10 +10,7 @@ import system.base.annotation.M;
 import system.base.beanjson.JCJSON;
 import system.web.power.ann.SQ;
 import wx.web.cc.bean.CModel;
-import wx.web.cc.bean.Bean;
-import wx.web.cc.bean.Mybeanfield;
 import wx.web.cc.service.CModelService;
-import wx.web.cc.service.MybeanService;
 
 @SQ("Y101_2_1")
 @H("cc/cmodal/s")

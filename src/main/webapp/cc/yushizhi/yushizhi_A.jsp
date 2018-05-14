@@ -57,14 +57,14 @@
             });
         </script>
     </head>
-    <body>
+    <body class="easyui-layout">
         <table class="table" id="table1">
             <tr>
                 <td>归类</td>
                 <td><div id="showmyyushizhiflTree" style="position: relative; z-index: 1000"></div></td>
             </tr>
             <tr>
-                <td>预设模板模板名</td>
+                <td>预设名</td>
                 <td><input type="text" name="yushizhi_mc" id="yushizhi_mc" /></td>
             </tr>
             <tr>
@@ -80,7 +80,7 @@
                         </tr>-->
         </table>
 
-        <table id="dg" class="easyui-datagrid"  style="width:100%;height:500px"
+        <table id="dg" class="easyui-datagrid" fit="true"
                data-options="
                rownumbers:true,
                singleSelect:true,
@@ -206,8 +206,8 @@
                 }
             </script>
         </div>
-        <div id="findMyCopyData" class="easyui-window" title="明细" style="width:980px;height:90%"
-             data-options="closable:true,closed:true"
+        <div id="findMyCopyData" class="easyui-window" title="明细" fit="true"
+             data-options="closable:true,closed:true,maximized:true"
              >
             <div  class="easyui-layout"  data-options="fit:true">
                 <div data-options="region:'west',split:true,title:'预设值分类'" style="width:250px;padding:10px;">

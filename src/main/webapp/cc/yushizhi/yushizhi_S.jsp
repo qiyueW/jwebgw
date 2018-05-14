@@ -111,6 +111,7 @@
                             width: 900,
                             height: 400,
                             modal: true,
+                            maximized:true,
                             href: '${path_home}/cc/yushizhi/s/selectOne.jw?yushizhi_zj=' + zj
                         });
                     }
@@ -203,8 +204,7 @@
         <div id="showOneObj"></div>
 
         <div id="showUpdatePage" class="easyui-window" title="明细"
-             style="width:90%;height:90%"
-             data-options="closable:true,closed:true,modal:true">
+             data-options="closable:true,closed:true,modal:true,maximized:true">
         </div>                      
     </body>
 </body>

@@ -37,7 +37,7 @@ public class BeanService {
         //bean-表头 翻译后，再度参与表体的翻译
         EngineService.setMyself(context, bean);//设置自我翻译
         //bean-表体 参加自我翻译
-        EngineService.setMyself(context, list, "getBeanfield2_key", "getBeanfield2_value");
+        EngineService.setMyself(context, list, "getBean2_key", "getBean2_value");
         //翻译后的对象
         list = EngineService.toWorkT(list, context, mapkv);
 //        String str = modelData.replace("&#39;", "'").replace("&#34;", "\"").replace("&#60;", "<").replace("&#62;", ">");//.replace("&#92;", "\\")

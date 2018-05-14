@@ -36,7 +36,10 @@ public class BeanADU {
         int px = DBO.service.S.selectCountByCondition(Bean.class, "WHERE mypackage_id='" + obj.getMypackage_id() + "'");
         obj.setBean_px(px);
         List<Bean2> obj2 = (List<Bean2>) jw.request.getAttribute("obj2");
-        BeanSVO svo = BeanService.engineToAdd(obj, obj2);
+        BeanSVO svo = BeanService.engineToAdd(obj, obj2);//自我翻译1
+        svo = BeanService.engineToAdd(svo.bean, svo.bean2List);//自我翻译2次
+        svo = BeanService.engineToAdd(svo.bean, svo.bean2List);//自我翻译3次
+
         int[] i = DBO.service.A.add_OM(svo.bean, svo.bean2List);//自我翻译
         DBO.out_add_1_0_f1(jw, null == i ? -1 : i[0]);
     }

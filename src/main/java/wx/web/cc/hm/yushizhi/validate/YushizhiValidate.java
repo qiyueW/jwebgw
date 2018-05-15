@@ -22,7 +22,7 @@ public class YushizhiValidate extends ValidateModel {
                 .put("yushizhifl_id", "[1-9]{1}[0-9]{23}", "分类外键丢失", true)//分类外键
                 .put("yushizhifl_name", "[\\w\\W]{1,50}", "分类名：为空或文本过长", true)//分类名
                 .put("yushizhi_bz", "[\\w\\W]{1,200}", "备注：文本过长", false)//备注
-                .put("yushizhi2", "[\\w\\W]{1,5000}", "表体数据异常", false)//表体json数据。
+                .put("yushizhi2", "[\\w\\W]+", "表体数据异常", true)//表体json数据。
                 ;
     }
 

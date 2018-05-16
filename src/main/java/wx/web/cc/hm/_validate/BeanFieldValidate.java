@@ -34,7 +34,7 @@ public class BeanFieldValidate extends ValidateModel {
         if (null == data || data.isEmpty()) {
             return vr.put("beanfield2", "表体数据异常");
         }
-        List<BeanField2> list = JSON.parseArray(data.replace("&#34;", "\"").replace("&#92;", "\\"), BeanField2.class);//jw.getListBySimpleJsonData(Bean2.class, "bean2");.replace("&#34;", "\"")
+        List<BeanField2> list = JSON.parseArray(data.replace("&#34;", "\""), BeanField2.class);//jw.getListBySimpleJsonData(Bean2.class, "bean2");.replace("&#34;", "\"")
         for (BeanField2 obj : list) {
             if (null == obj.getBeanfield2_key() || obj.getBeanfield2_key().isEmpty()) {
                 vr.put("beanfield2", "表体的key不能为空");

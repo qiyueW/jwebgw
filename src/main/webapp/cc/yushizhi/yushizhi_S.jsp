@@ -49,6 +49,9 @@
                             var queryParams = $('#dg').datagrid('options').queryParams;
                             queryParams.yushizhifl_id = treeNode.yushizhifl_id;
                             $('#dg').datagrid('reload');
+                        },
+                        onAsyncSuccess: function () {
+                            $.fn.zTree.getZTreeObj("divID_Tree_bean").expandAll(true);
                         }
                     }
                 }
@@ -111,7 +114,7 @@
                             width: 900,
                             height: 400,
                             modal: true,
-                            maximized:true,
+                            maximized: true,
                             href: '${path_home}/cc/yushizhi/s/selectOne.jw?yushizhi_zj=' + zj
                         });
                     }

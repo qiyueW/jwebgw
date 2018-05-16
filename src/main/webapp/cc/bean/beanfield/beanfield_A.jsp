@@ -57,6 +57,9 @@
                             var queryParams = $('#copydg').datagrid('options').queryParams;
                             queryParams.yushizhifl_id = treeNode.yushizhifl_id;
                             $('#copydg').datagrid('reload');
+                        },
+                        onAsyncSuccess: function () {
+                            $.fn.zTree.getZTreeObj("divID_Tree_bean").expandAll(true);
                         }
                     }
                 }

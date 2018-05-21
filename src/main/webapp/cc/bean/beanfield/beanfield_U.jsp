@@ -9,21 +9,30 @@
         <%@include file="/WEB-INF/jspf/ztree.jspf"%>
         <%@include file="/WEB-INF/jspf/GG.jspf"%>
         <script type="text/javascript" src="${path_home}/cc/bean/beanfield/js/beanfield_U.js"></script>
-
+        <script>
+            $(function () {
+                $('#myMybeanButton').on('click', function () {
+                    close = true;
+                })
+            });
+            var close = false;
+            function closeMySelf() {
+                if (!close) {
+                    $.messager.confirm('请确认', "单据还没保存，是否关闭此页面?", function (r) {
+                        if (r) {
+                            window.parent.closethisWindow();//调取aa函数
+                        }
+                    });
+                } else {
+                    window.parent.closethisWindow();//调取aa函数
+                }
+            }
+        </script>
     </head>
     <body  class="easyui-layout">
         <input type="hidden" name="beanfield_zj" id="beanfield_zj" value="${obj.beanfield_zj}" />
         <input type="hidden" name="bean_zj" id="bean_zj" value="${obj.bean_zj}" />
         <input type="hidden" name="bean_mc" id="bean_mc" value="${obj.bean_mc}" />
-        
-        <table class="table" id="table1">
-            <tr>
-                <td>字段名</td>
-                <td><input type="text" name="beanfield_mc" id="beanfield_mc"  value="${obj.beanfield_mc}"/></td>
-                <td>，备注</td>
-                <td><input type="text" name="beanfield_bz" id="beanfield_bz" value="${obj.beanfield_bz}"/></td>
-            </tr>
-        </table>
         <table id="u_dg" class="easyui-datagrid" fit='true'
                data-options="
                rownumbers:true,
@@ -45,11 +54,24 @@
             </thead>
         </table>            
         <div id="u_tb" style="padding:1px 1px;">
-            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="MoveUp()">上移</a>
-            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="MoveDown()">下移</a>
-            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="dellRow()">移除行</a>
-            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addRow()">添加行</a>
-            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" id="myMybeanButton" onclick="u_postFormData('myMybeanButton')">保存改动</a>
+            <div>
+                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="MoveUp()">上移</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="MoveDown()">下移</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="dellRow()">移除行</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addRow()">添加行</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" id="myMybeanButton" onclick="u_postFormData('myMybeanButton')">保存改动</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" onclick="closeMySelf()">关闭</a>
+            </div>
+            <div>
+                <table class="table" id="table1">
+                    <tr>
+                        <td>字段名</td>
+                        <td><input type="text" name="beanfield_mc" id="beanfield_mc"  value="${obj.beanfield_mc}"/></td>
+                        <td>，备注</td>
+                        <td><input type="text" name="beanfield_bz" id="beanfield_bz" value="${obj.beanfield_bz}"/></td>
+                    </tr>
+                </table>
+            </div>
             <script>
                 function f_bz(value, row, index) {
                     $('#u_dg').datagrid('updateRow', {index: index, row: {beanfield2_bz: fzFormatZT(row.beanfield2_bz)}})

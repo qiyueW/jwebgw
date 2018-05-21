@@ -19,24 +19,25 @@
                     u_fl.setMyValue(treeNode)
                     u_fl.hideMenu();
                 }, "mypackage_id", "mypackage_pid", "mypackage_name", "${obj.mypackage_name}", "${obj.mypackage_id}");
+                $('#myMybeanButton').on('click', function () {
+                    close = true;
+                })
             });
+            var close = false;
+            function closeMySelf() {
+                if (!close) {
+                    $.messager.confirm('请确认', "单据还没保存，是否关闭此页面?", function (r) {
+                        if (r) {
+                            window.parent.closethisWindow();//调取aa函数
+                        }
+                    });
+                } else {
+                    window.parent.closethisWindow();//调取aa函数
+                }
+            }
         </script>
 
         <input type="hidden" name="bean_zj" id="bean_zj" value="${obj.bean_zj}" />
-        <table class="table" id="table1">
-            <tr>
-                <td>归类</td>
-                <td><div id="u_showmybeanflTree" style="position: relative; z-index: 1000"></div></td>
-            </tr>
-            <tr>
-                <td>预设模板模板名</td>
-                <td><input type="text" name="bean_mc" id="bean_mc" value="${obj.bean_mc}" /></td>
-            </tr>
-            <tr>
-                <td>备注</td>
-                <td><input type="text" name="bean_bz" id="bean_bz"value="${obj.bean_bz}" /></td>
-            </tr>
-        </table>   
         <table id="u_dg" class="easyui-datagrid" fit='true'
                data-options="
                rownumbers:true,
@@ -57,13 +58,30 @@
             </thead>
         </table>            
         <div id="u_tb" style="padding:1px 1px;">
-            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="MoveUp()">上移</a>
-            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="MoveDown()">下移</a>
-            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="dellRow()">移除行</a>
-            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addRow()">添加行</a>
-            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" id="myMybeanButton" onclick="u_postFormData('myMybeanButton')">保存改动</a>
-
-
+            <div>
+                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="MoveUp()">上移</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="MoveDown()">下移</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="dellRow()">移除行</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addRow()">添加行</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" id="myMybeanButton" onclick="u_postFormData('myMybeanButton')">保存改动</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" onclick="closeMySelf()">关闭</a>
+            </div>
+            <div>
+                <table class="table" id="table1">
+                    <tr>
+                        <td>归类</td>
+                        <td><div id="u_showmybeanflTree" style="position: relative; z-index: 1000"></div></td>
+                    </tr>
+                    <tr>
+                        <td>预设模板模板名</td>
+                        <td><input type="text" name="bean_mc" id="bean_mc" value="${obj.bean_mc}" /></td>
+                    </tr>
+                    <tr>
+                        <td>备注</td>
+                        <td><input type="text" name="bean_bz" id="bean_bz"value="${obj.bean_bz}" /></td>
+                    </tr>
+                </table>
+            </div>
             <script>
                 function f_bz(value, row, index) {
                     $('#u_dg').datagrid('updateRow', {index: index, row: {bean2_bz: fzFormatZT(row.bean2_bz)}})

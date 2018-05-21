@@ -10,6 +10,7 @@ import system.base.annotation.M;
 import system.base.beanjson.JCJSON;
 import system.web.power.ann.SQ;
 import wx.web.cc.bean.MyModel;
+import wx.web.cc.service.EngineService;
 
 @SQ("Y101_10_1")
 @H("cc/mybean/modal/s")
@@ -23,7 +24,7 @@ public class MyModelSelect {
             return;
         }
         MyModel obj = DBO.service.S.selectOneByID(MyModel.class, mymodel_zj);
-        obj.setMymodel_nr(obj.getMymodel_nr().replace("'", "&#39;").replace("\r", "&#39;n"));
+        obj.setMymodel_nr(obj.getMymodel_nr().replace("'", "&#39;"));
         jw.printOne(JCJSON.toSimpleJSON(obj));
     }
 
@@ -35,8 +36,9 @@ public class MyModelSelect {
             return;
         }
         MyModel obj = DBO.service.S.selectOneByID(MyModel.class, mymodel_zj);
-        obj.setMymodel_nr(obj.getMymodel_nr().replace("'", "&#39;").replace("\r", "&#39;n"));
-        jw.printOne(obj.getMymodel_nr());
+        obj.setMymodel_nr(obj.getMymodel_nr().replace("'", "&#39;"));
+        System.out.println(obj.getMymodel_nr());
+        jw.printOne(obj.getMymodel_nr().replace("<", "&#60;"));
     }
     @M("/selectAllByJson")
     public static void selectJSON(JWeb jw) {

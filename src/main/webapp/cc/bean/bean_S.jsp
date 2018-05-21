@@ -112,7 +112,7 @@
                             width: 900,
                             height: 400,
                             modal: true,
-                            maximized:true,
+                            maximized: true,
                             href: '${path_home}/cc/bean/s/selectOne.jw?bean_zj=' + zj
                         });
                     }
@@ -193,7 +193,10 @@
                             }
                         }
                     }
-
+//-------------------------子页面调用方法-------------------------                
+                    function closethisWindow() {
+                        $('#showUpdatePage').panel('close');
+                    }
                 </script>
                 <select onchange="$('#dg').datagrid({singleSelect: (this.value == 0)});
                         pageCN('dg', 100)">

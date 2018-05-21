@@ -19,7 +19,22 @@
                     u_fl.setMyValue(treeNode)
                     u_fl.hideMenu();
                 }, "yushizhifl_id", "yushizhifl_pid", "yushizhifl_name", "${obj.yushizhifl_name}", "${obj.yushizhifl_id}");
+                $('#myMybeanButton').on('click', function () {
+                    close = true;
+                })
             });
+            var close = false;
+            function closeMySelf() {
+                if (!close) {
+                    $.messager.confirm('请确认', "单据还没保存，是否关闭此页面?", function (r) {
+                        if (r) {
+                            window.parent.closethisWindow();//调取aa函数
+                        }
+                    });
+                } else {
+                    window.parent.closethisWindow();//调取aa函数
+                }
+            }
         </script>
 
         <input type="hidden" name="yushizhi_zj" id="yushizhi_zj" value="${obj.yushizhi_zj}" />
@@ -62,7 +77,7 @@
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="dellRow()">移除行</a>
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addRow()">添加行</a>
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" id="myMybeanButton"  onclick="u_postFormData('myMybeanButton')">保存</a>
-
+            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="closeMySelf()">关闭</a>
             <script>
                 function f_bz(value, row, index) {
                     $('#u_dg').datagrid('updateRow', {index: index, row: {yushizhi2_bz: fzFormatZT(row.yushizhi2_bz)}})

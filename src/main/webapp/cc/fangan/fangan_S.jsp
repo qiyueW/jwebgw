@@ -111,7 +111,7 @@
                             width: 1000,
                             height: 400,
                             modal: true,
-                            maximized:true,
+                            maximized: true,
                             href: '${path_home}/cc/fangan/s/selectOne.jw?fangan_zj=' + zj
                         });
                     }
@@ -192,7 +192,10 @@
                             }
                         }
                     }
-
+//-------------------------子页面调用方法-------------------------                
+                    function closethisWindow() {
+                        $('#showUpdatePage').panel('close');
+                    }
                 </script>
                 <select onchange="$('#dg').datagrid({singleSelect: (this.value == 0)});pageCN('dg', 100)">
                     <option value="0">单行选择</option>

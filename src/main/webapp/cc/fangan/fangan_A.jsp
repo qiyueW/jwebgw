@@ -57,24 +57,9 @@
             });
         </script>
     </head>
-    <body>
+    <body class="easyui-layout">
         <input type="hidden" name="fangan1_zt" id="fangan1_zt" value="0" />
-        <table class="table" id="table1">
-            <tr>
-                <td>归类</td>
-                <td><div id="showmyfanganflTree" style="position: relative; z-index: 1000"></div></td>
-            </tr>
-            <tr>
-                <td>方案名</td>
-                <td><input type="text" name="fangan1_mc" id="fangan1_mc" /></td>
-            </tr>
-            <tr>
-                <td>备注</td>
-                <td><input type="text" name="fangan1_bz" id="fangan1_bz" /></td>
-            </tr>
-        </table>
-
-        <table id="dg" class="easyui-datagrid"  style="width:100%;height:500px"
+        <table id="dg" class="easyui-datagrid"  fit="true"
                data-options="
                rownumbers:true,
                singleSelect:true,
@@ -96,15 +81,32 @@
             </thead>
         </table>
         <div id="tb" style="padding:2px 5px;">
-            <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="dellRow()">移除行</a>
-            <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="addRow()">添加行</a>
-            <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="MoveUp()">上移</a>
-            <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="MoveDown()">下移</a>
-<!--            <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="clearValue()">清空值</a>
-            <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="clearBz()">清空备注</a>-->
-            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" plain="true" onclick="copydata()">复制现有模板</a>
-            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" id="postFanganFormDataID" onclick="postFanganFormData('postFanganFormDataID')">保存</a>
-
+            <div>
+                <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="dellRow()">移除行</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="addRow()">添加行</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="MoveUp()">上移</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="MoveDown()">下移</a>
+                <!--            <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="clearValue()">清空值</a>
+                            <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="clearBz()">清空备注</a>-->
+                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" plain="true" onclick="copydata()">复制现有模板</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" id="postFanganFormDataID" onclick="postFanganFormData('postFanganFormDataID')">保存</a>
+            </div>
+            <div>
+                <table class="table" id="table1">
+                    <tr>
+                        <td>归类</td>
+                        <td><div id="showmyfanganflTree" style="position: relative; z-index: 1000"></div></td>
+                    </tr>
+                    <tr>
+                        <td>方案名</td>
+                        <td><input type="text" name="fangan1_mc" id="fangan1_mc" /></td>
+                    </tr>
+                    <tr>
+                        <td>备注</td>
+                        <td><input type="text" name="fangan1_bz" id="fangan1_bz" /></td>
+                    </tr>
+                </table>
+            </div>
             <script>
 //                function f_bz(value, row, index) {
 //                    $('#u_dg').datagrid('updateRow', {index: index, row: {fangan2_bz: fzFormatZT(row.fangan2_bz)}})

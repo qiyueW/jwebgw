@@ -195,7 +195,10 @@
                             }
                         }
                     }
-
+//-------------------------子页面调用方法-------------------------                
+                    function closethisWindow() {
+                        $('#showUpdatePage').panel('close');
+                    }
                 </script>
                 <select onchange="$('#dg').datagrid({singleSelect: (this.value == 0)});pageCN('dg', 100)">
                     <option value="0">单行选择</option>

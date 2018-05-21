@@ -38,20 +38,6 @@
         </script>
 
         <input type="hidden" name="yushizhi_zj" id="yushizhi_zj" value="${obj.yushizhi_zj}" />
-        <table class="table" id="table1">
-            <tr>
-                <td>归类</td>
-                <td><div id="u_showmyyushizhiflTree" style="position: relative; z-index: 1000"></div></td>
-            </tr>
-            <tr>
-                <td>预设模板模板名</td>
-                <td><input type="text" name="yushizhi_mc" id="yushizhi_mc" value="${obj.yushizhi_mc}" /></td>
-            </tr>
-            <tr>
-                <td>备注</td>
-                <td><input type="text" name="yushizhi_bz" id="yushizhi_bz"value="${obj.yushizhi_bz}" /></td>
-            </tr>
-        </table>
         <table id="u_dg" class="easyui-datagrid"  fit="true"
                data-options="
                rownumbers:true,
@@ -72,12 +58,30 @@
             </thead>
         </table>
         <div id="u_tb" style="padding:1px 1px;">
-            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="MoveUp()">上移</a>
-            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="MoveDown()">下移</a>
-            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="dellRow()">移除行</a>
-            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addRow()">添加行</a>
-            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" id="myMybeanButton"  onclick="u_postFormData('myMybeanButton')">保存</a>
-            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="closeMySelf()">关闭</a>
+            <div>
+                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="MoveUp()">上移</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="MoveDown()">下移</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="dellRow()">移除行</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addRow()">添加行</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" id="myMybeanButton"  onclick="u_postFormData('myMybeanButton')">保存</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" onclick="closeMySelf()">关闭</a>
+            </div>
+            <div>
+                <table class="table" id="table1">
+                    <tr>
+                        <td>归类</td>
+                        <td><div id="u_showmyyushizhiflTree" style="position: relative; z-index: 1000"></div></td>
+                    </tr>
+                    <tr>
+                        <td>预设模板模板名</td>
+                        <td><input type="text" name="yushizhi_mc" id="yushizhi_mc" value="${obj.yushizhi_mc}" /></td>
+                    </tr>
+                    <tr>
+                        <td>备注</td>
+                        <td><input type="text" name="yushizhi_bz" id="yushizhi_bz"value="${obj.yushizhi_bz}" /></td>
+                    </tr>
+                </table>
+            </div>
             <script>
                 function f_bz(value, row, index) {
                     $('#u_dg').datagrid('updateRow', {index: index, row: {yushizhi2_bz: fzFormatZT(row.yushizhi2_bz)}})

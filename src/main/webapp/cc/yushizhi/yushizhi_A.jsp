@@ -61,28 +61,6 @@
         </script>
     </head>
     <body class="easyui-layout">
-        <table class="table" id="table1">
-            <tr>
-                <td>归类</td>
-                <td><div id="showmyyushizhiflTree" style="position: relative; z-index: 1000"></div></td>
-            </tr>
-            <tr>
-                <td>预设名</td>
-                <td><input type="text" name="yushizhi_mc" id="yushizhi_mc" /></td>
-            </tr>
-            <tr>
-                <td>备注</td>
-                <td><input type="text" name="yushizhi_bz" id="yushizhi_bz" /></td>
-            </tr>
-            <!--            <tr>
-                            <td colspan="2">
-                                <div style="text-align: center">
-                                    <input type="button" value="保存" id="myMybeanButton" onclick="postCModelFormData('myMybeanButton')">
-                                </div>
-                            </td>
-                        </tr>-->
-        </table>
-
         <table id="dg" class="easyui-datagrid" fit="true"
                data-options="
                rownumbers:true,
@@ -104,15 +82,32 @@
             </thead>
         </table>
         <div id="tb" style="padding:2px 5px;">
-            <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="dellRow()">移除行</a>
-            <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="addRow()">添加行</a>
-            <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="MoveUp()">上移</a>
-            <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="MoveDown()">下移</a>
-            <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="clearValue()">清空值</a>
-            <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="clearBz()">清空备注</a>
-            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" plain="true" onclick="copydata()">复制现有模板</a>
-            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" id="myMybeanButton" onclick="postCModelFormData('myMybeanButton')">保存</a>
-
+            <div>
+                <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="dellRow()">移除行</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="addRow()">添加行</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="MoveUp()">上移</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="MoveDown()">下移</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="clearValue()">清空值</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="clearBz()">清空备注</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" plain="true" onclick="copydata()">复制现有模板</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" id="myMybeanButton" onclick="postCModelFormData('myMybeanButton')">保存</a>
+            </div>
+            <div>
+                <table class="table" id="table1">
+                    <tr>
+                        <td>归类</td>
+                        <td><div id="showmyyushizhiflTree" style="position: relative; z-index: 1000"></div></td>
+                    </tr>
+                    <tr>
+                        <td>预设名</td>
+                        <td><input type="text" name="yushizhi_mc" id="yushizhi_mc" /></td>
+                    </tr>
+                    <tr>
+                        <td>备注</td>
+                        <td><input type="text" name="yushizhi_bz" id="yushizhi_bz" /></td>
+                    </tr>
+                </table>
+            </div>
             <script>
                 function f_bz(value, row, index) {
                     $('#dg').datagrid('updateRow', {index: index, row: {yushizhi2_bz: fzFormatZT(row.yushizhi2_bz)}})

@@ -22,7 +22,7 @@ public class A_Y implements IPowerData {
 //                    
                     .setEmptyNode("Y101", "Y101_12", "cc基础管理", false)
 //                        .setHMAndViewNode("Y101_12", "Y101_12_1", "bean映射","cc/ccmap/Map_Mybean.jsp", true)
-                        .setHMAndViewNode("Y101_12", "Y101_12_2", "bean属性映射","cc/ccmap/Map_Mybeanfield.jsp", true)
+//                        .setHMAndViewNode("Y101_12", "Y101_12_2", "bean属性映射","cc/ccmap/Map_Mybeanfield.jsp", true)
                         .setHMAndViewNode("Y101_12", "Y101_11A", "通用模板分类添加","cc/cmodel/cmodelfl/cmodelfl_A.jsp", true)
                         .setViewNode("Y101_12", "Y101_11_0", "通用模板分类中心", "cc/cmodel/cmodelfl/cmodelfl.jsp", true)
                                 .setHMNode("Y101_11_0", "Y101_11S", "查询")

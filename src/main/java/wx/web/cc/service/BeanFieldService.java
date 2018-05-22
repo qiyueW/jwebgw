@@ -61,7 +61,7 @@ public class BeanFieldService {
      * @return List
      */
     public static List<BeanField> getBeanFileHeadByBeanID(String bean_zj) {
-        return DBO.service.S.selectByCondition(BeanField.class, "WHERE bean_zj IN('" + bean_zj + "')");
+        return DBO.service.S.selectByCondition(BeanField.class, "WHERE bean_zj IN('" + bean_zj + "')  ORDER BY beanfield_px ASC");
     }
 
     /**

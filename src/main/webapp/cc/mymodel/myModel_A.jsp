@@ -70,7 +70,7 @@
                 $("#mymodel_nr").html('');
                 $.post('${path_home}/cc/cmodal/s/selectOne3.jw', {cmodel_zj: rowData.cmodel_zj, bean_zj: mybean}, function (data) {
                     $("#mymodel_mc").val(rowData.cmodel_mc);
-                    $("#mymodel_nr").html(data.replace(/<scr/g, "&#60;scr"));
+                    $("#mymodel_nr").html(data.replace(/</g, "&#60;"));
 //                    console.log(data)
                 }, "text");
             }

@@ -124,6 +124,9 @@
                     return toFormatZT(row.yushizhi2_bz);
                 }
                 function f_key(value, row, index) {
+                    if(value=='beanfield_mc'||value=='beanfield_bz'){
+                        $("#"+value).val(row.yushizhi2_value)
+                    }
                     $('#dg').datagrid('updateRow', {index: index, row: {yushizhi2_key: fzFormatZT(row.yushizhi2_key)}})
                     return toFormatZT(row.yushizhi2_key);
                 }
@@ -225,8 +228,7 @@
                     <table id="copydg" class="easyui-datagrid"
                            style="width:100%;height:100%"
                            data-options="rownumbers:true,singleSelect:true,url:'${path_home}/cc/yushizhi/s/selectAllByJson.jw',method:'post',queryParams: {yushizhifl_id:''},autoRowHeight:true,
-                           pagination:true,
-                           pageSize:50,
+                           pagination:false
                            ">
                         <thead>
                             <tr>

@@ -1,12 +1,14 @@
 package wx.web.cc.service;
 
 import configuration.DBO;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import org.apache.velocity.VelocityContext;
 import wx.web.cc.bean.BeanField;
 import wx.web.cc.bean.BeanField2;
 import wx.web.cc.service.svo.BeanFieldSVO;
+import wx.web.cc.service.svo.BeanFieldStrngVO;
 import wx.web.cc.service.svo.BeanSVO;
 
 /**
@@ -80,5 +82,38 @@ public class BeanFieldService {
             sqldata[i] = "UPDATE BeanField SET beanfield_px=" + i + " WHERE beanfield_zj='" + ids[i] + "'";
         }
         return DBO.service.ADUS.executeBatch(sqldata);
+    }
+
+    public static void formatUserFields(List<BeanField2> list) {
+        for (BeanField2 obj : list) {
+            obj.setBeanfield2_value(toFormatFieldByUserSet(obj.getBeanfield2_value()));
+        }
+    }
+
+    private static String toFormatFieldByUserSet(String str) {
+        if (!str.startsWith("?")) {
+            return str;
+        }
+        StringBuilder sb = new StringBuilder();
+        BeanFieldStrngVO vo = new BeanFieldStrngVO(str);
+        String[] cha = vo.value.split("");
+        System.out.println("this key:" + vo.key);
+        String ll;
+        for (String c : cha) {
+            ll = c.toLowerCase();
+            if (c.equals(ll)) {
+                sb.append(c);
+            } else {
+                sb.append(vo.key).append(ll);
+            }
+        }
+        System.out.println("this v:" + sb);
+        return sb.toString();
+
+    }
+
+    public static void main(String args[]) {
+        String str = "?_sdfAaBbCCa";
+        toFormatFieldByUserSet(str);
     }
 }

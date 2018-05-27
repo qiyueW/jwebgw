@@ -113,6 +113,9 @@
                     return toFormatZT(row.yushizhi2_bz);
                 }
                 function f_key(value, row, index) {
+                    if (value == 'bean_mc' || value == 'bean_bz') {
+                        $("#" + value).val(row.yushizhi2_value)
+                    }
                     $('#dg').datagrid('updateRow', {index: index, row: {yushizhi2_key: fzFormatZT(row.yushizhi2_key)}})
                     return toFormatZT(row.yushizhi2_key);
                 }

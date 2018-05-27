@@ -45,7 +45,9 @@ public class BeanFieldADU {
         BeanFieldSVO esvo = BeanFieldService.engineToAdd(svo, obj, obj2); //对obj与obj2进行行自我翻译1
         esvo = BeanFieldService.engineToAdd(svo, esvo.beanField, esvo.beanField2List); //对obj与obj2进行行自我翻译2
         esvo = BeanFieldService.engineToAdd(svo, esvo.beanField, esvo.beanField2List); //对obj与obj2进行行自我翻译3
-
+        //针对翻译后的字段2，进行检查
+        //如果是以?开头的，取1，2字符，取到大写，转小写，并以2字符作中间连接词
+        BeanFieldService.formatUserFields(esvo.beanField2List);
         int[] i = DBO.service.A.add_OM(esvo.beanField, esvo.beanField2List);
         DBO.out_add_1_0_f1(jw, null == i ? -1 : i[0]);
     }

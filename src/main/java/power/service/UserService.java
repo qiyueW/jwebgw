@@ -78,7 +78,7 @@ public final class UserService {
         }
         String rid = u.getRole_id();
         String pid = u.getPower_id();
-        Set<String> set = new HashSet();
+        Set<String> set = new HashSet<String>();
         //对直接的权限先装箱。
         for (String p : pid.split(",")) {
             set.add(p);//加入权限集合，自动去重复。
@@ -120,7 +120,7 @@ public final class UserService {
         if (mye && newe) {
             return null;//无需变更 无需理会
         }
-        Set<String> objPower = new HashSet();
+        Set<String> objPower = new HashSet<String>();
 
         if (!mye) {//格式化我的权限成 集合
             for (String str : obj.getPower_id().split(",")) {
@@ -151,7 +151,7 @@ public final class UserService {
         if (mye && newe) {
             return null;//无需变更 无需理会
         }
-        Set<String> objPower = new HashSet();
+        Set<String> objPower = new HashSet<String>();
 
         if (!mye) {//格式化我的权限成 集合
             for (String str : obj.getRole_id().split(",")) {

@@ -61,7 +61,6 @@
             function loadHeader(divId, pageUri) {
                 document.getElementById(divId).innerHTML = '<iframe scrolling="no" frameborder="0"  src="' + pageUri + '" style="width:100%;height:100%;"></iframe>';
             }
-
         </script>
     </head>
     <body class="easyui-layout">

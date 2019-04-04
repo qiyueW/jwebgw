@@ -1,5 +1,4 @@
 <%@ page pageEncoding="UTF-8" %>
-
 <script type="text/javascript">
     var path_home = "${path_home}/";
     function toFormatZT(str) {

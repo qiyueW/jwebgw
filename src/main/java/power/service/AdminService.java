@@ -42,7 +42,7 @@ public final class AdminService {
         return DBO.service.S.selectOneByCondition(AdminUser.class,
                 "WHERE  user_sort='0-01'AND  user_style='启用'  AND user_account='" + account + "' AND user_password='" + password + "'");
     }
-
+    
     public static List<AdminUser> selectAll(boolean showOK) {
         return DBO.service.S.selectByCondition(AdminUser.class, "WHERE user_sort='管理员'" + (showOK ? " AND  user_style='启用' " : ""));
     }

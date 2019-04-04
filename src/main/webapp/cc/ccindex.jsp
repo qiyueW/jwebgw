@@ -11,12 +11,14 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-
         <script src="${path_home}/lib/jquery/jquery-1.11.1.js" type="text/javascript"></script> 
         <%@include file="/WEB-INF/jspf/artDialog.jspf"%>
         <%@include file="/WEB-INF/jspf/ztree.jspf"%>
 
         <script type="text/javascript">
+        if (typeof module === 'object') {
+            window.jQuery = window.$ = module.exports;
+        }
             var mypackage_id = "";
             var user_id2 = "";
             $(function () {

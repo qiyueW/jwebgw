@@ -1,6 +1,5 @@
 <%@ page pageEncoding="UTF-8" %>
 
-
 <link rel="stylesheet" href="${path_home}/lib/zui/css/zui.min.css" type="text/css" />
 <link rel="stylesheet" href="${path_home}/lib/zui/lib/datagrid/zui.datagrid.min.css"  type="text/css" />
 

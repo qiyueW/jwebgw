@@ -1,6 +1,5 @@
 <%@page import="java.util.Date"%>
 <%@ page pageEncoding="UTF-8" %>
-
 <link rel="stylesheet" href="${path_home}/lib/easyui/themes/icon.css"  type="text/css" />
 <link rel="stylesheet" href="${path_home}/lib/easyui/themes/default/easyui.css" type="text/css" />
 <script src="${path_home}/lib/easyui/jquery.min.js"></script>

@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.velocity.VelocityContext;
 import wx.web.cc.bean.Bean;
 import wx.web.cc.bean.Bean2;
+import wx.web.cc.service.svo.BeanFieldStrngVO;
 import wx.web.cc.service.svo.BeanSVO;
 
 /**
@@ -13,7 +14,38 @@ import wx.web.cc.service.svo.BeanSVO;
  * @author adm.wangchunzi
  */
 public class BeanService {
-
+	
+	private static String toFormatClassName_(String str) {
+        if (!str.startsWith("?")) {
+            return str;
+        }
+        StringBuilder sb = new StringBuilder();
+        BeanFieldStrngVO vo = new BeanFieldStrngVO(str);
+        String[] cha = vo.value.split("");
+        System.out.println("this key:" + vo.key);
+        String ll;
+        int i=0;
+        for (String c : cha) {
+            ll = c.toLowerCase();
+            if (c.equals(ll)) {
+                sb.append(c);
+            } else {
+            	if(i==0) {
+            		sb.append(ll);
+            		i++;
+            	}else {
+            		sb.append(vo.key).append(ll);
+            	}
+            }
+        }
+        System.out.println("this v:" + sb);
+        return sb.toString();
+    }
+//	public static void main(String args[]) {
+//		String str="?_MySubjectCommon";
+//		System.out.println("翻译后的："+toFormatClassName_(str));
+//	}
+	
 //=============================翻译区==============================================    
     /**
      * bean属性（表头，表体） 添加时，进行自我翻译
@@ -25,6 +57,7 @@ public class BeanService {
     public static BeanSVO engineToAdd(Bean bean, List<Bean2> list) {
         Map<String, String> mapkv = EngineService.getDefaultEngineData();
         mapkv.put("&#39;", "'");
+        mapkv.put("[?_]", toFormatClassName_(bean.getBean_mc()));// 把 MySubjectCommon 变成 my_subject_common 这种类名
         mapkv.put("[?c?]", bean.getBean_mc().toLowerCase());//小写bean名
         mapkv.put("[?c?1]", bean.getBean_mc().substring(0, 1).toLowerCase() + bean.getBean_mc().substring(1));//小写第1个字符 bean名
         //bean 参加翻译

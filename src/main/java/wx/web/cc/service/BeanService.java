@@ -57,7 +57,7 @@ public class BeanService {
     public static BeanSVO engineToAdd(Bean bean, List<Bean2> list) {
         Map<String, String> mapkv = EngineService.getDefaultEngineData();
         mapkv.put("&#39;", "'");
-        mapkv.put("[?_]", toFormatClassName_(bean.getBean_mc()));// 把 MySubjectCommon 变成 my_subject_common 这种类名
+        mapkv.put("[?_CcC]", "?_"+toFormatClassName_(bean.getBean_mc()));// 把 MySubjectCommon 变成 my_subject_common 这种类名
         mapkv.put("[?c?]", bean.getBean_mc().toLowerCase());//小写bean名
         mapkv.put("[?c?1]", bean.getBean_mc().substring(0, 1).toLowerCase() + bean.getBean_mc().substring(1));//小写第1个字符 bean名
         //bean 参加翻译

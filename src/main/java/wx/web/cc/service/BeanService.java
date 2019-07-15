@@ -77,6 +77,13 @@ public class BeanService {
         return new BeanSVO(bean, list);
     }
 
+//    private static void formatList2(List<Bean2> list) {
+//    	for(Bean2 obj:list) {
+//    		if(obj.getBean2_value().startsWith("?_")) {
+//    			
+//    		}
+//    	}
+//    }
 //=============================DB业务区==============================================    
     /**
      * 通过分类key（包含式）方式取得相关模板的预设值的表头。

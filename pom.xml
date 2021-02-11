@@ -7,12 +7,13 @@
 	<groupId>com.github.qiyueW</groupId>
 	<artifactId>jwebgw</artifactId>
 	<version>2</version>
+	
 	<packaging>war</packaging>
-
+	
 	<name>jwebgw</name>
 	<description>JWeb so easy!</description>
 	<url>https://github.com/qiyueW/jwebgw</url>
-
+ 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
